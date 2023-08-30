@@ -415,13 +415,15 @@ public:
             venueTimeSlotCount[venueTimeSlotPair]++;
         }
 
-        // Check for violations
+        // Check for violations of the first constraint
         for (const auto &entry : venueTimeSlotCount)
         {
             if (entry.second > 1)
             {
-                // Violation: More than one module is scheduled in the same venue during the same time slot
-                return 0.0; // Set fitness to zero or another very low value
+                std::cout << "Violation in Constraint 1: VenueID = " << entry.first.first
+                          << ", TimeSlotID = " << entry.first.second
+                          << ", Count = " << entry.second << std::endl;
+                return 0.0;
             }
         }
         ////////////////////////////////////////////////////////////////////////////////
@@ -442,18 +444,48 @@ public:
             levelTimeSlotCount[levelTimeSlotPair]++;
         }
 
-        // Check for violations
+        // Check for violations of the second constraint
         for (const auto &entry : levelTimeSlotCount)
         {
             if (entry.second > 1)
             {
-                // Violation: More than one module at the same level is scheduled during the same time slot
-                return 0.0; // Set fitness to zero or another very low value
+                std::cout << "Violation in Constraint 2: Level = " << entry.first.first
+                          << ", TimeSlotID = " << entry.first.second
+                          << ", Count = " << entry.second << std::endl;
+                return 0.0;
             }
         }
         ////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////constraint no3///////////////////////////////////
 
-                // ... (evaluate other constraints here)
+        // Initialize a map to hold the count of modules scheduled for each lecturer for each time slot
+        std::map<std::pair<int, int>, int> lecturerTimeSlotCount;
+
+        for (const ScheduledModule &gene : genes)
+        {
+            int lecturerID = gene.getModule().getLecturer().getLecturerID(); // Assuming getLecturerID() returns an integer ID for the lecturer
+            int timeSlotID = gene.getTimeSlot().getTimeSlotID();
+
+            // Create a pair of lecturerID and timeSlotID
+            std::pair<int, int> lecturerTimeSlotPair = std::make_pair(lecturerID, timeSlotID);
+
+            // Increment the count for this lecturer and time slot
+            lecturerTimeSlotCount[lecturerTimeSlotPair]++;
+        }
+
+        // Check for violations of the third constraint
+        for (const auto &entry : lecturerTimeSlotCount)
+        {
+            if (entry.second > 1)
+            {
+                std::cout << "Violation in Constraint 3: LecturerID = " << entry.first.first
+                          << ", TimeSlotID = " << entry.first.second
+                          << ", Count = " << entry.second << std::endl;
+                return 0.0;
+            }
+        }
+
+        // ... (evaluate other constraints here)
 
         return fitness;
     }
@@ -501,23 +533,21 @@ int main()
     // Initialize TimeSlots
     TimeSlot timeSlot1(1, "Monday", "9:00 AM");
     TimeSlot timeSlot2(2, "Monday", "10:00 AM");
-    TimeSlot timeSlot3(3, "Monday", "11:00 AM");
 
     // Initialize Venues
     Venue venue1(1, "Room A", 30, false);
     Venue venue2(2, "Room B", 40, true);
-    Venue venue3(3, "Room s", 40, true);
 
     // Initialize Modules
     Module module1(1, lecturer1, "Math", 1, 25, false);      // Level 1
     Module module2(2, lecturer2, "Physics", 1, 35, true);    // Level 1
-    Module module3(3, lecturer2, "Chemistry", 2, 35, false); // Level 2
+    Module module3(3, lecturer2, "Chemistry", 1, 35, false); // Level 1
 
     // Initialize ScheduledModules
-    ScheduledModule scheduledModule1(module1, timeSlot3, venue1, false, false, true); // Should violate the first constraint
-    ScheduledModule scheduledModule2(module2, timeSlot1, venue3, false, false, true); // Should violate the first constraint
-    ScheduledModule scheduledModule3(module2, timeSlot2, venue1, false, false, true);
-    ScheduledModule scheduledModule4(module3, timeSlot1, venue2, false, false, true);
+    ScheduledModule scheduledModule1(module1, timeSlot1, venue1, false, false, true); // Should violate the first constraint
+    ScheduledModule scheduledModule2(module2, timeSlot1, venue1, false, false, true); // Should violate the first constraint
+    ScheduledModule scheduledModule3(module2, timeSlot1, venue2, false, false, true); // Should violate the second constraint
+    ScheduledModule scheduledModule4(module3, timeSlot1, venue2, false, false, true); // Should violate the third constraint
 
     // Initialize Chromosome
     std::vector<ScheduledModule> genes = {scheduledModule1, scheduledModule2, scheduledModule3, scheduledModule4};
