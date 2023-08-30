@@ -39,7 +39,35 @@ public:
     {
         lecturerName = name;
     }
+
+    void printInfo() const
+    {
+        std::cout << "Lecturer ID: " << lecturerID << ", Name: " << lecturerName << std::endl;
+    }
 };
+
+std::vector<Lecturer> allLecturers; // Global array to hold all lecturers
+
+void initializeLecturers()
+{
+    // Initialize lecturers with ID and Name
+    allLecturers.push_back(Lecturer(1, "Dr. Abd Alsalam Bnoor"));
+    allLecturers.push_back(Lecturer(2, "Dr. Lutfi alhaweji"));
+    allLecturers.push_back(Lecturer(3, "Dr. Raneem Nashnoosh"));
+    allLecturers.push_back(Lecturer(4, "Dr. Hassan Abuaisha"));
+    allLecturers.push_back(Lecturer(5, "Dr. Zainab Ahmed"));
+    allLecturers.push_back(Lecturer(6, "Dr. Samir Embarek"));
+    allLecturers.push_back(Lecturer(7, "Dr. Fatima Hmeed"));
+    allLecturers.push_back(Lecturer(8, "Dr. Wafaa Nasser"));
+    allLecturers.push_back(Lecturer(9, "Dr. Abd Allatif Alshwehdi"));
+    allLecturers.push_back(Lecturer(10, "Dr. Omaima Alsheli"));
+    allLecturers.push_back(Lecturer(11, "Dr. Adnan Alshreef"));
+    allLecturers.push_back(Lecturer(12, "Dr. Ali Aborass"));
+    allLecturers.push_back(Lecturer(13, "Dr. Alsunni"));
+    allLecturers.push_back(Lecturer(14, "Dr. Fardous"));
+    allLecturers.push_back(Lecturer(15, "Dr. Fathia Abu Amer"));
+    // ... add more lecturers as needed
+}
 
 class TimeSlot
 {
@@ -87,7 +115,32 @@ public:
     {
         time = timeValue;
     }
+
+    void printInfo() const
+    {
+        std::cout << "TimeSlot ID: " << timeSlotID << ", Day: " << day << ", Time: " << time << std::endl;
+    }
 };
+
+std::vector<TimeSlot> allTimeSlots; // Global array to hold all time slots
+void initializeTimeSlots()
+{
+    // Days of the week
+    std::vector<std::string> days = {"Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"};
+
+    // Time intervals
+    std::vector<std::string> times = {"8:00 AM", "10:00 AM", "12:00 PM", "2:00 PM"};
+
+    int id = 1; // Unique ID for each time slot
+
+    for (const auto &day : days)
+    {
+        for (const auto &time : times)
+        {
+            allTimeSlots.push_back(TimeSlot(id++, day, time));
+        }
+    }
+}
 
 class Module
 {
@@ -170,7 +223,44 @@ public:
     {
         isLab = lab;
     }
+
+    void printInfo() const
+    {
+        std::cout << "Module ID: " << moduleID
+                  << ", Lecturer: " << lecturer.getLecturerName()
+                  << ", Name: " << name
+                  << ", Level: " << level
+                  << ", Enrolled Students: " << numberOfStudentsEnrolled
+                  << ", Is Lab: " << (isLab ? "Yes" : "No") << std::endl;
+    }
 };
+
+std::vector<Module> allModules; // Global array to hold all modules
+
+void initializeModules()
+{
+    // Initialize modules with ID, Lecturer, Name, Level, Number of Students, Is Lab
+    allModules.push_back(Module(1, allLecturers[13], "CS100", 1, 50, false));
+    allModules.push_back(Module(2, allLecturers[2], "CS111", 1, 45, false));
+    allModules.push_back(Module(3, allLecturers[7], "CS115", 1, 40, false));
+    allModules.push_back(Module(4, allLecturers[10], "CS200", 2, 35, false));
+    allModules.push_back(Module(5, allLecturers[0], "CS207", 2, 30, false));
+    allModules.push_back(Module(6, allLecturers[6], "CS211", 2, 25, true));
+    allModules.push_back(Module(7, allLecturers[1], "CS215", 2, 40, false));
+    allModules.push_back(Module(8, allLecturers[11], "CS315", 3, 45, false));
+    allModules.push_back(Module(9, allLecturers[10], "CS319", 3, 40, false));
+    allModules.push_back(Module(10, allLecturers[14], "CS321", 3, 50, false));
+    allModules.push_back(Module(11, allLecturers[14], "CS322", 3, 45, false));
+    allModules.push_back(Module(12, allLecturers[2], "CS331", 3, 40, false));
+    allModules.push_back(Module(13, allLecturers[12], "CS332", 3, 35, false));
+    allModules.push_back(Module(14, allLecturers[4], "CS336", 3, 30, false));
+    allModules.push_back(Module(15, allLecturers[13], "CS340", 3, 25, true));
+    allModules.push_back(Module(17, allLecturers[3], "CS436", 4, 45, false));
+    allModules.push_back(Module(18, allLecturers[5], "CS443", 4, 40, false));
+    allModules.push_back(Module(30, allLecturers[3], "CS456", 4, 25, true));
+    allModules.push_back(Module(31, allLecturers[8], "CS431", 4, 40, false));
+    allModules.push_back(Module(33, allLecturers[12], "CS437", 4, 40, false));
+}
 
 class Venue
 {
@@ -229,7 +319,32 @@ public:
     {
         isLab = lab;
     }
+
+    // Method to print Venue information
+    void printInfo() const
+    {
+        std::cout << "Venue ID: " << venueID
+                  << ", Name: " << name
+                  << ", Capacity: " << capacity
+                  << ", Is Lab: " << (isLab ? "Yes" : "No") << std::endl;
+    }
 };
+
+std::vector<Venue> allVenues; // Global array to hold all venues
+
+void initializeVenues()
+{
+    // Initialize venues with ID, Name, Capacity, IsLab
+    allVenues.push_back(Venue(1, "LAB 1", 20, true));
+    allVenues.push_back(Venue(2, "LAB 2", 20, true));
+    allVenues.push_back(Venue(3, "LAB 3", 20, true));
+    allVenues.push_back(Venue(4, "LAB 4", 20, true));
+    allVenues.push_back(Venue(5, "LAB 5", 20, true));
+    allVenues.push_back(Venue(6, "HALL 70", 200, false));
+    allVenues.push_back(Venue(7, "HALL 71", 200, false));
+    allVenues.push_back(Venue(8, "HALL 72", 200, false));
+    // ... add more venues as needed
+}
 
 class LecturerTimeSlotPreference
 {
@@ -560,39 +675,41 @@ public:
 
 int main()
 {
-    // Initialize Lecturers
-    Lecturer lecturer1(1, "Dr. Smith");
-    Lecturer lecturer2(2, "Dr. Johnson");
+    // Initialize time slots
+    initializeTimeSlots();
 
-    // Initialize TimeSlots
-    TimeSlot timeSlot1(1, "Monday", "9:00 AM");
-    TimeSlot timeSlot2(2, "Monday", "10:00 AM");
-    TimeSlot timeSlot3(3, "Monday", "11:00 AM");
+    // Initialize venues
+    initializeVenues();
 
-    // Initialize Venues
-    Venue venue1(1, "Room A", 45, true); // Capacity 30
-    Venue venue2(2, "Room B", 40, true); // Capacity 40
+    // Initialize lecturers
+    initializeLecturers();
 
-    // Initialize Modules
-    Module module1(1, lecturer1, "Math", 1, 25, false);      // 25 students, fits in either venue
-    Module module2(2, lecturer2, "Physics", 2, 35, true);    // 35 students, fits in venue2 but not in venue1
-    Module module3(3, lecturer2, "Chemistry", 3, 45, false); // 45 students, does not fit in either venue
+    // Initialize modules
+    initializeModules();
 
-    // Initialize ScheduledModules
-    // All are at different times and different venues, and different lecturers, so constraints 1-3 are met
-    ScheduledModule scheduledModule1(module1, timeSlot1, venue1, false, false, true); // Meets all constraints
-    ScheduledModule scheduledModule2(module2, timeSlot2, venue1, false, false, true); // Meets all constraints
-    ScheduledModule scheduledModule3(module3, timeSlot3, venue1, false, false, true); // Should violate the 4th constraint only
+    // Print the initialized time slots
+    for (const auto &timeSlot : allTimeSlots)
+    {
+        timeSlot.printInfo();
+    }
 
-    // Initialize Chromosome
-    std::vector<ScheduledModule> genes = {scheduledModule1, scheduledModule2, scheduledModule3};
-    Chromosome chromosome(genes);
+    // Print information about each venue for testing
+    for (const Venue &venue : allVenues)
+    {
+        venue.printInfo();
+    }
 
-    // Evaluate Fitness
-    double fitness = chromosome.evaluateFitness();
+    // Print information about each lecturer for testing
+    for (const Lecturer &lecturer : allLecturers)
+    {
+        lecturer.printInfo();
+    }
 
-    // Output the fitness value
-    std::cout << "Fitness value: " << fitness << std::endl;
+    // Print information about each module for testing
+    for (const Module &module : allModules)
+    {
+        module.printInfo();
+    }
 
     return 0;
 }
