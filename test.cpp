@@ -428,7 +428,6 @@ public:
         ///////////////////////////////constraint no2///////////////////////////////////
 
         // Initialize a map to hold the count of modules scheduled at each level for each time slot
-
         std::map<std::pair<int, int>, int> levelTimeSlotCount;
 
         for (const ScheduledModule &gene : genes)
@@ -453,7 +452,8 @@ public:
             }
         }
         ////////////////////////////////////////////////////////////////////////////////
-        // ... (evaluate other constraints here)
+
+                // ... (evaluate other constraints here)
 
         return fitness;
     }
