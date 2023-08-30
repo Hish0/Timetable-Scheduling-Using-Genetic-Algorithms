@@ -484,6 +484,40 @@ public:
                 return 0.0;
             }
         }
+        ////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////constraint no4///////////////////////////////////
+
+        // Check if each module is scheduled in a venue with adequate seating
+        for (const ScheduledModule &gene : genes)
+        {
+            int venueCapacity = gene.getVenue().getCapacity();                     // Assuming getCapacity() returns the seating capacity of the venue
+            int numberOfStudents = gene.getModule().getNumberOfStudentsEnrolled(); // Assuming getNumberOfStudentsEnrolled() returns the number of students enrolled in the module
+
+            if (numberOfStudents > venueCapacity)
+            {
+                // Violation: The module is scheduled in a venue that does not have adequate seating
+                std::cout << "Violation in Constraint 4: VenueCapacity = " << venueCapacity
+                          << ", NumberOfStudents = " << numberOfStudents << std::endl;
+                return 0.0; // Set fitness to zero or another very low value
+            }
+        }
+        ////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////constraint no5///////////////////////////////////
+        // Check if each module is scheduled in an appropriate venue type
+        for (const ScheduledModule &gene : genes)
+        {
+            bool moduleIsLab = gene.getModule().getIsLab(); // Assuming getIsLab() returns the boolean value for the module
+            bool venueIsLab = gene.getVenue().getIsLab();   // Assuming getIsLab() returns the boolean value for the venue
+
+            if (moduleIsLab != venueIsLab)
+            {
+                // Violation: The module and the venue have mismatched types
+                std::cout << "Violation in Constraint 5: ModuleIsLab = " << moduleIsLab
+                          << ", VenueIsLab = " << venueIsLab << std::endl;
+                return 0.0; // Set fitness to zero or another very low value
+            }
+        }
+        ////////////////////////////////////////////////////////////////////////////////
 
         // ... (evaluate other constraints here)
 
@@ -533,24 +567,25 @@ int main()
     // Initialize TimeSlots
     TimeSlot timeSlot1(1, "Monday", "9:00 AM");
     TimeSlot timeSlot2(2, "Monday", "10:00 AM");
+    TimeSlot timeSlot3(3, "Monday", "11:00 AM");
 
     // Initialize Venues
-    Venue venue1(1, "Room A", 30, false);
-    Venue venue2(2, "Room B", 40, true);
+    Venue venue1(1, "Room A", 45, true); // Capacity 30
+    Venue venue2(2, "Room B", 40, true); // Capacity 40
 
     // Initialize Modules
-    Module module1(1, lecturer1, "Math", 1, 25, false);      // Level 1
-    Module module2(2, lecturer2, "Physics", 1, 35, true);    // Level 1
-    Module module3(3, lecturer2, "Chemistry", 1, 35, false); // Level 1
+    Module module1(1, lecturer1, "Math", 1, 25, false);      // 25 students, fits in either venue
+    Module module2(2, lecturer2, "Physics", 2, 35, true);    // 35 students, fits in venue2 but not in venue1
+    Module module3(3, lecturer2, "Chemistry", 3, 45, false); // 45 students, does not fit in either venue
 
     // Initialize ScheduledModules
-    ScheduledModule scheduledModule1(module1, timeSlot1, venue1, false, false, true); // Should violate the first constraint
-    ScheduledModule scheduledModule2(module2, timeSlot1, venue1, false, false, true); // Should violate the first constraint
-    ScheduledModule scheduledModule3(module2, timeSlot1, venue2, false, false, true); // Should violate the second constraint
-    ScheduledModule scheduledModule4(module3, timeSlot1, venue2, false, false, true); // Should violate the third constraint
+    // All are at different times and different venues, and different lecturers, so constraints 1-3 are met
+    ScheduledModule scheduledModule1(module1, timeSlot1, venue1, false, false, true); // Meets all constraints
+    ScheduledModule scheduledModule2(module2, timeSlot2, venue1, false, false, true); // Meets all constraints
+    ScheduledModule scheduledModule3(module3, timeSlot3, venue1, false, false, true); // Should violate the 4th constraint only
 
     // Initialize Chromosome
-    std::vector<ScheduledModule> genes = {scheduledModule1, scheduledModule2, scheduledModule3, scheduledModule4};
+    std::vector<ScheduledModule> genes = {scheduledModule1, scheduledModule2, scheduledModule3};
     Chromosome chromosome(genes);
 
     // Evaluate Fitness
