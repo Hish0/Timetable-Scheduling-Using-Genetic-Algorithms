@@ -2,6 +2,9 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <cstdlib> // for std::rand and std::srand
+#include <ctime>   // for std::time
+#include <algorithm>
 
 using namespace std;
 
@@ -240,26 +243,26 @@ std::vector<Module> allModules; // Global array to hold all modules
 void initializeModules()
 {
     // Initialize modules with ID, Lecturer, Name, Level, Number of Students, Is Lab
-    allModules.push_back(Module(1, allLecturers[13], "CS100", 1, 50, false));
-    allModules.push_back(Module(2, allLecturers[2], "CS111", 1, 45, false));
-    allModules.push_back(Module(3, allLecturers[7], "CS115", 1, 40, false));
-    allModules.push_back(Module(4, allLecturers[10], "CS200", 2, 35, false));
-    allModules.push_back(Module(5, allLecturers[0], "CS207", 2, 30, false));
-    allModules.push_back(Module(6, allLecturers[6], "CS211", 2, 25, true));
-    allModules.push_back(Module(7, allLecturers[1], "CS215", 2, 40, false));
-    allModules.push_back(Module(8, allLecturers[11], "CS315", 3, 45, false));
-    allModules.push_back(Module(9, allLecturers[10], "CS319", 3, 40, false));
-    allModules.push_back(Module(10, allLecturers[14], "CS321", 3, 50, false));
-    allModules.push_back(Module(11, allLecturers[14], "CS322", 3, 45, false));
-    allModules.push_back(Module(12, allLecturers[2], "CS331", 3, 40, false));
-    allModules.push_back(Module(13, allLecturers[12], "CS332", 3, 35, false));
-    allModules.push_back(Module(14, allLecturers[4], "CS336", 3, 30, false));
-    allModules.push_back(Module(15, allLecturers[13], "CS340", 3, 25, true));
-    allModules.push_back(Module(17, allLecturers[3], "CS436", 4, 45, false));
-    allModules.push_back(Module(18, allLecturers[5], "CS443", 4, 40, false));
-    allModules.push_back(Module(30, allLecturers[3], "CS456", 4, 25, true));
-    allModules.push_back(Module(31, allLecturers[8], "CS431", 4, 40, false));
-    allModules.push_back(Module(33, allLecturers[12], "CS437", 4, 40, false));
+    allModules.push_back(Module(1, allLecturers[13], "CS100", 1, 100, false));
+    allModules.push_back(Module(2, allLecturers[2], "CS111", 1, 95, false));
+    allModules.push_back(Module(3, allLecturers[7], "CS115", 1, 85, false));
+    allModules.push_back(Module(4, allLecturers[10], "CS200", 2, 30, true));
+    allModules.push_back(Module(5, allLecturers[0], "CS207", 2, 25, true));
+    allModules.push_back(Module(6, allLecturers[6], "CS211", 2, 30, true));
+    allModules.push_back(Module(7, allLecturers[1], "CS215", 2, 30, true));
+    allModules.push_back(Module(8, allLecturers[11], "CS315", 3, 27, true));
+    allModules.push_back(Module(9, allLecturers[10], "CS319", 3, 26, true));
+    allModules.push_back(Module(10, allLecturers[14], "CS321", 3, 20, true));
+    allModules.push_back(Module(11, allLecturers[14], "CS322", 3, 24, true));
+    allModules.push_back(Module(12, allLecturers[2], "CS331", 3, 22, true));
+    allModules.push_back(Module(13, allLecturers[12], "CS332", 3, 23, true));
+    allModules.push_back(Module(14, allLecturers[4], "CS336", 3, 18, true));
+    allModules.push_back(Module(15, allLecturers[13], "CS340", 3, 17, true));
+    allModules.push_back(Module(17, allLecturers[3], "CS436", 4, 15, true));
+    allModules.push_back(Module(18, allLecturers[5], "CS443", 4, 13, true));
+    allModules.push_back(Module(30, allLecturers[3], "CS456", 4, 14, true));
+    allModules.push_back(Module(31, allLecturers[8], "CS431", 4, 16, true));
+    allModules.push_back(Module(33, allLecturers[12], "CS437", 4, 19, true));
 }
 
 class Venue
@@ -335,11 +338,11 @@ std::vector<Venue> allVenues; // Global array to hold all venues
 void initializeVenues()
 {
     // Initialize venues with ID, Name, Capacity, IsLab
-    allVenues.push_back(Venue(1, "LAB 1", 20, true));
-    allVenues.push_back(Venue(2, "LAB 2", 20, true));
-    allVenues.push_back(Venue(3, "LAB 3", 20, true));
-    allVenues.push_back(Venue(4, "LAB 4", 20, true));
-    allVenues.push_back(Venue(5, "LAB 5", 20, true));
+    allVenues.push_back(Venue(1, "LAB 1", 30, true));
+    allVenues.push_back(Venue(2, "LAB 2", 30, true));
+    allVenues.push_back(Venue(3, "LAB 3", 30, true));
+    allVenues.push_back(Venue(4, "LAB 4", 30, true));
+    allVenues.push_back(Venue(5, "LAB 5", 30, true));
     allVenues.push_back(Venue(6, "HALL 70", 200, false));
     allVenues.push_back(Venue(7, "HALL 71", 200, false));
     allVenues.push_back(Venue(8, "HALL 72", 200, false));
@@ -510,7 +513,7 @@ public:
     double evaluateFitness()
     {
         ///////////////////////////////constraint no1///////////////////////////////////
-        double fitness = 1.0; // Start with a base fitness value
+        double fitness = 0.0; // Start with a base fitness value of 0 (perfect score)
 
         // Initialize a map to hold the count of modules scheduled in each venue for each time slot
         std::map<std::pair<int, int>, int> venueTimeSlotCount;
@@ -535,10 +538,7 @@ public:
         {
             if (entry.second > 1)
             {
-                std::cout << "Violation in Constraint 1: VenueID = " << entry.first.first
-                          << ", TimeSlotID = " << entry.first.second
-                          << ", Count = " << entry.second << std::endl;
-                return 0.0;
+                fitness += (entry.second - 1) * 10; // Adding 10 for each extra module in the same slot and venue
             }
         }
         ////////////////////////////////////////////////////////////////////////////////
@@ -564,10 +564,7 @@ public:
         {
             if (entry.second > 1)
             {
-                std::cout << "Violation in Constraint 2: Level = " << entry.first.first
-                          << ", TimeSlotID = " << entry.first.second
-                          << ", Count = " << entry.second << std::endl;
-                return 0.0;
+                fitness += (entry.second - 1) * 10; // Adding 10 for each extra module in the same level and time slot
             }
         }
         ////////////////////////////////////////////////////////////////////////////////
@@ -593,10 +590,7 @@ public:
         {
             if (entry.second > 1)
             {
-                std::cout << "Violation in Constraint 3: LecturerID = " << entry.first.first
-                          << ", TimeSlotID = " << entry.first.second
-                          << ", Count = " << entry.second << std::endl;
-                return 0.0;
+                fitness += (entry.second - 1) * 10; // Adding 10 for each extra module for the same lecturer and time slot
             }
         }
         ////////////////////////////////////////////////////////////////////////////////
@@ -605,15 +599,11 @@ public:
         // Check if each module is scheduled in a venue with adequate seating
         for (const ScheduledModule &gene : genes)
         {
-            int venueCapacity = gene.getVenue().getCapacity();                     // Assuming getCapacity() returns the seating capacity of the venue
-            int numberOfStudents = gene.getModule().getNumberOfStudentsEnrolled(); // Assuming getNumberOfStudentsEnrolled() returns the number of students enrolled in the module
-
+            int venueCapacity = gene.getVenue().getCapacity();
+            int numberOfStudents = gene.getModule().getNumberOfStudentsEnrolled();
             if (numberOfStudents > venueCapacity)
             {
-                // Violation: The module is scheduled in a venue that does not have adequate seating
-                std::cout << "Violation in Constraint 4: VenueCapacity = " << venueCapacity
-                          << ", NumberOfStudents = " << numberOfStudents << std::endl;
-                return 0.0; // Set fitness to zero or another very low value
+                fitness += (numberOfStudents - venueCapacity) * 10; // Adding 10 for each extra student
             }
         }
         ////////////////////////////////////////////////////////////////////////////////
@@ -621,15 +611,11 @@ public:
         // Check if each module is scheduled in an appropriate venue type
         for (const ScheduledModule &gene : genes)
         {
-            bool moduleIsLab = gene.getModule().getIsLab(); // Assuming getIsLab() returns the boolean value for the module
-            bool venueIsLab = gene.getVenue().getIsLab();   // Assuming getIsLab() returns the boolean value for the venue
-
+            bool moduleIsLab = gene.getModule().getIsLab();
+            bool venueIsLab = gene.getVenue().getIsLab();
             if (moduleIsLab != venueIsLab)
             {
-                // Violation: The module and the venue have mismatched types
-                std::cout << "Violation in Constraint 5: ModuleIsLab = " << moduleIsLab
-                          << ", VenueIsLab = " << venueIsLab << std::endl;
-                return 0.0; // Set fitness to zero or another very low value
+                fitness += 15; // Flat penalty for mismatched types
             }
         }
         ////////////////////////////////////////////////////////////////////////////////
@@ -639,6 +625,70 @@ public:
         return fitness;
     }
 };
+
+std::vector<Chromosome> initialPopulation;
+int POPULATION_SIZE = 100; // This is a global variable
+
+TimeSlot getRandomTimeSlot()
+{
+    // Initialize the random seed if needed
+    static bool initialized = false;
+    if (!initialized)
+    {
+        srand(time(nullptr));
+        initialized = true;
+    }
+
+    // Randomly select an index
+    int index = rand() % allTimeSlots.size();
+
+    // Return the TimeSlot at that index
+    return allTimeSlots[index];
+}
+
+TimeSlot getRandomTimeSlot(const TimeSlot &exclude)
+{
+    static bool initialized = false;
+    if (!initialized)
+    {
+        std::srand(std::time(nullptr));
+        initialized = true;
+    }
+
+    std::vector<TimeSlot> selectableSlots = allTimeSlots; // Assume allTimeSlots is your global vector of TimeSlots
+
+    // Remove the excluded TimeSlot from selectableSlots
+    selectableSlots.erase(
+        std::remove_if(
+            selectableSlots.begin(),
+            selectableSlots.end(),
+            [&exclude](const TimeSlot &slot)
+            { return slot.getTimeSlotID() == exclude.getTimeSlotID(); }),
+        selectableSlots.end());
+
+    if (selectableSlots.empty())
+    {
+        // Handle the case where no time slots are available.
+        // This should never happen if 'exclude' is guaranteed to be in 'allTimeSlots'.
+        throw std::runtime_error("No available time slots!");
+    }
+
+    int randomIndex = std::rand() % selectableSlots.size(); // Generate a random index
+    return selectableSlots[randomIndex];                    // Return a random TimeSlot from selectableSlots
+}
+
+Venue getRandomVenue()
+{
+    static bool initialized = false;
+    if (!initialized)
+    {
+        std::srand(std::time(nullptr));
+        initialized = true;
+    }
+
+    int randomIndex = std::rand() % allVenues.size(); // Generate a random index
+    return allVenues[randomIndex];                    // Return a random Venue from allVenues
+}
 
 class Population
 {
@@ -670,8 +720,153 @@ public:
         chromosomes = newChromosomes;
     }
 
+    // Initialize the first population
+    void initializeFirstPopulation()
+    {
+        for (int i = 0; i < POPULATION_SIZE; ++i)
+        {
+            Chromosome chromosome;
+
+            for (const auto &module : allModules)
+            {
+                // Schedule this module twice, as each module has 4 hours per week.
+
+                // Randomly select two different time slots for this module
+                TimeSlot timeSlot1 = getRandomTimeSlot();
+                TimeSlot timeSlot2 = getRandomTimeSlot(timeSlot1); // Make sure this is different from timeSlot1
+
+                // Randomly select a venue for this module
+                Venue venue = getRandomVenue();
+
+                // Create two ScheduledModule objects
+                ScheduledModule scheduledModule1(module, timeSlot1, venue, false, false, true);
+                ScheduledModule scheduledModule2(module, timeSlot2, venue, false, false, true);
+
+                // Add these ScheduledModule objects to the chromosome
+                chromosome.addGene(scheduledModule1);
+                chromosome.addGene(scheduledModule2);
+            }
+
+            // Add this chromosome to the initial population
+            addChromosome(chromosome);
+        }
+    }
+
     // Other methods for selection, crossover, mutation, evaluation, etc. can be added here
 };
+
+class GeneticAlgorithm
+{
+private:
+    Population population; // The current population
+    double mutationRate;   // Mutation rate
+    double crossoverRate;  // Crossover rate
+    int eliteCount;        // Number of elite chromosomes to keep in each generation
+
+public:
+    // Parameterized Constructor
+    GeneticAlgorithm(const Population &initialPopulation, double mutationRate, double crossoverRate, int eliteCount)
+        : population(initialPopulation), mutationRate(mutationRate), crossoverRate(crossoverRate), eliteCount(eliteCount) {}
+
+    // Getter and Setter methods for mutationRate, crossoverRate, eliteCount (optional)
+
+    // Method for Selection
+    Population selectParents()
+    {
+        // Implement the selection logic here
+    }
+
+    // Method for Crossover
+    Chromosome crossover(const Chromosome &parent1, const Chromosome &parent2)
+    {
+        // Implement the crossover logic here
+    }
+
+    // Method for Mutation
+    void mutate(Chromosome &chromosome)
+    {
+        // Implement the mutation logic here
+    }
+
+    // Method for Replacement
+    void replacePopulation(const Population &newPopulation)
+    {
+        // Implement the replacement logic here
+    }
+
+    // Method for Running One Generation of GA
+    void runOneGeneration()
+    {
+        // 1. Selection
+        Population parents = selectParents();
+
+        // 2. Crossover and Mutation
+        Population offspring;
+        for (int i = 0; i < parents.getChromosomes().size(); i += 2)
+        {
+            Chromosome child = crossover(parents.getChromosomes()[i], parents.getChromosomes()[i + 1]);
+            mutate(child);
+            offspring.addChromosome(child);
+        }
+
+        // 3. Replacement
+        replacePopulation(offspring);
+    }
+
+    // Method to run the Genetic Algorithm for 'n' generations
+    void run(int numberOfGenerations)
+    {
+        for (int i = 0; i < numberOfGenerations; ++i)
+        {
+            runOneGeneration();
+        }
+    }
+
+    // ... (other utility methods)
+};
+
+void printViolations(const Chromosome &chromosome)
+{
+    std::map<std::pair<int, int>, int> venueTimeSlotCount, levelTimeSlotCount, lecturerTimeSlotCount;
+
+    for (const ScheduledModule &gene : chromosome.getGenes())
+    {
+        int venueID = gene.getVenue().getVenueID();
+        int timeSlotID = gene.getTimeSlot().getTimeSlotID();
+        venueTimeSlotCount[std::make_pair(venueID, timeSlotID)]++;
+
+        int level = gene.getModule().getLevel();
+        levelTimeSlotCount[std::make_pair(level, timeSlotID)]++;
+
+        int lecturerID = gene.getModule().getLecturer().getLecturerID();
+        lecturerTimeSlotCount[std::make_pair(lecturerID, timeSlotID)]++;
+    }
+
+    // Check for violations and print them
+    for (const auto &entry : venueTimeSlotCount)
+    {
+        if (entry.second > 1)
+        {
+            std::cout << "Violation: More than one module in the same slot and venue. VenueID: " << entry.first.first << ", TimeSlotID: " << entry.first.second << std::endl;
+        }
+    }
+
+    for (const auto &entry : levelTimeSlotCount)
+    {
+        if (entry.second > 1)
+        {
+            std::cout << "Violation: More than one module at the same level and time slot. Level: " << entry.first.first << ", TimeSlotID: " << entry.first.second << std::endl;
+        }
+    }
+
+    for (const auto &entry : lecturerTimeSlotCount)
+    {
+        if (entry.second > 1)
+        {
+            std::cout << "Violation: More than one module for the same lecturer and time slot. LecturerID: " << entry.first.first << ", TimeSlotID: " << entry.first.second << std::endl;
+        }
+    }
+}
 
 int main()
 {
@@ -687,29 +882,30 @@ int main()
     // Initialize modules
     initializeModules();
 
-    // Print the initialized time slots
-    for (const auto &timeSlot : allTimeSlots)
+    POPULATION_SIZE = 1;
+
+    // Step 2: Initialize the First Population
+    Population initialPop;
+    initialPop.initializeFirstPopulation();
+
+    // Step 3: Print the Initial Population
+    Chromosome initialChromosome = initialPop.getChromosomes()[0]; // Should get the first and only chromosome
+    std::cout << "Initial Chromosome: " << std::endl;
+    for (const ScheduledModule &gene : initialChromosome.getGenes())
     {
-        timeSlot.printInfo();
+        // Print information about the gene/module, venue, and time slot
+        std::cout << "Gene: " << std::endl;
+        gene.getModule().printInfo();
+        gene.getTimeSlot().printInfo();
+        gene.getVenue().printInfo();
     }
 
-    // Print information about each venue for testing
-    for (const Venue &venue : allVenues)
-    {
-        venue.printInfo();
-    }
+    // Step 4: Evaluate Fitness
+    double fitness = initialChromosome.evaluateFitness();
+    std::cout << "Initial Chromosome Fitness: " << fitness << std::endl;
 
-    // Print information about each lecturer for testing
-    for (const Lecturer &lecturer : allLecturers)
-    {
-        lecturer.printInfo();
-    }
-
-    // Print information about each module for testing
-    for (const Module &module : allModules)
-    {
-        module.printInfo();
-    }
+    // Print violations
+    printViolations(initialChromosome);
 
     return 0;
 }
