@@ -124,6 +124,12 @@ public:
     {
         std::cout << "TimeSlot ID: " << timeSlotID << ", Day: " << day << ", Time: " << time << std::endl;
     }
+
+    bool isEmpty() const
+    {
+        // Define logic to determine if the TimeSlot object is empty
+        return this->getDay().empty() && (this->getTimeSlotID() == 0); // Example logic
+    }
 };
 
 std::vector<TimeSlot> allTimeSlots; // Global array to hold all time slots
@@ -866,11 +872,99 @@ public:
             return child2;
         }
     }
+    // Returns a random venue from the list of all available venues
+    Venue getRandomVenue()
+    {
+        // Assuming `allVenues` is a std::vector containing all available Venue objects
+        int index = std::rand() % allVenues.size();
+        return allVenues[index];
+    }
 
-    // Method for Mutation
+    // Finds a time slot that is empty in all venues for a particular day
+    TimeSlot findEmptyTimeSlot(const std::string &day, const std::vector<Chromosome> &chromosomes)
+    {
+        // Let's assume timeSlots is a vector containing all possible TimeSlot objects for a given day
+        for (const auto &candidateTimeSlot : allTimeSlots)
+        {
+            bool isEmpty = true;
+
+            // Loop through all chromosomes and their genes to check if the time slot is empty
+            for (const auto &chromosome : chromosomes)
+            {
+                for (const auto &gene : chromosome.getGenes())
+                {
+                    if (gene.getTimeSlot().getDay() == day &&
+                        gene.getTimeSlot().getTimeSlotID() == candidateTimeSlot.getTimeSlotID())
+                    {
+                        isEmpty = false;
+                        break;
+                    }
+                }
+                if (!isEmpty)
+                    break;
+            }
+
+            // If we found an empty slot, return it
+            if (isEmpty)
+                return candidateTimeSlot;
+        }
+
+        // If no empty time slot is found, return a default TimeSlot or signal that none was found
+        return TimeSlot(); // This could be a special TimeSlot indicating no empty slot was found
+    }
+
+    // Gets another time slot that is different from the current one
+    TimeSlot getAnotherAvailableTimeSlot(const TimeSlot &current, const std::vector<TimeSlot> &allTimeSlots)
+    {
+        std::vector<TimeSlot> otherSlots;
+
+        // Loop through all available time slots and find one that is different from `current`
+        for (const auto &slot : allTimeSlots)
+        {
+            if (slot.getTimeSlotID() != current.getTimeSlotID())
+            {
+                otherSlots.push_back(slot);
+            }
+        }
+
+        // Randomly select one from otherSlots
+        int index = std::rand() % otherSlots.size();
+        return otherSlots[index];
+    }
+
     void mutate(Chromosome &chromosome)
     {
-        // Implement the mutation logic here
+        // Assuming `chromosome.getGenes()` returns a reference to the vector of genes
+        // std::vector<ScheduledModule> &genes = chromosome.getGenes();
+        std::vector<ScheduledModule> genes = chromosome.getGenes();
+
+        // Randomly pick one gene to change the venue
+        int randomIndexForVenue = std::rand() % genes.size();
+        Venue newVenue = getRandomVenue();
+        genes[randomIndexForVenue].setVenue(newVenue);
+
+        // Randomly pick another gene to change the time slot
+        int randomIndexForTimeSlot = std::rand() % genes.size();
+        while (randomIndexForTimeSlot == randomIndexForVenue)
+        {
+            // Ensure we pick a different gene
+            randomIndexForTimeSlot = std::rand() % genes.size();
+        }
+
+        std::string day = genes[randomIndexForTimeSlot].getTimeSlot().getDay();
+
+        // First, try to find an empty time slot
+        TimeSlot newTimeSlot = findEmptyTimeSlot(day, population.getChromosomes());
+
+        // If we can't find an empty time slot, get another available time slot
+        if (newTimeSlot.isEmpty())
+        { // Assuming TimeSlot() returns a special "empty" time slot
+            newTimeSlot = getAnotherAvailableTimeSlot(genes[randomIndexForTimeSlot].getTimeSlot(), allTimeSlots);
+        }
+
+        genes[randomIndexForTimeSlot].setTimeSlot(newTimeSlot);
+
+        chromosome.setGenes(genes);
     }
 
     // Method for Replacement
