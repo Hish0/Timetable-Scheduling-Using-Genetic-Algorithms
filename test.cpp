@@ -2,8 +2,8 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <cstdlib> // for std::rand and std::srand
-#include <ctime>   // for std::time
+#include <cstdlib> // for rand and srand
+#include <ctime>   // for time
 #include <algorithm>
 #include <random> // for random functions
 
@@ -13,14 +13,14 @@ class Lecturer
 {
 private:
     int lecturerID;
-    std::string lecturerName;
+    string lecturerName;
 
 public:
     // Default Constructor
     Lecturer() : lecturerID(0), lecturerName("Unknown") {}
 
     // Parameterized Constructor
-    Lecturer(int id, const std::string &name) : lecturerID(id), lecturerName(name) {}
+    Lecturer(int id, const string &name) : lecturerID(id), lecturerName(name) {}
 
     // Getter methods
     int getLecturerID() const
@@ -28,7 +28,7 @@ public:
         return lecturerID;
     }
 
-    std::string getLecturerName() const
+    string getLecturerName() const
     {
         return lecturerName;
     }
@@ -39,18 +39,18 @@ public:
         lecturerID = id;
     }
 
-    void setLecturerName(const std::string &name)
+    void setLecturerName(const string &name)
     {
         lecturerName = name;
     }
 
     void printInfo() const
     {
-        std::cout << "Lecturer ID: " << lecturerID << ", Name: " << lecturerName << std::endl;
+        cout << "Lecturer ID: " << lecturerID << ", Name: " << lecturerName << endl;
     }
 };
 
-std::vector<Lecturer> allLecturers; // Global array to hold all lecturers
+vector<Lecturer> allLecturers; // Global array to hold all lecturers
 
 void initializeLecturers()
 {
@@ -77,15 +77,15 @@ class TimeSlot
 {
 private:
     int timeSlotID;
-    std::string day;
-    std::string time;
+    string day;
+    string time;
 
 public:
     // Default Constructor
     TimeSlot() : timeSlotID(0), day("Unknown"), time("00:00") {}
 
     // Parameterized Constructor
-    TimeSlot(int id, const std::string &dayValue, const std::string &timeValue)
+    TimeSlot(int id, const string &dayValue, const string &timeValue)
         : timeSlotID(id), day(dayValue), time(timeValue) {}
 
     // Getter methods
@@ -94,12 +94,12 @@ public:
         return timeSlotID;
     }
 
-    std::string getDay() const
+    string getDay() const
     {
         return day;
     }
 
-    std::string getTime() const
+    string getTime() const
     {
         return time;
     }
@@ -110,19 +110,19 @@ public:
         timeSlotID = id;
     }
 
-    void setDay(const std::string &dayValue)
+    void setDay(const string &dayValue)
     {
         day = dayValue;
     }
 
-    void setTime(const std::string &timeValue)
+    void setTime(const string &timeValue)
     {
         time = timeValue;
     }
 
     void printInfo() const
     {
-        std::cout << "TimeSlot ID: " << timeSlotID << ", Day: " << day << ", Time: " << time << std::endl;
+        cout << "TimeSlot ID: " << timeSlotID << ", Day: " << day << ", Time: " << time << endl;
     }
 
     bool isEmpty() const
@@ -132,14 +132,14 @@ public:
     }
 };
 
-std::vector<TimeSlot> allTimeSlots; // Global array to hold all time slots
+vector<TimeSlot> allTimeSlots; // Global array to hold all time slots
 void initializeTimeSlots()
 {
     // Days of the week
-    std::vector<std::string> days = {"Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"};
+    vector<string> days = {"Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"};
 
     // Time intervals
-    std::vector<std::string> times = {"8:00 AM", "10:00 AM", "12:00 PM", "2:00 PM"};
+    vector<string> times = {"8:00 AM", "10:00 AM", "12:00 PM", "2:00 PM"};
 
     int id = 1; // Unique ID for each time slot
 
@@ -157,8 +157,8 @@ class Module
 private:
     int moduleID;
     Lecturer lecturer;
-    std::string name;
-    int level; // Changed from std::string to int
+    string name;
+    int level; // Changed from string to int
     int numberOfStudentsEnrolled;
     bool isLab;
 
@@ -166,8 +166,8 @@ public:
     // Default Constructor
     Module() : moduleID(0), lecturer(), name("Unknown"), level(0), numberOfStudentsEnrolled(0), isLab(false) {}
 
-    // Parameterized Constructor - Changed modLevel from std::string to int
-    Module(int modID, const Lecturer &lect, const std::string &modName, int modLevel, int students, bool lab)
+    // Parameterized Constructor - Changed modLevel from string to int
+    Module(int modID, const Lecturer &lect, const string &modName, int modLevel, int students, bool lab)
         : moduleID(modID), lecturer(lect), name(modName), level(modLevel), numberOfStudentsEnrolled(students), isLab(lab) {}
 
     // Getter methods
@@ -181,12 +181,12 @@ public:
         return lecturer;
     }
 
-    std::string getName() const
+    string getName() const
     {
         return name;
     }
 
-    // Changed return type from std::string to int
+    // Changed return type from string to int
     int getLevel() const
     {
         return level;
@@ -213,12 +213,12 @@ public:
         lecturer = lect;
     }
 
-    void setName(const std::string &modName)
+    void setName(const string &modName)
     {
         name = modName;
     }
 
-    // Changed parameter type from std::string to int
+    // Changed parameter type from string to int
     void setLevel(int modLevel)
     {
         level = modLevel;
@@ -236,16 +236,16 @@ public:
 
     void printInfo() const
     {
-        std::cout << "Module ID: " << moduleID
-                  << ", Lecturer: " << lecturer.getLecturerName()
-                  << ", Name: " << name
-                  << ", Level: " << level
-                  << ", Enrolled Students: " << numberOfStudentsEnrolled
-                  << ", Is Lab: " << (isLab ? "Yes" : "No") << std::endl;
+        cout << "Module ID: " << moduleID
+             << ", Lecturer: " << lecturer.getLecturerName()
+             << ", Name: " << name
+             << ", Level: " << level
+             << ", Enrolled Students: " << numberOfStudentsEnrolled
+             << ", Is Lab: " << (isLab ? "Yes" : "No") << endl;
     }
 };
 
-std::vector<Module> allModules; // Global array to hold all modules
+vector<Module> allModules; // Global array to hold all modules
 
 void initializeModules()
 {
@@ -276,7 +276,7 @@ class Venue
 {
 private:
     int venueID;
-    std::string name;
+    string name;
     int capacity;
     bool isLab;
 
@@ -285,7 +285,7 @@ public:
     Venue() : venueID(0), name("Unknown"), capacity(0), isLab(false) {}
 
     // Parameterized Constructor
-    Venue(int id, const std::string &venueName, int cap, bool lab)
+    Venue(int id, const string &venueName, int cap, bool lab)
         : venueID(id), name(venueName), capacity(cap), isLab(lab) {}
 
     // Getter methods
@@ -294,7 +294,7 @@ public:
         return venueID;
     }
 
-    std::string getName() const
+    string getName() const
     {
         return name;
     }
@@ -315,7 +315,7 @@ public:
         venueID = id;
     }
 
-    void setName(const std::string &venueName)
+    void setName(const string &venueName)
     {
         name = venueName;
     }
@@ -333,14 +333,14 @@ public:
     // Method to print Venue information
     void printInfo() const
     {
-        std::cout << "Venue ID: " << venueID
-                  << ", Name: " << name
-                  << ", Capacity: " << capacity
-                  << ", Is Lab: " << (isLab ? "Yes" : "No") << std::endl;
+        cout << "Venue ID: " << venueID
+             << ", Name: " << name
+             << ", Capacity: " << capacity
+             << ", Is Lab: " << (isLab ? "Yes" : "No") << endl;
     }
 };
 
-std::vector<Venue> allVenues; // Global array to hold all venues
+vector<Venue> allVenues; // Global array to hold all venues
 
 void initializeVenues()
 {
@@ -491,14 +491,14 @@ public:
 class Chromosome
 {
 private:
-    std::vector<ScheduledModule> genes; // A chromosome is made up of genes
+    vector<ScheduledModule> genes; // A chromosome is made up of genes
 
 public:
     // Constructor
     Chromosome() {}
 
     // Parameterized Constructor
-    Chromosome(const std::vector<ScheduledModule> &genes) : genes(genes) {}
+    Chromosome(const vector<ScheduledModule> &genes) : genes(genes) {}
 
     // Add a gene to the chromosome
     void addGene(const ScheduledModule &gene)
@@ -507,13 +507,13 @@ public:
     }
 
     // Get all genes
-    std::vector<ScheduledModule> getGenes() const
+    vector<ScheduledModule> getGenes() const
     {
         return genes;
     }
 
     // Set all genes
-    void setGenes(const std::vector<ScheduledModule> &newGenes)
+    void setGenes(const vector<ScheduledModule> &newGenes)
     {
         genes = newGenes;
     }
@@ -523,7 +523,7 @@ public:
         double fitness = 0.0; // Start with a base fitness value of 0 (perfect score)
 
         // Initialize a map to hold the count of modules scheduled in each venue for each time slot
-        std::map<std::pair<int, int>, int> venueTimeSlotCount;
+        map<pair<int, int>, int> venueTimeSlotCount;
 
         for (const ScheduledModule &gene : genes)
         {
@@ -534,7 +534,7 @@ public:
             int timeSlotID = timeSlot.getTimeSlotID(); // Assuming TimeSlot has a getID() method that returns a unique identifier
 
             // Create a pair of venueID and timeSlotID
-            std::pair<int, int> venueTimeSlotPair = std::make_pair(venueID, timeSlotID);
+            pair<int, int> venueTimeSlotPair = make_pair(venueID, timeSlotID);
 
             // Increment the count for this venue and time slot
             venueTimeSlotCount[venueTimeSlotPair]++;
@@ -552,7 +552,7 @@ public:
         ///////////////////////////////constraint no2///////////////////////////////////
 
         // Initialize a map to hold the count of modules scheduled at each level for each time slot
-        std::map<std::pair<int, int>, int> levelTimeSlotCount;
+        map<pair<int, int>, int> levelTimeSlotCount;
 
         for (const ScheduledModule &gene : genes)
         {
@@ -560,7 +560,7 @@ public:
             int timeSlotID = gene.getTimeSlot().getTimeSlotID();
 
             // Create a pair of level and timeSlotID
-            std::pair<int, int> levelTimeSlotPair = std::make_pair(level, timeSlotID);
+            pair<int, int> levelTimeSlotPair = make_pair(level, timeSlotID);
 
             // Increment the count for this level and time slot
             levelTimeSlotCount[levelTimeSlotPair]++;
@@ -578,7 +578,7 @@ public:
         ///////////////////////////////constraint no3///////////////////////////////////
 
         // Initialize a map to hold the count of modules scheduled for each lecturer for each time slot
-        std::map<std::pair<int, int>, int> lecturerTimeSlotCount;
+        map<pair<int, int>, int> lecturerTimeSlotCount;
 
         for (const ScheduledModule &gene : genes)
         {
@@ -586,7 +586,7 @@ public:
             int timeSlotID = gene.getTimeSlot().getTimeSlotID();
 
             // Create a pair of lecturerID and timeSlotID
-            std::pair<int, int> lecturerTimeSlotPair = std::make_pair(lecturerID, timeSlotID);
+            pair<int, int> lecturerTimeSlotPair = make_pair(lecturerID, timeSlotID);
 
             // Increment the count for this lecturer and time slot
             lecturerTimeSlotCount[lecturerTimeSlotPair]++;
@@ -633,8 +633,7 @@ public:
     }
 };
 
-std::vector<Chromosome> initialPopulation;
-int POPULATION_SIZE = 100; // This is a global variable
+vector<Chromosome> initialPopulation;
 
 TimeSlot getRandomTimeSlot()
 {
@@ -658,15 +657,15 @@ TimeSlot getRandomTimeSlot(const TimeSlot &exclude)
     static bool initialized = false;
     if (!initialized)
     {
-        std::srand(std::time(nullptr));
+        srand(time(nullptr));
         initialized = true;
     }
 
-    std::vector<TimeSlot> selectableSlots = allTimeSlots; // Assume allTimeSlots is your global vector of TimeSlots
+    vector<TimeSlot> selectableSlots = allTimeSlots; // Assume allTimeSlots is your global vector of TimeSlots
 
     // Remove the excluded TimeSlot from selectableSlots
     selectableSlots.erase(
-        std::remove_if(
+        remove_if(
             selectableSlots.begin(),
             selectableSlots.end(),
             [&exclude](const TimeSlot &slot)
@@ -677,11 +676,11 @@ TimeSlot getRandomTimeSlot(const TimeSlot &exclude)
     {
         // Handle the case where no time slots are available.
         // This should never happen if 'exclude' is guaranteed to be in 'allTimeSlots'.
-        throw std::runtime_error("No available time slots!");
+        throw runtime_error("No available time slots!");
     }
 
-    int randomIndex = std::rand() % selectableSlots.size(); // Generate a random index
-    return selectableSlots[randomIndex];                    // Return a random TimeSlot from selectableSlots
+    int randomIndex = rand() % selectableSlots.size(); // Generate a random index
+    return selectableSlots[randomIndex];               // Return a random TimeSlot from selectableSlots
 }
 
 Venue getRandomVenue()
@@ -689,25 +688,25 @@ Venue getRandomVenue()
     static bool initialized = false;
     if (!initialized)
     {
-        std::srand(std::time(nullptr));
+        srand(time(nullptr));
         initialized = true;
     }
 
-    int randomIndex = std::rand() % allVenues.size(); // Generate a random index
-    return allVenues[randomIndex];                    // Return a random Venue from allVenues
+    int randomIndex = rand() % allVenues.size(); // Generate a random index
+    return allVenues[randomIndex];               // Return a random Venue from allVenues
 }
 
 class Population
 {
 private:
-    std::vector<Chromosome> chromosomes; // The population is made up of chromosomes
+    vector<Chromosome> chromosomes; // The population is made up of chromosomes
 
 public:
     // Constructor
     Population() {}
 
     // Parameterized Constructor
-    Population(const std::vector<Chromosome> &initialPopulation) : chromosomes(initialPopulation) {}
+    Population(const vector<Chromosome> &initialPopulation) : chromosomes(initialPopulation) {}
 
     // Add a chromosome to the population
     void addChromosome(const Chromosome &chromosome)
@@ -716,25 +715,25 @@ public:
     }
 
     // Add a vector of chromosomes to the population
-    void addChromosomes(const std::vector<Chromosome> &newChromosomes)
+    void addChromosomes(const vector<Chromosome> &newChromosomes)
     {
         chromosomes.insert(chromosomes.end(), newChromosomes.begin(), newChromosomes.end());
     }
 
     // Get all chromosomes
-    std::vector<Chromosome> getChromosomes() const
+    vector<Chromosome> getChromosomes() const
     {
         return chromosomes;
     }
 
     // Set all chromosomes
-    void setChromosomes(const std::vector<Chromosome> &newChromosomes)
+    void setChromosomes(const vector<Chromosome> &newChromosomes)
     {
         chromosomes = newChromosomes;
     }
 
     // Initialize the first population
-    void initializeFirstPopulation()
+    void initializeFirstPopulation(int POPULATION_SIZE)
     {
         for (int i = 0; i < POPULATION_SIZE; ++i)
         {
@@ -765,15 +764,15 @@ public:
         }
     }
 
-    std::vector<Chromosome> getBestNChromosomes(int n)
+    vector<Chromosome> getBestNChromosomes(int n)
     {
-        std::vector<Chromosome> sortedChromosomes = chromosomes;
-        std::sort(sortedChromosomes.begin(), sortedChromosomes.end(),
-                  [](Chromosome &a, Chromosome &b)
-                  {
-                      return a.evaluateFitness() < b.evaluateFitness(); // Assuming lower fitness is better
-                  });
-        return std::vector<Chromosome>(sortedChromosomes.begin(), sortedChromosomes.begin() + n);
+        vector<Chromosome> sortedChromosomes = chromosomes;
+        sort(sortedChromosomes.begin(), sortedChromosomes.end(),
+             [](Chromosome &a, Chromosome &b)
+             {
+                 return a.evaluateFitness() < b.evaluateFitness(); // Assuming lower fitness is better
+             });
+        return vector<Chromosome>(sortedChromosomes.begin(), sortedChromosomes.begin() + n);
     }
 
     // Other methods for selection, crossover, mutation, evaluation, etc. can be added here
@@ -789,29 +788,29 @@ private:
 
 public:
     // Parameterized Constructor
-    GeneticAlgorithm(const Population &initialPopulation, double mutationRate, double crossoverRate, int eliteCount)
+    GeneticAlgorithm(Population &initialPopulation, double mutationRate, double crossoverRate, int eliteCount)
         : population(initialPopulation), mutationRate(mutationRate), crossoverRate(crossoverRate), eliteCount(eliteCount) {}
 
     // Getter and Setter methods for mutationRate, crossoverRate, eliteCount (optional)
 
     Population selectParents()
     {
-        std::vector<Chromosome> selectedParents;
+        vector<Chromosome> selectedParents;
         int tournamentSize = 5; // You can change this
 
         for (int i = 0; i < population.getChromosomes().size() - eliteCount; ++i) // Leave space for elites
         {
-            std::vector<Chromosome> tournament;
+            vector<Chromosome> tournament;
 
             // Randomly select k individuals for the tournament
             for (int j = 0; j < tournamentSize; ++j)
             {
-                int index = std::rand() % population.getChromosomes().size();
+                int index = rand() % population.getChromosomes().size();
                 tournament.push_back(population.getChromosomes()[index]);
             }
 
             // Find the best individual in the tournament
-            Chromosome best = *std::min_element(
+            Chromosome best = *min_element(
                 tournament.begin(), tournament.end(),
                 [](Chromosome &a, Chromosome &b)
                 {
@@ -831,7 +830,7 @@ public:
         int geneLength = parent1.getGenes().size();
 
         // Identify valid crossover points (every 2 genes, for example)
-        std::vector<int> crossoverPoints;
+        vector<int> crossoverPoints;
         for (int i = 2; i < geneLength; i += 2)
         {
             crossoverPoints.push_back(i);
@@ -844,7 +843,7 @@ public:
         // Sort the indices
         if (crossoverIndex1 > crossoverIndex2)
         {
-            std::swap(crossoverIndex1, crossoverIndex2);
+            swap(crossoverIndex1, crossoverIndex2);
         }
 
         // Perform crossover to create two children
@@ -875,13 +874,13 @@ public:
     // Returns a random venue from the list of all available venues
     Venue getRandomVenue()
     {
-        // Assuming `allVenues` is a std::vector containing all available Venue objects
-        int index = std::rand() % allVenues.size();
+        // Assuming `allVenues` is a vector containing all available Venue objects
+        int index = rand() % allVenues.size();
         return allVenues[index];
     }
 
     // Finds a time slot that is empty in all venues for a particular day
-    TimeSlot findEmptyTimeSlot(const std::string &day, const std::vector<Chromosome> &chromosomes)
+    TimeSlot findEmptyTimeSlot(const string &day, const vector<Chromosome> &chromosomes)
     {
         // Let's assume timeSlots is a vector containing all possible TimeSlot objects for a given day
         for (const auto &candidateTimeSlot : allTimeSlots)
@@ -914,9 +913,9 @@ public:
     }
 
     // Gets another time slot that is different from the current one
-    TimeSlot getAnotherAvailableTimeSlot(const TimeSlot &current, const std::vector<TimeSlot> &allTimeSlots)
+    TimeSlot getAnotherAvailableTimeSlot(const TimeSlot &current, const vector<TimeSlot> &allTimeSlots)
     {
-        std::vector<TimeSlot> otherSlots;
+        vector<TimeSlot> otherSlots;
 
         // Loop through all available time slots and find one that is different from `current`
         for (const auto &slot : allTimeSlots)
@@ -928,30 +927,30 @@ public:
         }
 
         // Randomly select one from otherSlots
-        int index = std::rand() % otherSlots.size();
+        int index = rand() % otherSlots.size();
         return otherSlots[index];
     }
 
     void mutate(Chromosome &chromosome)
     {
         // Assuming `chromosome.getGenes()` returns a reference to the vector of genes
-        // std::vector<ScheduledModule> &genes = chromosome.getGenes();
-        std::vector<ScheduledModule> genes = chromosome.getGenes();
+        // vector<ScheduledModule> &genes = chromosome.getGenes();
+        vector<ScheduledModule> genes = chromosome.getGenes();
 
         // Randomly pick one gene to change the venue
-        int randomIndexForVenue = std::rand() % genes.size();
+        int randomIndexForVenue = rand() % genes.size();
         Venue newVenue = getRandomVenue();
         genes[randomIndexForVenue].setVenue(newVenue);
 
         // Randomly pick another gene to change the time slot
-        int randomIndexForTimeSlot = std::rand() % genes.size();
+        int randomIndexForTimeSlot = rand() % genes.size();
         while (randomIndexForTimeSlot == randomIndexForVenue)
         {
             // Ensure we pick a different gene
-            randomIndexForTimeSlot = std::rand() % genes.size();
+            randomIndexForTimeSlot = rand() % genes.size();
         }
 
-        std::string day = genes[randomIndexForTimeSlot].getTimeSlot().getDay();
+        string day = genes[randomIndexForTimeSlot].getTimeSlot().getDay();
 
         // First, try to find an empty time slot
         TimeSlot newTimeSlot = findEmptyTimeSlot(day, population.getChromosomes());
@@ -967,16 +966,19 @@ public:
         chromosome.setGenes(genes);
     }
 
-    // Method for Replacement
     void replacePopulation(const Population &newPopulation)
     {
-        // Implement the replacement logic here
+        vector<Chromosome> newGenes = newPopulation.getChromosomes();
+        vector<Chromosome> oldElites = this->population.getBestNChromosomes(eliteCount);
+
+        newGenes.insert(newGenes.end(), oldElites.begin(), oldElites.end());
+        this->population.setChromosomes(newGenes);
     }
 
     void runOneGeneration()
     {
         // 1. Elitism
-        std::vector<Chromosome> elites = population.getBestNChromosomes(eliteCount);
+        vector<Chromosome> elites = population.getBestNChromosomes(eliteCount);
 
         // 2. Selection
         Population parents = selectParents();
@@ -1021,24 +1023,33 @@ public:
         }
     }
 
+    Chromosome getBestChromosome()
+    {
+        // Assuming that Population::getBestNChromosomes returns the best 'n' chromosomes sorted by fitness
+        vector<Chromosome> bestChromosomes = population.getBestNChromosomes(1);
+
+        // Since we asked for only 1 best chromosome, it will be at index 0.
+        return bestChromosomes[0];
+    }
+
     // ... (other utility methods)
 };
 
 void printViolations(const Chromosome &chromosome)
 {
-    std::map<std::pair<int, int>, int> venueTimeSlotCount, levelTimeSlotCount, lecturerTimeSlotCount;
+    map<pair<int, int>, int> venueTimeSlotCount, levelTimeSlotCount, lecturerTimeSlotCount;
 
     for (const ScheduledModule &gene : chromosome.getGenes())
     {
         int venueID = gene.getVenue().getVenueID();
         int timeSlotID = gene.getTimeSlot().getTimeSlotID();
-        venueTimeSlotCount[std::make_pair(venueID, timeSlotID)]++;
+        venueTimeSlotCount[make_pair(venueID, timeSlotID)]++;
 
         int level = gene.getModule().getLevel();
-        levelTimeSlotCount[std::make_pair(level, timeSlotID)]++;
+        levelTimeSlotCount[make_pair(level, timeSlotID)]++;
 
         int lecturerID = gene.getModule().getLecturer().getLecturerID();
-        lecturerTimeSlotCount[std::make_pair(lecturerID, timeSlotID)]++;
+        lecturerTimeSlotCount[make_pair(lecturerID, timeSlotID)]++;
     }
 
     // Check for violations and print them
@@ -1046,7 +1057,7 @@ void printViolations(const Chromosome &chromosome)
     {
         if (entry.second > 1)
         {
-            std::cout << "Violation: More than one module in the same slot and venue. VenueID: " << entry.first.first << ", TimeSlotID: " << entry.first.second << std::endl;
+            cout << "Violation: More than one module in the same slot and venue. VenueID: " << entry.first.first << ", TimeSlotID: " << entry.first.second << endl;
         }
     }
 
@@ -1054,7 +1065,7 @@ void printViolations(const Chromosome &chromosome)
     {
         if (entry.second > 1)
         {
-            std::cout << "Violation: More than one module at the same level and time slot. Level: " << entry.first.first << ", TimeSlotID: " << entry.first.second << std::endl;
+            cout << "Violation: More than one module at the same level and time slot. Level: " << entry.first.first << ", TimeSlotID: " << entry.first.second << endl;
         }
     }
 
@@ -1062,49 +1073,58 @@ void printViolations(const Chromosome &chromosome)
     {
         if (entry.second > 1)
         {
-            std::cout << "Violation: More than one module for the same lecturer and time slot. LecturerID: " << entry.first.first << ", TimeSlotID: " << entry.first.second << std::endl;
+            cout << "Violation: More than one module for the same lecturer and time slot. LecturerID: " << entry.first.first << ", TimeSlotID: " << entry.first.second << endl;
         }
     }
 }
 
 int main()
 {
-    // Initialize time slots
-    initializeTimeSlots();
+    // Step 0: Seed the random number generator
+    srand(static_cast<unsigned int>(time(nullptr)));
 
-    // Initialize venues
-    initializeVenues();
+    // Step 1: Initialize Required Data
+    initializeTimeSlots(); // Assuming this function initializes all possible time slots
+    initializeVenues();    // Assuming this function initializes all possible venues
+    initializeLecturers(); // Assuming this function initializes all possible lecturers
+    initializeModules();   // Assuming this function initializes all possible modules
 
-    // Initialize lecturers
-    initializeLecturers();
-
-    // Initialize modules
-    initializeModules();
-
-    POPULATION_SIZE = 1;
+    // Define GA parameters
+    int POPULATION_SIZE = 50;
+    double MUTATION_RATE = 0.2;
+    double CROSSOVER_RATE = 0.8;
+    int ELITE_COUNT = 2;
+    int NUM_GENERATIONS = 100;
 
     // Step 2: Initialize the First Population
     Population initialPop;
-    initialPop.initializeFirstPopulation();
+    initialPop.initializeFirstPopulation(POPULATION_SIZE);
 
-    // Step 3: Print the Initial Population
-    Chromosome initialChromosome = initialPop.getChromosomes()[0]; // Should get the first and only chromosome
-    std::cout << "Initial Chromosome: " << std::endl;
-    for (const ScheduledModule &gene : initialChromosome.getGenes())
+    // Step 3: Initialize the Genetic Algorithm
+    GeneticAlgorithm GA(initialPop, MUTATION_RATE, CROSSOVER_RATE, ELITE_COUNT);
+
+    // Step 4: Run the Genetic Algorithm
+    GA.run(NUM_GENERATIONS);
+
+    // Step 5: Evaluate and Display the Best Solution Found
+    Chromosome bestChromosome = GA.getBestChromosome(); // Assuming you add a function to return the best chromosome
+    cout << "Best Chromosome: " << endl;
+
+    for (const ScheduledModule &gene : bestChromosome.getGenes())
     {
         // Print information about the gene/module, venue, and time slot
-        std::cout << "Gene: " << std::endl;
+        cout << "Gene: " << endl;
         gene.getModule().printInfo();
         gene.getTimeSlot().printInfo();
         gene.getVenue().printInfo();
     }
 
-    // Step 4: Evaluate Fitness
-    double fitness = initialChromosome.evaluateFitness();
-    std::cout << "Initial Chromosome Fitness: " << fitness << std::endl;
+    // Evaluate fitness of the best chromosome
+    double fitness = bestChromosome.evaluateFitness();
+    cout << "Best Chromosome Fitness: " << fitness << endl;
 
-    // Print violations
-    printViolations(initialChromosome);
+    // Print violations, if any
+    printViolations(bestChromosome);
 
     return 0;
 }
