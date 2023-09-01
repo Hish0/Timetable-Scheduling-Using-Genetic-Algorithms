@@ -5,6 +5,7 @@
 #include <cstdlib> // for std::rand and std::srand
 #include <ctime>   // for std::time
 #include <algorithm>
+#include <random> // for random functions
 
 using namespace std;
 
@@ -708,6 +709,12 @@ public:
         chromosomes.push_back(chromosome);
     }
 
+    // Add a vector of chromosomes to the population
+    void addChromosomes(const std::vector<Chromosome> &newChromosomes)
+    {
+        chromosomes.insert(chromosomes.end(), newChromosomes.begin(), newChromosomes.end());
+    }
+
     // Get all chromosomes
     std::vector<Chromosome> getChromosomes() const
     {
@@ -752,6 +759,17 @@ public:
         }
     }
 
+    std::vector<Chromosome> getBestNChromosomes(int n)
+    {
+        std::vector<Chromosome> sortedChromosomes = chromosomes;
+        std::sort(sortedChromosomes.begin(), sortedChromosomes.end(),
+                  [](Chromosome &a, Chromosome &b)
+                  {
+                      return a.evaluateFitness() < b.evaluateFitness(); // Assuming lower fitness is better
+                  });
+        return std::vector<Chromosome>(sortedChromosomes.begin(), sortedChromosomes.begin() + n);
+    }
+
     // Other methods for selection, crossover, mutation, evaluation, etc. can be added here
 };
 
@@ -770,10 +788,35 @@ public:
 
     // Getter and Setter methods for mutationRate, crossoverRate, eliteCount (optional)
 
-    // Method for Selection
     Population selectParents()
     {
-        // Implement the selection logic here
+        std::vector<Chromosome> selectedParents;
+        int tournamentSize = 5; // You can change this
+
+        for (int i = 0; i < population.getChromosomes().size() - eliteCount; ++i) // Leave space for elites
+        {
+            std::vector<Chromosome> tournament;
+
+            // Randomly select k individuals for the tournament
+            for (int j = 0; j < tournamentSize; ++j)
+            {
+                int index = std::rand() % population.getChromosomes().size();
+                tournament.push_back(population.getChromosomes()[index]);
+            }
+
+            // Find the best individual in the tournament
+            Chromosome best = *std::min_element(
+                tournament.begin(), tournament.end(),
+                [](Chromosome &a, Chromosome &b)
+                {
+                    return a.evaluateFitness() < b.evaluateFitness(); // Assuming lower fitness is better
+                });
+
+            // Add the winner to the list of parents
+            selectedParents.push_back(best);
+        }
+
+        return Population(selectedParents);
     }
 
     // Method for Crossover
@@ -794,13 +837,16 @@ public:
         // Implement the replacement logic here
     }
 
-    // Method for Running One Generation of GA
     void runOneGeneration()
     {
-        // 1. Selection
-        Population parents = selectParents();
+        // 1. Elitism
+        std::vector<Chromosome> elites = population.getBestNChromosomes(eliteCount);
 
-        // 2. Crossover and Mutation
+        // 2. Selection
+        Population parents = selectParents();
+        parents.addChromosomes(elites); // Add elites
+
+        // 3. Crossover and Mutation
         Population offspring;
         for (int i = 0; i < parents.getChromosomes().size(); i += 2)
         {
@@ -809,7 +855,7 @@ public:
             offspring.addChromosome(child);
         }
 
-        // 3. Replacement
+        // 4. Replacement
         replacePopulation(offspring);
     }
 
