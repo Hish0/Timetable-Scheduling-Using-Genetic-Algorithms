@@ -819,10 +819,52 @@ public:
         return Population(selectedParents);
     }
 
-    // Method for Crossover
     Chromosome crossover(const Chromosome &parent1, const Chromosome &parent2)
     {
-        // Implement the crossover logic here
+        Chromosome child1, child2;
+        int geneLength = parent1.getGenes().size();
+
+        // Identify valid crossover points (every 2 genes, for example)
+        std::vector<int> crossoverPoints;
+        for (int i = 2; i < geneLength; i += 2)
+        {
+            crossoverPoints.push_back(i);
+        }
+
+        // Randomly select two crossover points
+        int crossoverIndex1 = crossoverPoints[rand() % crossoverPoints.size()];
+        int crossoverIndex2 = crossoverPoints[rand() % crossoverPoints.size()];
+
+        // Sort the indices
+        if (crossoverIndex1 > crossoverIndex2)
+        {
+            std::swap(crossoverIndex1, crossoverIndex2);
+        }
+
+        // Perform crossover to create two children
+        for (int i = 0; i < geneLength; ++i)
+        {
+            if (i < crossoverIndex1 || i >= crossoverIndex2)
+            {
+                child1.addGene(parent1.getGenes()[i]);
+                child2.addGene(parent2.getGenes()[i]);
+            }
+            else
+            {
+                child1.addGene(parent2.getGenes()[i]);
+                child2.addGene(parent1.getGenes()[i]);
+            }
+        }
+
+        // Choose one child for the next generation based on fitness (you could also return both)
+        if (child1.evaluateFitness() < child2.evaluateFitness())
+        {
+            return child1;
+        }
+        else
+        {
+            return child2;
+        }
     }
 
     // Method for Mutation
@@ -846,12 +888,29 @@ public:
         Population parents = selectParents();
         parents.addChromosomes(elites); // Add elites
 
-        // 3. Crossover and Mutation
+        // 3.Crossover and Mutation
         Population offspring;
         for (int i = 0; i < parents.getChromosomes().size(); i += 2)
         {
-            Chromosome child = crossover(parents.getChromosomes()[i], parents.getChromosomes()[i + 1]);
-            mutate(child);
+            double randomValueForCrossover = static_cast<double>(rand()) / static_cast<double>(RAND_MAX);
+            double randomValueForMutation = static_cast<double>(rand()) / static_cast<double>(RAND_MAX);
+
+            Chromosome child;
+            if (randomValueForCrossover <= crossoverRate)
+            {
+                child = crossover(parents.getChromosomes()[i], parents.getChromosomes()[i + 1]);
+            }
+            else
+            {
+                // If not crossing over, add one of the parents to the next generation.
+                child = parents.getChromosomes()[i];
+            }
+
+            if (randomValueForMutation <= mutationRate)
+            {
+                mutate(child);
+            }
+
             offspring.addChromosome(child);
         }
 
