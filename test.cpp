@@ -6,6 +6,7 @@
 #include <ctime>   // for time
 #include <algorithm>
 #include <random> // for random functions
+#include <sstream>
 
 using namespace std;
 
@@ -287,11 +288,11 @@ void initializeModules()
     allModules.push_back(Module(13, allLecturers[12], "CS332", 3, 23, true));
     allModules.push_back(Module(14, allLecturers[4], "CS336", 3, 18, true));
     allModules.push_back(Module(15, allLecturers[13], "CS340", 3, 17, true));
-    allModules.push_back(Module(17, allLecturers[3], "CS436", 4, 15, true));
-    allModules.push_back(Module(18, allLecturers[5], "CS443", 4, 13, true));
-    allModules.push_back(Module(30, allLecturers[3], "CS456", 4, 14, true));
-    allModules.push_back(Module(31, allLecturers[8], "CS431", 4, 16, true));
-    allModules.push_back(Module(33, allLecturers[12], "CS437", 4, 19, true));
+    allModules.push_back(Module(16, allLecturers[3], "CS436", 4, 15, true));
+    allModules.push_back(Module(17, allLecturers[5], "CS443", 4, 13, true));
+    allModules.push_back(Module(18, allLecturers[3], "CS456", 4, 14, true));
+    allModules.push_back(Module(19, allLecturers[8], "CS431", 4, 16, true));
+    allModules.push_back(Module(20, allLecturers[12], "CS437", 4, 19, true));
 }
 
 class Venue
@@ -559,6 +560,37 @@ public:
         genes = newGenes;
     }
 
+    void printGenesByDay() const
+    {
+        // Initialize a map to organize the genes by day and time slot
+        map<string, map<int, string>> dayTimeSlotMap;
+
+        for (const ScheduledModule &gene : genes)
+        {
+            string day = gene.getTimeSlot().getDay();            // Assuming TimeSlot has a getDay() method that returns a string
+            int timeSlotID = gene.getTimeSlot().getTimeSlotID(); // Assuming TimeSlot has a getID() method
+            string moduleCode = gene.getModule().getName();      // Assuming Module has a getCode() method
+
+            dayTimeSlotMap[day][timeSlotID] = moduleCode;
+        }
+
+        // Now print out the organized information
+        for (const auto &dayEntry : dayTimeSlotMap)
+        {
+            cout << "Day: " << dayEntry.first << endl;
+
+            for (const auto &timeSlotEntry : dayEntry.second)
+            {
+                cout << "  Time Slot: " << timeSlotEntry.first << " - Module: " << timeSlotEntry.second << endl;
+            }
+        }
+    }
+
+    void checkGeneSize()
+    {
+        cout << "The size of genes is: " << genes.size() << endl;
+    }
+
     bool operator==(const Chromosome &other) const
     {
         return this->genes == other.genes; // Assuming genes is a member variable
@@ -789,9 +821,11 @@ public:
         for (int i = 0; i < POPULATION_SIZE; ++i)
         {
             Chromosome chromosome;
+            int counter = 0;
 
             for (const auto &module : allModules)
             {
+                cout << "Size of allModules: " << allModules.size() << endl;
                 // Schedule this module twice, as each module has 4 hours per week.
 
                 // Randomly select two different time slots for this module
@@ -808,10 +842,13 @@ public:
                 // Add these ScheduledModule objects to the chromosome
                 chromosome.addGene(scheduledModule1);
                 chromosome.addGene(scheduledModule2);
+                counter++;
             }
-
+            cout << "Loop ran " << counter << " times." << endl;
             // Add this chromosome to the initial population
             addChromosome(chromosome);
+            cout << "the size of the chromosome num ==>" << i + 1;
+            chromosome.checkGeneSize();
         }
     }
 
@@ -1237,11 +1274,11 @@ int main()
     initializeModules();   // Assuming this function initializes all possible modules
 
     // Define GA parameters
-    int POPULATION_SIZE = 200;
+    int POPULATION_SIZE = 50;
     double MUTATION_RATE = 0.1;
     double CROSSOVER_RATE = 0.6;
     int ELITE_COUNT = 2;
-    int NUM_GENERATIONS = 5;
+    int NUM_GENERATIONS = 3;
 
     cout << "Initializing first population..." << endl;
     // Step 2: Initialize the First Population
@@ -1274,6 +1311,8 @@ int main()
     // Evaluate fitness of the best chromosome
     double fitness = bestChromosome.evaluateFitness();
     cout << "Best Chromosome Fitness: " << fitness << endl;
+    bestChromosome.checkGeneSize();
+    bestChromosome.printGenesByDay();
 
     // Print violations, if any
     // printViolations(bestChromosome);
