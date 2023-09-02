@@ -1,1 +1,1 @@
-dayEntry
+newOffspring
