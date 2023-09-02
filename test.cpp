@@ -766,12 +766,19 @@ public:
 
     vector<Chromosome> getBestNChromosomes(int n)
     {
+
         vector<Chromosome> sortedChromosomes = chromosomes;
+
+        cout << "Size of sortedChromosomes Befor sorting: " << sortedChromosomes.size() << endl;
+
         sort(sortedChromosomes.begin(), sortedChromosomes.end(),
              [](Chromosome &a, Chromosome &b)
              {
                  return a.evaluateFitness() < b.evaluateFitness(); // Assuming lower fitness is better
              });
+
+        cout << "Size of sortedChromosomes After sorting: " << sortedChromosomes.size() << endl;
+
         return vector<Chromosome>(sortedChromosomes.begin(), sortedChromosomes.begin() + n);
     }
 
@@ -796,7 +803,7 @@ public:
     Population selectParents()
     {
         vector<Chromosome> selectedParents;
-        int tournamentSize = 5; // You can change this
+        int tournamentSize = 6; // You can change this
 
         for (int i = 0; i < population.getChromosomes().size() - eliteCount; ++i) // Leave space for elites
         {
@@ -809,6 +816,8 @@ public:
                 tournament.push_back(population.getChromosomes()[index]);
             }
 
+            cout << "Tournament Size: " << tournament.size() << endl;
+
             // Find the best individual in the tournament
             Chromosome best = *min_element(
                 tournament.begin(), tournament.end(),
@@ -817,10 +826,12 @@ public:
                     return a.evaluateFitness() < b.evaluateFitness(); // Assuming lower fitness is better
                 });
 
+            cout << "Before adding the best individual, selectedParents size: " << selectedParents.size() << endl;
             // Add the winner to the list of parents
             selectedParents.push_back(best);
+            cout << "After adding the best individual, selectedParents size: " << selectedParents.size() << endl;
         }
-
+        cout << "Before returning the selectedParents, selectedParents size: " << selectedParents.size() << endl;
         return Population(selectedParents);
     }
 
@@ -971,18 +982,43 @@ public:
         vector<Chromosome> newGenes = newPopulation.getChromosomes();
         vector<Chromosome> oldElites = this->population.getBestNChromosomes(eliteCount);
 
+        cout << "Before inserting, Size of newGenes: " << newGenes.size() << endl;
+        cout << "Before inserting, Size of oldElites: " << oldElites.size() << endl;
+
         newGenes.insert(newGenes.end(), oldElites.begin(), oldElites.end());
         this->population.setChromosomes(newGenes);
+
+        cout << "After inserting, Size of newGenes: " << newGenes.size() << endl;
+        cout << "After inserting, Size of oldElites: " << oldElites.size() << endl;
     }
 
     void runOneGeneration()
     {
+        cout << "Running one generation..." << endl;
+        // Check Elitism
+        if (eliteCount > population.getChromosomes().size())
+        {
+            cout << "Error: Elite count greater than population size!" << endl;
+            // You may choose to return or throw an exception here
+            return;
+        }
+        cout << "Starting Elitism..." << endl;
         // 1. Elitism
         vector<Chromosome> elites = population.getBestNChromosomes(eliteCount);
 
+        cout << "Size of population before selectParents: " << population.getChromosomes().size() << endl;
+
+        cout << "Completed Elitism. Starting Selection..." << endl;
         // 2. Selection
         Population parents = selectParents();
+        cout << "After Selection, Size of parent population: " << parents.getChromosomes().size() << endl;
+        cout << "After Selection, Size of population: " << population.getChromosomes().size() << endl;
+
         parents.addChromosomes(elites); // Add elites
+        cout << "After adding the elites to the parents, Size of parent population: " << parents.getChromosomes().size() << endl;
+        cout << "After adding the elites to the parents, Size of population: " << population.getChromosomes().size() << endl;
+
+        cout << "Completed Selection. Starting Crossover and Mutation..." << endl;
 
         // 3.Crossover and Mutation
         Population offspring;
@@ -1004,23 +1040,49 @@ public:
 
             if (randomValueForMutation <= mutationRate)
             {
+                cout << "Before mutation, population size: " << population.getChromosomes().size() << endl;
+                cout << "Before mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+                cout << "Before mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
                 mutate(child);
+                cout << "After mutation, population size: " << population.getChromosomes().size() << endl;
+                cout << "After mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+                cout << "After mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
             }
 
             offspring.addChromosome(child);
         }
+        cout << "After Crossover and Mutation, population size: " << population.getChromosomes().size() << endl;
+        cout << "After Crossover and Mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+        cout << "After Crossover and Mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+
+        cout << "Before Replacement, population size: " << population.getChromosomes().size() << endl;
+        cout << "Before Replacement, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+        cout << "Before Replacement, Size of parent population: " << parents.getChromosomes().size() << endl;
+
+        cout << "Completed Crossover and Mutation. Starting Replacement..." << endl;
 
         // 4. Replacement
         replacePopulation(offspring);
+        cout << "After Replacement, population size: " << population.getChromosomes().size() << endl;
+        cout << "After Replacement, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+        cout << "After Replacement, Size of parent population: " << parents.getChromosomes().size() << endl;
+
+        cout << "Completed Replacement." << endl;
+
+        cout << "One generation completed." << endl;
     }
 
     // Method to run the Genetic Algorithm for 'n' generations
     void run(int numberOfGenerations)
     {
+        cout << "Starting GA run for " << numberOfGenerations << " generations." << endl;
         for (int i = 0; i < numberOfGenerations; ++i)
         {
+            cout << "Starting generation " << i + 1 << endl;
             runOneGeneration();
+            cout << "Completed generation " << i + 1 << endl;
         }
+        cout << "GA run completed." << endl;
     }
 
     Chromosome getBestChromosome()
@@ -1080,9 +1142,11 @@ void printViolations(const Chromosome &chromosome)
 
 int main()
 {
+    cout << "Seeding random number generator..." << endl;
     // Step 0: Seed the random number generator
     srand(static_cast<unsigned int>(time(nullptr)));
 
+    cout << "Initializing required data..." << endl;
     // Step 1: Initialize Required Data
     initializeTimeSlots(); // Assuming this function initializes all possible time slots
     initializeVenues();    // Assuming this function initializes all possible venues
@@ -1096,35 +1160,40 @@ int main()
     int ELITE_COUNT = 2;
     int NUM_GENERATIONS = 100;
 
+    cout << "Initializing first population..." << endl;
     // Step 2: Initialize the First Population
     Population initialPop;
     initialPop.initializeFirstPopulation(POPULATION_SIZE);
+    cout << "Initial population size: " << initialPop.getChromosomes().size() << endl;
 
+    cout << "Initializing Genetic Algorithm..." << endl;
     // Step 3: Initialize the Genetic Algorithm
     GeneticAlgorithm GA(initialPop, MUTATION_RATE, CROSSOVER_RATE, ELITE_COUNT);
 
+    cout << "Running Genetic Algorithm..." << endl;
     // Step 4: Run the Genetic Algorithm
     GA.run(NUM_GENERATIONS);
+    cout << "Genetic Algorithm completed." << endl;
 
-    // Step 5: Evaluate and Display the Best Solution Found
-    Chromosome bestChromosome = GA.getBestChromosome(); // Assuming you add a function to return the best chromosome
-    cout << "Best Chromosome: " << endl;
+    // // Step 5: Evaluate and Display the Best Solution Found
+    // Chromosome bestChromosome = GA.getBestChromosome(); // Assuming you add a function to return the best chromosome
+    // cout << "Best Chromosome: " << endl;
 
-    for (const ScheduledModule &gene : bestChromosome.getGenes())
-    {
-        // Print information about the gene/module, venue, and time slot
-        cout << "Gene: " << endl;
-        gene.getModule().printInfo();
-        gene.getTimeSlot().printInfo();
-        gene.getVenue().printInfo();
-    }
+    // for (const ScheduledModule &gene : bestChromosome.getGenes())
+    // {
+    //     // Print information about the gene/module, venue, and time slot
+    //     cout << "Gene: " << endl;
+    //     gene.getModule().printInfo();
+    //     gene.getTimeSlot().printInfo();
+    //     gene.getVenue().printInfo();
+    // }
 
-    // Evaluate fitness of the best chromosome
-    double fitness = bestChromosome.evaluateFitness();
-    cout << "Best Chromosome Fitness: " << fitness << endl;
+    // // Evaluate fitness of the best chromosome
+    // double fitness = bestChromosome.evaluateFitness();
+    // cout << "Best Chromosome Fitness: " << fitness << endl;
 
-    // Print violations, if any
-    printViolations(bestChromosome);
+    // // Print violations, if any
+    // printViolations(bestChromosome);
 
     return 0;
 }
