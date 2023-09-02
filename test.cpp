@@ -22,6 +22,12 @@ public:
     // Parameterized Constructor
     Lecturer(int id, const string &name) : lecturerID(id), lecturerName(name) {}
 
+    bool operator==(const Lecturer &other) const
+    {
+        return (this->lecturerID == other.lecturerID &&
+                this->lecturerName == other.lecturerName);
+    }
+
     // Getter methods
     int getLecturerID() const
     {
@@ -87,6 +93,13 @@ public:
     // Parameterized Constructor
     TimeSlot(int id, const string &dayValue, const string &timeValue)
         : timeSlotID(id), day(dayValue), time(timeValue) {}
+
+    bool operator==(const TimeSlot &other) const
+    {
+        return (this->timeSlotID == other.timeSlotID &&
+                this->day == other.day &&
+                this->time == other.time);
+    }
 
     // Getter methods
     int getTimeSlotID() const
@@ -170,6 +183,15 @@ public:
     Module(int modID, const Lecturer &lect, const string &modName, int modLevel, int students, bool lab)
         : moduleID(modID), lecturer(lect), name(modName), level(modLevel), numberOfStudentsEnrolled(students), isLab(lab) {}
 
+    bool operator==(const Module &other) const
+    {
+        return (this->moduleID == other.moduleID &&
+                this->lecturer == other.lecturer &&
+                this->name == other.name &&
+                this->level == other.level &&
+                this->numberOfStudentsEnrolled == other.numberOfStudentsEnrolled &&
+                this->isLab == other.isLab);
+    }
     // Getter methods
     int getModuleID() const
     {
@@ -287,6 +309,14 @@ public:
     // Parameterized Constructor
     Venue(int id, const string &venueName, int cap, bool lab)
         : venueID(id), name(venueName), capacity(cap), isLab(lab) {}
+
+    bool operator==(const Venue &other) const
+    {
+        return (this->venueID == other.venueID &&
+                this->name == other.name &&
+                this->capacity == other.capacity &&
+                this->isLab == other.isLab);
+    }
 
     // Getter methods
     int getVenueID() const
@@ -425,6 +455,17 @@ public:
         : module(mod), timeSlot(slot), venue(ven), isLockedVenue(lockedVenue),
           isLockedTimeSlot(lockedTimeSlot), isValid(validStatus) {}
 
+    bool operator==(const ScheduledModule &other) const
+    {
+        return (
+            this->module == other.module &&
+            this->timeSlot == other.timeSlot &&
+            this->venue == other.venue &&
+            this->isLockedVenue == other.isLockedVenue &&
+            this->isLockedTimeSlot == other.isLockedTimeSlot &&
+            this->isValid == other.isValid);
+    }
+
     // Getter methods
     Module getModule() const
     {
@@ -516,6 +557,11 @@ public:
     void setGenes(const vector<ScheduledModule> &newGenes)
     {
         genes = newGenes;
+    }
+
+    bool operator==(const Chromosome &other) const
+    {
+        return this->genes == other.genes; // Assuming genes is a member variable
     }
     double evaluateFitness()
     {
@@ -719,6 +765,11 @@ public:
     {
         chromosomes.insert(chromosomes.end(), newChromosomes.begin(), newChromosomes.end());
     }
+    void removeChromosome(const Chromosome &target)
+    {
+        auto it = remove(chromosomes.begin(), chromosomes.end(), target);
+        chromosomes.erase(it, chromosomes.end());
+    }
 
     // Get all chromosomes
     vector<Chromosome> getChromosomes() const
@@ -769,7 +820,7 @@ public:
 
         vector<Chromosome> sortedChromosomes = chromosomes;
 
-        cout << "Size of sortedChromosomes Befor sorting: " << sortedChromosomes.size() << endl;
+        cout << "Get best, Size of sortedChromosomes Befor sorting: " << sortedChromosomes.size() << endl;
 
         sort(sortedChromosomes.begin(), sortedChromosomes.end(),
              [](Chromosome &a, Chromosome &b)
@@ -777,9 +828,26 @@ public:
                  return a.evaluateFitness() < b.evaluateFitness(); // Assuming lower fitness is better
              });
 
-        cout << "Size of sortedChromosomes After sorting: " << sortedChromosomes.size() << endl;
+        cout << "Get best, Size of sortedChromosomes After sorting: " << sortedChromosomes.size() << endl;
 
         return vector<Chromosome>(sortedChromosomes.begin(), sortedChromosomes.begin() + n);
+    }
+
+    vector<Chromosome> getWorstNChromosomes(int n)
+    {
+        vector<Chromosome> sortedChromosomes = chromosomes;
+
+        cout << "Get worst, Size of sortedChromosomes Before sorting: " << sortedChromosomes.size() << endl;
+
+        sort(sortedChromosomes.begin(), sortedChromosomes.end(),
+             [](Chromosome &a, Chromosome &b)
+             {
+                 return a.evaluateFitness() > b.evaluateFitness(); // Assuming higher fitness is worse
+             });
+
+        cout << "Get worst, Size of sortedChromosomes After sorting: " << sortedChromosomes.size() << endl;
+
+        return vector<Chromosome>(sortedChromosomes.end() - n, sortedChromosomes.end());
     }
 
     // Other methods for selection, crossover, mutation, evaluation, etc. can be added here
@@ -977,19 +1045,34 @@ public:
         chromosome.setGenes(genes);
     }
 
-    void replacePopulation(const Population &newPopulation)
+    void replacePopulation(const Population &offspringPopulation)
     {
-        vector<Chromosome> newGenes = newPopulation.getChromosomes();
+        vector<Chromosome> newOffspring = offspringPopulation.getChromosomes();
         vector<Chromosome> oldElites = this->population.getBestNChromosomes(eliteCount);
 
-        cout << "Before inserting, Size of newGenes: " << newGenes.size() << endl;
-        cout << "Before inserting, Size of oldElites: " << oldElites.size() << endl;
+        // Remove elites from the old population
+        for (const Chromosome &elite : oldElites)
+        {
+            this->population.removeChromosome(elite);
+        }
 
-        newGenes.insert(newGenes.end(), oldElites.begin(), oldElites.end());
-        this->population.setChromosomes(newGenes);
+        // Get the number of chromosomes to be replaced in the old population
+        int numToReplace = newOffspring.size();
 
-        cout << "After inserting, Size of newGenes: " << newGenes.size() << endl;
-        cout << "After inserting, Size of oldElites: " << oldElites.size() << endl;
+        // Get the worst-performing individuals to remove them
+        vector<Chromosome> oldWorst = this->population.getWorstNChromosomes(numToReplace);
+
+        // Remove worst-performing individuals
+        for (const Chromosome &worst : oldWorst)
+        {
+            this->population.removeChromosome(worst);
+        }
+
+        // Add new offspring
+        this->population.addChromosomes(newOffspring);
+
+        // Add back the elites
+        this->population.addChromosomes(oldElites);
     }
 
     void runOneGeneration()
@@ -1154,11 +1237,11 @@ int main()
     initializeModules();   // Assuming this function initializes all possible modules
 
     // Define GA parameters
-    int POPULATION_SIZE = 50;
-    double MUTATION_RATE = 0.2;
-    double CROSSOVER_RATE = 0.8;
+    int POPULATION_SIZE = 200;
+    double MUTATION_RATE = 0.1;
+    double CROSSOVER_RATE = 0.6;
     int ELITE_COUNT = 2;
-    int NUM_GENERATIONS = 100;
+    int NUM_GENERATIONS = 5;
 
     cout << "Initializing first population..." << endl;
     // Step 2: Initialize the First Population
@@ -1175,9 +1258,9 @@ int main()
     GA.run(NUM_GENERATIONS);
     cout << "Genetic Algorithm completed." << endl;
 
-    // // Step 5: Evaluate and Display the Best Solution Found
-    // Chromosome bestChromosome = GA.getBestChromosome(); // Assuming you add a function to return the best chromosome
-    // cout << "Best Chromosome: " << endl;
+    // Step 5: Evaluate and Display the Best Solution Found
+    Chromosome bestChromosome = GA.getBestChromosome(); // Assuming you add a function to return the best chromosome
+    cout << "Best Chromosome: " << endl;
 
     // for (const ScheduledModule &gene : bestChromosome.getGenes())
     // {
@@ -1188,11 +1271,11 @@ int main()
     //     gene.getVenue().printInfo();
     // }
 
-    // // Evaluate fitness of the best chromosome
-    // double fitness = bestChromosome.evaluateFitness();
-    // cout << "Best Chromosome Fitness: " << fitness << endl;
+    // Evaluate fitness of the best chromosome
+    double fitness = bestChromosome.evaluateFitness();
+    cout << "Best Chromosome Fitness: " << fitness << endl;
 
-    // // Print violations, if any
+    // Print violations, if any
     // printViolations(bestChromosome);
 
     return 0;
