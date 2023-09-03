@@ -1371,7 +1371,7 @@ int main()
     initializeModules();   // Assuming this function initializes all possible modules
 
     // Define GA parameters
-    int POPULATION_SIZE = 1000;
+    int POPULATION_SIZE = 10;
     double MUTATION_RATE = 0.1;
     double CROSSOVER_RATE = 0.3;
     int ELITE_COUNT = 5;
