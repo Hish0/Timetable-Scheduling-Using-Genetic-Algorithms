@@ -7,55 +7,58 @@
 #include <algorithm>
 #include <random> // for random functions
 #include <sstream>
+#include "Lecturer/Lecturer.h"
+#include "TimeSlot/TimeSlot.h"
+#include "Module/Module.h"
 
 using namespace std;
 
-class Lecturer
-{
-private:
-    int lecturerID;
-    string lecturerName;
+// class Lecturer
+// {
+// private:
+//     int lecturerID;
+//     string lecturerName;
 
-public:
-    // Default Constructor
-    Lecturer() : lecturerID(0), lecturerName("Unknown") {}
+// public:
+//     // Default Constructor
+//     Lecturer() : lecturerID(0), lecturerName("Unknown") {}
 
-    // Parameterized Constructor
-    Lecturer(int id, const string &name) : lecturerID(id), lecturerName(name) {}
+//     // Parameterized Constructor
+//     Lecturer(int id, const string &name) : lecturerID(id), lecturerName(name) {}
 
-    bool operator==(const Lecturer &other) const
-    {
-        return (this->lecturerID == other.lecturerID &&
-                this->lecturerName == other.lecturerName);
-    }
+//     bool operator==(const Lecturer &other) const
+//     {
+//         return (this->lecturerID == other.lecturerID &&
+//                 this->lecturerName == other.lecturerName);
+//     }
 
-    // Getter methods
-    int getLecturerID() const
-    {
-        return lecturerID;
-    }
+//     // Getter methods
+//     int getLecturerID() const
+//     {
+//         return lecturerID;
+//     }
 
-    string getLecturerName() const
-    {
-        return lecturerName;
-    }
+//     string getLecturerName() const
+//     {
+//         return lecturerName;
+//     }
 
-    // Setter methods
-    void setLecturerID(int id)
-    {
-        lecturerID = id;
-    }
+//     // Setter methods
+//     void setLecturerID(int id)
+//     {
+//         lecturerID = id;
+//     }
 
-    void setLecturerName(const string &name)
-    {
-        lecturerName = name;
-    }
+//     void setLecturerName(const string &name)
+//     {
+//         lecturerName = name;
+//     }
 
-    void printInfo() const
-    {
-        cout << "Lecturer ID: " << lecturerID << ", Name: " << lecturerName << endl;
-    }
-};
+//     void printInfo() const
+//     {
+//         cout << "Lecturer ID: " << lecturerID << ", Name: " << lecturerName << endl;
+//     }
+// };
 
 vector<Lecturer> allLecturers; // Global array to hold all lecturers
 
@@ -80,71 +83,71 @@ void initializeLecturers()
     // ... add more lecturers as needed
 }
 
-class TimeSlot
-{
-private:
-    int timeSlotID;
-    string day;
-    string time;
+// class TimeSlot
+// {
+// private:
+//     int timeSlotID;
+//     string day;
+//     string time;
 
-public:
-    // Default Constructor
-    TimeSlot() : timeSlotID(0), day("Unknown"), time("00:00") {}
+// public:
+//     // Default Constructor
+//     TimeSlot() : timeSlotID(0), day("Unknown"), time("00:00") {}
 
-    // Parameterized Constructor
-    TimeSlot(int id, const string &dayValue, const string &timeValue)
-        : timeSlotID(id), day(dayValue), time(timeValue) {}
+//     // Parameterized Constructor
+//     TimeSlot(int id, const string &dayValue, const string &timeValue)
+//         : timeSlotID(id), day(dayValue), time(timeValue) {}
 
-    bool operator==(const TimeSlot &other) const
-    {
-        return (this->timeSlotID == other.timeSlotID &&
-                this->day == other.day &&
-                this->time == other.time);
-    }
+//     bool operator==(const TimeSlot &other) const
+//     {
+//         return (this->timeSlotID == other.timeSlotID &&
+//                 this->day == other.day &&
+//                 this->time == other.time);
+//     }
 
-    // Getter methods
-    int getTimeSlotID() const
-    {
-        return timeSlotID;
-    }
+//     // Getter methods
+//     int getTimeSlotID() const
+//     {
+//         return timeSlotID;
+//     }
 
-    string getDay() const
-    {
-        return day;
-    }
+//     string getDay() const
+//     {
+//         return day;
+//     }
 
-    string getTime() const
-    {
-        return time;
-    }
+//     string getTime() const
+//     {
+//         return time;
+//     }
 
-    // Setter methods
-    void setTimeSlotID(int id)
-    {
-        timeSlotID = id;
-    }
+//     // Setter methods
+//     void setTimeSlotID(int id)
+//     {
+//         timeSlotID = id;
+//     }
 
-    void setDay(const string &dayValue)
-    {
-        day = dayValue;
-    }
+//     void setDay(const string &dayValue)
+//     {
+//         day = dayValue;
+//     }
 
-    void setTime(const string &timeValue)
-    {
-        time = timeValue;
-    }
+//     void setTime(const string &timeValue)
+//     {
+//         time = timeValue;
+//     }
 
-    void printInfo() const
-    {
-        cout << "TimeSlot ID: " << timeSlotID << ", Day: " << day << ", Time: " << time << endl;
-    }
+//     void printInfo() const
+//     {
+//         cout << "TimeSlot ID: " << timeSlotID << ", Day: " << day << ", Time: " << time << endl;
+//     }
 
-    bool isEmpty() const
-    {
-        // Define logic to determine if the TimeSlot object is empty
-        return this->getDay().empty() && (this->getTimeSlotID() == 0); // Example logic
-    }
-};
+//     bool isEmpty() const
+//     {
+//         // Define logic to determine if the TimeSlot object is empty
+//         return this->getDay().empty() && (this->getTimeSlotID() == 0); // Example logic
+//     }
+// };
 
 vector<TimeSlot> allTimeSlots; // Global array to hold all time slots
 void initializeTimeSlots()
@@ -166,107 +169,107 @@ void initializeTimeSlots()
     }
 }
 
-class Module
-{
-private:
-    int moduleID;
-    Lecturer lecturer;
-    string name;
-    int level; // Changed from string to int
-    int numberOfStudentsEnrolled;
-    bool isLab;
+// class Module
+// {
+// private:
+//     int moduleID;
+//     Lecturer lecturer;
+//     string name;
+//     int level; // Changed from string to int
+//     int numberOfStudentsEnrolled;
+//     bool isLab;
 
-public:
-    // Default Constructor
-    Module() : moduleID(0), lecturer(), name("Unknown"), level(0), numberOfStudentsEnrolled(0), isLab(false) {}
+// public:
+//     // Default Constructor
+//     Module() : moduleID(0), lecturer(), name("Unknown"), level(0), numberOfStudentsEnrolled(0), isLab(false) {}
 
-    // Parameterized Constructor - Changed modLevel from string to int
-    Module(int modID, const Lecturer &lect, const string &modName, int modLevel, int students, bool lab)
-        : moduleID(modID), lecturer(lect), name(modName), level(modLevel), numberOfStudentsEnrolled(students), isLab(lab) {}
+//     // Parameterized Constructor - Changed modLevel from string to int
+//     Module(int modID, const Lecturer &lect, const string &modName, int modLevel, int students, bool lab)
+//         : moduleID(modID), lecturer(lect), name(modName), level(modLevel), numberOfStudentsEnrolled(students), isLab(lab) {}
 
-    bool operator==(const Module &other) const
-    {
-        return (this->moduleID == other.moduleID &&
-                this->lecturer == other.lecturer &&
-                this->name == other.name &&
-                this->level == other.level &&
-                this->numberOfStudentsEnrolled == other.numberOfStudentsEnrolled &&
-                this->isLab == other.isLab);
-    }
-    // Getter methods
-    int getModuleID() const
-    {
-        return moduleID;
-    }
+//     bool operator==(const Module &other) const
+//     {
+//         return (this->moduleID == other.moduleID &&
+//                 this->lecturer == other.lecturer &&
+//                 this->name == other.name &&
+//                 this->level == other.level &&
+//                 this->numberOfStudentsEnrolled == other.numberOfStudentsEnrolled &&
+//                 this->isLab == other.isLab);
+//     }
+//     // Getter methods
+//     int getModuleID() const
+//     {
+//         return moduleID;
+//     }
 
-    Lecturer getLecturer() const
-    {
-        return lecturer;
-    }
+//     Lecturer getLecturer() const
+//     {
+//         return lecturer;
+//     }
 
-    string getName() const
-    {
-        return name;
-    }
+//     string getName() const
+//     {
+//         return name;
+//     }
 
-    // Changed return type from string to int
-    int getLevel() const
-    {
-        return level;
-    }
+//     // Changed return type from string to int
+//     int getLevel() const
+//     {
+//         return level;
+//     }
 
-    int getNumberOfStudentsEnrolled() const
-    {
-        return numberOfStudentsEnrolled;
-    }
+//     int getNumberOfStudentsEnrolled() const
+//     {
+//         return numberOfStudentsEnrolled;
+//     }
 
-    bool getIsLab() const
-    {
-        return isLab;
-    }
+//     bool getIsLab() const
+//     {
+//         return isLab;
+//     }
 
-    // Setter methods
-    void setModuleID(int id)
-    {
-        moduleID = id;
-    }
+//     // Setter methods
+//     void setModuleID(int id)
+//     {
+//         moduleID = id;
+//     }
 
-    void setLecturer(const Lecturer &lect)
-    {
-        lecturer = lect;
-    }
+//     void setLecturer(const Lecturer &lect)
+//     {
+//         lecturer = lect;
+//     }
 
-    void setName(const string &modName)
-    {
-        name = modName;
-    }
+//     void setName(const string &modName)
+//     {
+//         name = modName;
+//     }
 
-    // Changed parameter type from string to int
-    void setLevel(int modLevel)
-    {
-        level = modLevel;
-    }
+//     // Changed parameter type from string to int
+//     void setLevel(int modLevel)
+//     {
+//         level = modLevel;
+//     }
 
-    void setNumberOfStudentsEnrolled(int students)
-    {
-        numberOfStudentsEnrolled = students;
-    }
+//     void setNumberOfStudentsEnrolled(int students)
+//     {
+//         numberOfStudentsEnrolled = students;
+//     }
 
-    void setIsLab(bool lab)
-    {
-        isLab = lab;
-    }
+//     void setIsLab(bool lab)
+//     {
+//         isLab = lab;
+//     }
 
-    void printInfo() const
-    {
-        cout << "Module ID: " << moduleID
-             << ", Lecturer: " << lecturer.getLecturerName()
-             << ", Name: " << name
-             << ", Level: " << level
-             << ", Enrolled Students: " << numberOfStudentsEnrolled
-             << ", Is Lab: " << (isLab ? "Yes" : "No") << endl;
-    }
-};
+//     void printInfo() const
+//     {
+//         cout << "Module ID: " << moduleID
+//              << ", Lecturer: " << lecturer.getLecturerName()
+//              << ", Name: " << name
+//              << ", Level: " << level
+//              << ", Enrolled Students: " << numberOfStudentsEnrolled
+//              << ", Is Lab: " << (isLab ? "Yes" : "No") << endl;
+//     }
+// };
 
 vector<Module> allModules; // Global array to hold all modules
 
@@ -1375,7 +1378,7 @@ int main()
     double MUTATION_RATE = 0.1;
     double CROSSOVER_RATE = 0.3;
     int ELITE_COUNT = 5;
-    int NUM_GENERATIONS = 10;
+    int NUM_GENERATIONS = 3;
 
     // cout << "Initializing first population..." << endl;
     //  Step 2: Initialize the First Population
