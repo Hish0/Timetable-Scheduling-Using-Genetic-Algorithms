@@ -22,10 +22,16 @@ public:
     void removeChromosome(const Chromosome &target);
     vector<Chromosome> getChromosomes() const;
     void setChromosomes(const vector<Chromosome> &newChromosomes);
+    Chromosome generateRandomChromosome();
     void initializeFirstPopulation(int POPULATION_SIZE);
     vector<Chromosome> getBestNChromosomes(int n);
     vector<Chromosome> getWorstNChromosomes(int n);
     double getTotalFitness();
+    vector<Chromosome> getBestNDiverseChromosomes(int n);
+    void clearPopulation();
+    void populateClearedChromosomes(int numberOfChromosomesToAdd);
+
+    bool similarChromo(double threshold = 0.33);
 };
 
 #endif // POPULATION_H

@@ -38,6 +38,31 @@ void Population::setChromosomes(const vector<Chromosome> &newChromosomes)
     chromosomes = newChromosomes;
 }
 
+Chromosome Population::generateRandomChromosome()
+{
+    Chromosome chromosome;
+    for (const auto &module : allModules)
+    {
+        // Schedule this module twice, as each module has 4 hours per week.
+
+        // Randomly select two different time slots for this module
+        TimeSlot timeSlot1 = getRandomTimeSlot();
+        TimeSlot timeSlot2 = getRandomTimeSlot(timeSlot1); // Make sure this is different from timeSlot1
+
+        // Randomly select a venue for this module
+        Venue venue = getRandomVenue();
+
+        // Create two ScheduledModule objects
+        ScheduledModule scheduledModule1(module, timeSlot1, venue, false, false, true);
+        ScheduledModule scheduledModule2(module, timeSlot2, venue, false, false, true);
+
+        // Add these ScheduledModule objects to the chromosome
+        chromosome.addGene(scheduledModule1);
+        chromosome.addGene(scheduledModule2);
+    }
+    return chromosome;
+}
+
 void Population::initializeFirstPopulation(int POPULATION_SIZE)
 {
 
@@ -109,4 +134,119 @@ double Population::getTotalFitness()
         totalFitness += chromosome.evaluateFitness();
     }
     return totalFitness;
+}
+
+vector<Chromosome> Population::getBestNDiverseChromosomes(int n)
+{
+    vector<Chromosome> sortedChromosomes = chromosomes;
+    vector<Chromosome> newElites;
+
+    // Sort the chromosomes based on their fitness
+    sort(sortedChromosomes.begin(), sortedChromosomes.end(),
+         [](Chromosome &a, Chromosome &b)
+         {
+             return a.evaluateFitness() < b.evaluateFitness(); // Assuming lower fitness is better
+         });
+
+    // Loop through the sorted chromosomes to find diverse elites
+    for (auto &candidate : sortedChromosomes)
+    {
+        bool isDiverse = true;
+
+        // Check if the candidate is diverse from all new elites
+        for (auto &elite : newElites)
+        {
+            if (!candidate.isDiverse(elite))
+            {
+                isDiverse = false;
+                break;
+            }
+        }
+
+        // If the candidate is diverse, add it to the new elites
+        if (isDiverse)
+        {
+            newElites.push_back(candidate);
+        }
+
+        // Stop if we've found enough new elites
+        if (newElites.size() >= n)
+        {
+            break;
+        }
+    }
+    if (newElites.size() < n)
+    {
+        cout << "Error: Could not find enough diverse elite chromosomes." << endl;
+    }
+
+    return newElites;
+}
+
+void Population::clearPopulation()
+{
+    // Sort the population by fitness
+    sort(chromosomes.begin(), chromosomes.end(),
+         [](Chromosome &a, Chromosome &b)
+         {
+             return a.evaluateFitness() < b.evaluateFitness();
+         });
+
+    vector<Chromosome> clearedPopulation;
+
+    // Clear the population
+    for (const Chromosome &individual : chromosomes)
+    {
+        bool isDiverse = true;
+
+        for (const Chromosome &cleared : clearedPopulation)
+        {
+            if (!individual.isDiverse(cleared))
+            {
+                isDiverse = false;
+                break;
+            }
+        }
+
+        if (isDiverse)
+        {
+            clearedPopulation.push_back(individual);
+        }
+    }
+
+    // Replace the old population with the cleared population
+    chromosomes = clearedPopulation;
+}
+
+void Population::populateClearedChromosomes(int numberOfChromosomesToAdd)
+{
+    for (int i = 0; i < numberOfChromosomesToAdd; ++i)
+    {
+        Chromosome newChromosome = generateRandomChromosome(); // Assuming you have a function that generates a random chromosome
+        chromosomes.push_back(newChromosome);
+    }
+}
+
+bool Population::similarChromo(double threshold = 0.33)
+{
+    int count = 0;              // To keep track of the number of similar chromosomes
+    int n = chromosomes.size(); // Total number of chromosomes in the population
+
+    // Nested loop to compare each pair of chromosomes
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = i + 1; j < n; ++j)
+        {
+            // Assuming you have implemented the isDiverse method in Chromosome class
+            if (!chromosomes[i].isDiverse(chromosomes[j]))
+            {
+                count++; // Increase count if the chromosomes are not diverse
+            }
+        }
+    }
+
+    // Calculate the percentage of similar chromosomes
+    double percentage = (double)count / (double)(n * (n - 1) / 2);
+
+    return percentage >= threshold;
 }

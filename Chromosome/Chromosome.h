@@ -26,6 +26,7 @@ public:
     void checkGeneSize();
     bool operator==(const Chromosome &other) const;
     double evaluateFitness();
+    bool isDiverse(const Chromosome &other) const;
 };
 
 #endif // CHROMOSOME_H

@@ -26,7 +26,7 @@ public:
     TimeSlot getAnotherAvailableTimeSlot(const TimeSlot &current, const std::vector<TimeSlot> &allTimeSlots);
     void mutate(Chromosome &chromosome);
     void replacePopulation(const Population &offspringPopulation);
-    void runOneGeneration();
+    void runOneGeneration(int generationCount);
     void run(int numberOfGenerations);
     Chromosome getBestChromosome();
     void printTotalFitnessHistory();
