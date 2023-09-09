@@ -27,6 +27,7 @@ public:
     vector<Chromosome> getBestNChromosomes(int n);
     vector<Chromosome> getWorstNChromosomes(int n);
     double getTotalFitness();
+    double getBestFitness();
     vector<Chromosome> getBestNDiverseChromosomes(int n);
     void clearPopulation();
     void populateClearedChromosomes(int numberOfChromosomesToAdd);

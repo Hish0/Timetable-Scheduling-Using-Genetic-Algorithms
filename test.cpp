@@ -27,7 +27,7 @@ int main()
     double MUTATION_RATE = 0.1;
     double CROSSOVER_RATE = 0.3;
     int ELITE_COUNT = 5;
-    int NUM_GENERATIONS = 20;
+    int NUM_GENERATIONS = 100;
 
     //  Step 2: Initialize the First Population
     Population initialPop;
@@ -58,7 +58,7 @@ int main()
     double fitness = bestChromosome.evaluateFitness();
     cout << "Best Chromosome Fitness: " << fitness << endl;
 
-    GA.printTotalFitnessHistory();
+    GA.printProgress();
 
     return 0;
 }

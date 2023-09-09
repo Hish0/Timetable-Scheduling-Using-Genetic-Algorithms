@@ -250,7 +250,7 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
     // cout << "After Selection, Size of population: " << population.getChromosomes().size() << endl;
 
     // every 5 runs we clear same chromosomes
-    if ((generationCount % 5) == 0)
+    if (parents.similarChromo())
     {
         int oldPopulationCount = parents.getChromosomes().size();
         cout << "Before clearing the population, population size: " << parents.getChromosomes().size() << endl;
@@ -323,6 +323,10 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
     cout << "Total fitness of the population: " << totalFitness << endl;
     totalFitnessHistory.push_back(totalFitness); // Assuming totalFitnessHistory is a member vector<double>
 
+    double totalBestFit = population.getBestFitness();
+    cout << "total Best Fit of the population: " << totalBestFit << endl;
+    totalBestFitHistory.push_back(totalBestFit); // Assuming totalFitnessHistory is a member vector<double>
+
     // every 5 runs we clear same chromosomes
     if ((generationCount % 5) == 0)
     {
@@ -371,4 +375,26 @@ void GeneticAlgorithm::printTotalFitnessHistory()
     {
         std::cout << "Generation " << (i + 1) << ": " << totalFitnessHistory[i] << std::endl;
     }
+}
+
+void GeneticAlgorithm::printTotalBestFitHistory()
+{
+    std::cout << "Total Best Fit History: ";
+    for (const auto &val : totalBestFitHistory)
+    {
+        std::cout << val << " ";
+    }
+    std::cout << std::endl;
+}
+
+void GeneticAlgorithm::printProgress()
+{
+    std::cout << "=== Progress ===" << std::endl;
+    // printTotalFitnessHistory();
+    // printTotalBestFitHistory();
+    for (size_t i = 0; i < totalFitnessHistory.size(); ++i)
+    {
+        std::cout << "Generation " << (i + 1) << ": Total Generation Fitness =>" << totalFitnessHistory[i] << " Best fit individual =>" << totalBestFitHistory[i] << std::endl;
+    }
+    std::cout << "================" << std::endl;
 }

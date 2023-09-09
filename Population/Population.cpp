@@ -136,6 +136,21 @@ double Population::getTotalFitness()
     return totalFitness;
 }
 
+double Population::getBestFitness()
+{
+    vector<Chromosome> bestChromosomes = getBestNChromosomes(1);
+    if (!bestChromosomes.empty())
+    {
+        return bestChromosomes[0].evaluateFitness();
+    }
+    else
+    {
+        // Handle the case where no chromosomes are present
+        // For example, you can return a default value or throw an exception
+        return -1.0;
+    }
+}
+
 vector<Chromosome> Population::getBestNDiverseChromosomes(int n)
 {
     vector<Chromosome> sortedChromosomes = chromosomes;
@@ -227,7 +242,7 @@ void Population::populateClearedChromosomes(int numberOfChromosomesToAdd)
     }
 }
 
-bool Population::similarChromo(double threshold = 0.33)
+bool Population::similarChromo(double threshold)
 {
     int count = 0;              // To keep track of the number of similar chromosomes
     int n = chromosomes.size(); // Total number of chromosomes in the population

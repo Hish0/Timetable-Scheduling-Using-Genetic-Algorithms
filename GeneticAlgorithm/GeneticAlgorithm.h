@@ -15,6 +15,7 @@ private:
     double crossoverRate;
     int eliteCount;
     std::vector<double> totalFitnessHistory;
+    std::vector<double> totalBestFitHistory;
 
 public:
     GeneticAlgorithm(Population &initialPopulation, double mutationRate, double crossoverRate, int eliteCount);
@@ -30,6 +31,8 @@ public:
     void run(int numberOfGenerations);
     Chromosome getBestChromosome();
     void printTotalFitnessHistory();
+    void printTotalBestFitHistory();
+    void printProgress();
 };
 
 #endif // GENETICALGORITHM_H
