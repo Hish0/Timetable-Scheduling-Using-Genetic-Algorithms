@@ -171,6 +171,34 @@ double Chromosome::evaluateFitness()
         }
     }
     ////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////constraint no6///////////////////////////////////
+    // Initialize a map to hold the count of modules scheduled for each day for each module
+    map<pair<int, int>, int> moduleDayCount;
+
+    const int numberOfTimeSlotsPerDay = 4; // Adjust this based on your specific timetable
+
+    for (const ScheduledModule &gene : genes)
+    {
+        int moduleID = gene.getModule().getModuleID(); // Assuming getModuleID() returns an integer ID for the module
+        int timeSlotID = gene.getTimeSlot().getTimeSlotID();
+        int day = (timeSlotID - 1) / numberOfTimeSlotsPerDay;
+
+        // Create a pair of moduleID and day
+        pair<int, int> moduleDayPair = make_pair(moduleID, day);
+
+        // Increment the count for this module and day
+        moduleDayCount[moduleDayPair]++;
+    }
+
+    // Check for violations of the sixth constraint
+    for (const auto &entry : moduleDayCount)
+    {
+        if (entry.second > 1)
+        {
+            fitness += (entry.second - 1) * 10; // Adding 10 for each extra module on the same day
+        }
+    }
+    ////////////////////////////////////////////////////////////////////////////////////
 
     // ... (evaluate other constraints here)
 

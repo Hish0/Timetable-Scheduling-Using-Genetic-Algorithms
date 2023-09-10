@@ -24,10 +24,10 @@ int main()
 
     // Define GA parameters
     int POPULATION_SIZE = 100;
-    double MUTATION_RATE = 0.1;
+    double MUTATION_RATE = 0.05;
     double CROSSOVER_RATE = 0.3;
     int ELITE_COUNT = 5;
-    int NUM_GENERATIONS = 100;
+    int NUM_GENERATIONS = 150;
 
     //  Step 2: Initialize the First Population
     Population initialPop;
