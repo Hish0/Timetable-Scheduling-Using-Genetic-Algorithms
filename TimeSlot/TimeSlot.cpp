@@ -55,3 +55,8 @@ bool TimeSlot::isEmpty() const
 {
     return this->getDay().empty() && (this->getTimeSlotID() == 0);
 }
+
+bool TimeSlotComparator::operator()(const TimeSlot &a, const TimeSlot &b) const
+{
+    return a.getTimeSlotID() < b.getTimeSlotID();
+}

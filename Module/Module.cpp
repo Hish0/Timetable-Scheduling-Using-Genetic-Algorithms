@@ -1,11 +1,14 @@
 #include "Module.h"
 
 // Default Constructor
-Module::Module() : moduleID(0), lecturer(), name("Unknown"), level(0), numberOfStudentsEnrolled(0), isLab(false) {}
+Module::Module() : moduleID(0), lecturer(), name("Unknown"), level(0),
+                   numberOfStudentsEnrolled(0), isLab(false), numberOfTimeSlots(0) {} // Default to 2
 
 // Parameterized Constructor
-Module::Module(int modID, const Lecturer &lect, const string &modName, int modLevel, int students, bool lab)
-    : moduleID(modID), lecturer(lect), name(modName), level(modLevel), numberOfStudentsEnrolled(students), isLab(lab) {}
+Module::Module(int modID, const Lecturer &lect, const string &modName, int modLevel,
+               int students, bool lab, int slots)
+    : moduleID(modID), lecturer(lect), name(modName), level(modLevel),
+      numberOfStudentsEnrolled(students), isLab(lab), numberOfTimeSlots(slots) {}
 
 bool Module::operator==(const Module &other) const
 {
@@ -48,6 +51,11 @@ bool Module::getIsLab() const
     return isLab;
 }
 
+int Module::getNumberOfTimeSlots() const
+{
+    return numberOfTimeSlots;
+}
+
 // Setter methods
 void Module::setModuleID(int id)
 {
@@ -77,6 +85,11 @@ void Module::setNumberOfStudentsEnrolled(int students)
 void Module::setIsLab(bool lab)
 {
     isLab = lab;
+}
+
+void Module::setNumberOfTimeSlots(int slots)
+{
+    numberOfTimeSlots = slots;
 }
 
 void Module::printInfo() const

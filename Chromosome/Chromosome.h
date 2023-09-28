@@ -27,6 +27,7 @@ public:
     bool operator==(const Chromosome &other) const;
     double evaluateFitness();
     bool isDiverse(const Chromosome &other) const;
+    int getModuleHours(int moduleID) const;
 };
 
 #endif // CHROMOSOME_H

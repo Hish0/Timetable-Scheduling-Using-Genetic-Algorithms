@@ -167,35 +167,34 @@ double Chromosome::evaluateFitness()
         bool venueIsLab = gene.getVenue().getIsLab();
         if (moduleIsLab != venueIsLab)
         {
-            fitness += 15; // Flat penalty for mismatched types
+            fitness += 10; // Flat penalty for mismatched types
         }
     }
     ////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////constraint no6///////////////////////////////////
     // Initialize a map to hold the count of modules scheduled for each day for each module
     map<pair<int, int>, int> moduleDayCount;
-
-    const int numberOfTimeSlotsPerDay = 4; // Adjust this based on your specific timetable
+    const int numberOfTimeSlotsPerDay = 8; // Adjust this based on your specific timetable
 
     for (const ScheduledModule &gene : genes)
     {
-        int moduleID = gene.getModule().getModuleID(); // Assuming getModuleID() returns an integer ID for the module
+        int moduleID = gene.getModule().getModuleID();
         int timeSlotID = gene.getTimeSlot().getTimeSlotID();
         int day = (timeSlotID - 1) / numberOfTimeSlotsPerDay;
 
-        // Create a pair of moduleID and day
         pair<int, int> moduleDayPair = make_pair(moduleID, day);
-
-        // Increment the count for this module and day
         moduleDayCount[moduleDayPair]++;
     }
 
-    // Check for violations of the sixth constraint
+    // Check for violations of the adjusted sixth constraint
     for (const auto &entry : moduleDayCount)
     {
-        if (entry.second > 1)
+        int moduleID = entry.first.first;
+        int allowedSlotsPerDay = (getModuleHours(moduleID) > 2) ? 2 : 1; // Assuming getModuleHours returns the number of hours for a module
+
+        if (entry.second > allowedSlotsPerDay)
         {
-            fitness += (entry.second - 1) * 10; // Adding 10 for each extra module on the same day
+            fitness += (entry.second - allowedSlotsPerDay) * 10; // Adding 10 for each extra slot on the same day
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////
@@ -220,4 +219,18 @@ bool Chromosome::isDiverse(const Chromosome &other) const
     }
 
     return (differingGenes >= diversityThreshold);
+}
+
+int Chromosome::getModuleHours(int moduleID) const
+{
+    for (const ScheduledModule &gene : genes)
+    {
+        if (gene.getModule().getModuleID() == moduleID)
+        {
+            return gene.getModule().getNumberOfTimeSlots();
+        }
+    }
+    cout << "error in number of hours";
+    exit(1);
+    return 0; // Return 0 if the module ID was not found (you might want to handle this case differently)
 }

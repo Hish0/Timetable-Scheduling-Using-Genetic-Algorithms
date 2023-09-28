@@ -36,4 +36,8 @@ public:
     bool isEmpty() const;
 };
 
+struct TimeSlotComparator
+{
+    bool operator()(const TimeSlot &a, const TimeSlot &b) const;
+};
 #endif // TIMESLOT_H
