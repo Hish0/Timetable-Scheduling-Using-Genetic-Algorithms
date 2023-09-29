@@ -207,7 +207,7 @@ double Chromosome::evaluateFitness()
 bool Chromosome::isDiverse(const Chromosome &other) const
 {
     int differingGenes = 0;
-    const int diversityThreshold = 5; // You can adjust this value
+    const int diversityThreshold = 3; // You can adjust this value
 
     // Assuming both chromosomes have the same number of genes
     for (size_t i = 0; i < genes.size(); ++i)

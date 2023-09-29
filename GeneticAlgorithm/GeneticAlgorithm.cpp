@@ -47,7 +47,7 @@ Chromosome GeneticAlgorithm::crossover(const Chromosome &parent1, const Chromoso
 
     // Identify valid crossover points (every 2 genes, for example)
     vector<int> crossoverPoints;
-    for (int i = 0; i < geneLength; i++)
+    for (int i = 0; i <= geneLength; i += 2)
     {
         crossoverPoints.push_back(i);
     }
@@ -323,16 +323,16 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
         }
         cout << "----------> After crossover child size chromosome: " << child.getGenes().size() << endl;
 
-        if (randomValueForMutation <= mutationRate)
-        {
-            cout << "Before mutation, population size: " << population.getChromosomes().size() << endl;
-            cout << "Before mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
-            cout << "Before mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
-            mutate(child);
-            cout << "After mutation, population size: " << population.getChromosomes().size() << endl;
-            cout << "After mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
-            cout << "After mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
-        }
+        // if (randomValueForMutation <= mutationRate)
+        // {
+        //     cout << "Before mutation, population size: " << population.getChromosomes().size() << endl;
+        //     cout << "Before mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+        //     cout << "Before mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+        //     mutate(child);
+        //     cout << "After mutation, population size: " << population.getChromosomes().size() << endl;
+        //     cout << "After mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+        //     cout << "After mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+        // }
         cout << "----------> offspring population: " << offspring.getChromosomes().size() << endl;
         cout << "----------> child size chromosome: " << child.getGenes().size() << endl;
 

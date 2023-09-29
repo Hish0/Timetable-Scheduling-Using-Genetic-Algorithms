@@ -33,6 +33,7 @@ public:
     void populateClearedChromosomes(int numberOfChromosomesToAdd);
 
     bool similarChromo(double threshold = 0.33);
+    bool isLastSlotOfDay(const TimeSlot &timeSlot);
 };
 
 #endif // POPULATION_H

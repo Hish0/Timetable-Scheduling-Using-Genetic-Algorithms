@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstdlib> // for rand and srand
 #include <ctime>   // for time
-
+#include <chrono>
 #include "GeneticAlgorithm/GeneticAlgorithm.h"
 
 using namespace std;
@@ -13,6 +13,9 @@ vector<Chromosome> initialPopulation;
 
 int main()
 {
+    // Step alpha: Capture the starting time
+    auto start = std::chrono::high_resolution_clock::now();
+
     // Step 0: Seed the random number generator
     srand(static_cast<unsigned int>(time(nullptr)));
 
@@ -24,8 +27,8 @@ int main()
 
     // Define GA parameters
     int POPULATION_SIZE = 150;
-    double MUTATION_RATE = 0.01;
-    double CROSSOVER_RATE = 0.75;
+    double MUTATION_RATE = 0.0;
+    double CROSSOVER_RATE = 0.78;
     int ELITE_COUNT = 3;
     int NUM_GENERATIONS = 1000;
 
@@ -59,6 +62,18 @@ int main()
     cout << "Best Chromosome Fitness: " << fitness << endl;
 
     GA.printProgress();
+
+    // Step 6: Capture the ending time
+    auto end = std::chrono::high_resolution_clock::now();
+
+    // Compute the total duration in seconds
+    auto totalSeconds = std::chrono::duration_cast<std::chrono::seconds>(end - start);
+
+    // Extract minutes and seconds
+    auto minutes = totalSeconds.count() / 60;
+    auto seconds = totalSeconds.count() % 60;
+
+    std::cout << "Time taken to finish is: " << minutes << " minutes and " << seconds << " seconds" << std::endl;
 
     return 0;
 }

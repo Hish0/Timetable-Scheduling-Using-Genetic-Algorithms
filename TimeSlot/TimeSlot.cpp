@@ -1,4 +1,5 @@
 #include "TimeSlot.h"
+#include "../GlobalVariables/GlobalVariables.h"
 
 // Default Constructor
 TimeSlot::TimeSlot() : timeSlotID(0), day("Unknown"), time("00:00") {}
@@ -57,6 +58,24 @@ bool TimeSlot::isEmpty() const
 }
 
 bool TimeSlotComparator::operator()(const TimeSlot &a, const TimeSlot &b) const
+
 {
     return a.getTimeSlotID() < b.getTimeSlotID();
+}
+
+TimeSlot TimeSlot::getNextTimeSlot() const
+{
+    // Find the current time slot in the global vector
+    auto it = std::find(allTimeSlots.begin(), allTimeSlots.end(), *this);
+
+    // If the current time slot is found and it's not the last in the vector
+    if (it != allTimeSlots.end() && (it + 1) != allTimeSlots.end())
+    {
+        // Return the next time slot in the vector
+        return *(it + 1);
+    }
+
+    // If the current time slot is not found or it's the last in the vector
+    // Return the current time slot
+    return *this;
 }

@@ -34,6 +34,7 @@ public:
 
     void printInfo() const;
     bool isEmpty() const;
+    TimeSlot getNextTimeSlot() const;
 };
 
 struct TimeSlotComparator

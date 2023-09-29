@@ -42,83 +42,25 @@ void Population::setChromosomes(const vector<Chromosome> &newChromosomes)
 Chromosome Population::generateRandomChromosome()
 {
     Chromosome chromosome;
-    int counter = 0;
 
     for (const auto &module : allModules)
     {
-        int moduleSlots = module.getNumberOfTimeSlots(); // Get the number of slots for this module
-
-        // Set to keep track of already chosen time slots for this module
+        int moduleSlots = module.getNumberOfTimeSlots();
         std::set<TimeSlot, TimeSlotComparator> chosenTimeSlots;
 
-        for (int j = 0; j < moduleSlots; j++)
+        while (moduleSlots > 0)
         {
-            std::cout << "Processing module: " << module.getName()
-                      << " with " << module.getNumberOfTimeSlots() << " slots." << std::endl;
+            TimeSlot timeSlot;
 
-            // Randomly select a time slot for this module
-            TimeSlot timeSlot = getRandomTimeSlot();
-
-            // Ensure that this time slot is unique for this module
-            while (chosenTimeSlots.find(timeSlot) != chosenTimeSlots.end())
+            if (moduleSlots == 1)
             {
-                // If time slot is already chosen, get another
                 timeSlot = getRandomTimeSlot();
-            }
-
-            // Add the chosen time slot to our set
-            chosenTimeSlots.insert(timeSlot);
-
-            // Randomly select a venue for this module
-            Venue venue = getRandomVenue();
-
-            // Create a ScheduledModule object
-            ScheduledModule scheduledModule(module, timeSlot, venue, false, false, true);
-
-            // Add this ScheduledModule object to the chromosome
-            chromosome.addGene(scheduledModule);
-        }
-        counter++;
-    }
-    if (chromosome.getGenes().size() != 80)
-    {
-        std::cout << "error in size of chromosome population error in repopulate " << std::endl;
-        exit(1);
-    }
-    return chromosome;
-}
-
-void Population::initializeFirstPopulation(int POPULATION_SIZE)
-{
-    for (int i = 0; i < POPULATION_SIZE; ++i)
-    {
-        Chromosome chromosome;
-        int counter = 0;
-
-        for (const auto &module : allModules)
-        {
-            int moduleSlots = module.getNumberOfTimeSlots(); // Get the number of slots for this module
-
-            // Set to keep track of already chosen time slots for this module
-            std::set<TimeSlot, TimeSlotComparator> chosenTimeSlots;
-
-            for (int j = 0; j < moduleSlots; j++)
-            {
-                std::cout << "Processing module: " << module.getName()
-                          << " with " << module.getNumberOfTimeSlots() << " slots." << std::endl;
-
-                // Randomly select a time slot for this module
-                TimeSlot timeSlot = getRandomTimeSlot();
-
-                // Ensure that this time slot is unique for this module
                 while (chosenTimeSlots.find(timeSlot) != chosenTimeSlots.end())
                 {
-                    // If time slot is already chosen, get another
                     timeSlot = getRandomTimeSlot();
                 }
-
-                // Add the chosen time slot to our set
                 chosenTimeSlots.insert(timeSlot);
+                moduleSlots--;
 
                 // Randomly select a venue for this module
                 Venue venue = getRandomVenue();
@@ -129,15 +71,116 @@ void Population::initializeFirstPopulation(int POPULATION_SIZE)
                 // Add this ScheduledModule object to the chromosome
                 chromosome.addGene(scheduledModule);
             }
-            counter++;
+            else
+            {
+                timeSlot = getRandomTimeSlot();
+                while (chosenTimeSlots.find(timeSlot) != chosenTimeSlots.end() || isLastSlotOfDay(timeSlot))
+                {
+                    timeSlot = getRandomTimeSlot();
+                }
+                chosenTimeSlots.insert(timeSlot);
+                std::cout << "the first timeslot id is " << timeSlot.getTimeSlotID() << std::endl;
+                TimeSlot nextSlot = timeSlot.getNextTimeSlot();
+                std::cout << "the second timeslot id is " << nextSlot.getTimeSlotID() << std::endl;
+                chosenTimeSlots.insert(nextSlot);
+                moduleSlots -= 2;
+
+                // Randomly select a venue for this module
+                Venue venue = getRandomVenue();
+
+                // Create the first slot ScheduledModule object
+                ScheduledModule scheduledModule1(module, timeSlot, venue, false, false, true);
+                // Create the second slot ScheduledModule object
+                ScheduledModule scheduledModule2(module, nextSlot, venue, false, false, true);
+
+                // Add these ScheduledModule object to the chromosome
+                chromosome.addGene(scheduledModule1);
+                // Add these ScheduledModule object to the chromosome
+                chromosome.addGene(scheduledModule2);
+            }
         }
+    }
+
+    if (chromosome.getGenes().size() != 80)
+    {
+        std::cout << "size of the chromosome is  " << chromosome.getGenes().size() << std::endl;
+        std::cout << "error in size of chromosome &%#&#&%#&#%&#%&%population error " << std::endl;
+        exit(1);
+    }
+    return chromosome;
+}
+
+void Population::initializeFirstPopulation(int POPULATION_SIZE)
+{
+    for (int i = 0; i < POPULATION_SIZE; ++i)
+    {
+        Chromosome chromosome;
+
+        for (const auto &module : allModules)
+        {
+            int moduleSlots = module.getNumberOfTimeSlots();
+            std::set<TimeSlot, TimeSlotComparator> chosenTimeSlots;
+
+            while (moduleSlots > 0)
+            {
+                TimeSlot timeSlot;
+
+                if (moduleSlots == 1)
+                {
+                    timeSlot = getRandomTimeSlot();
+                    while (chosenTimeSlots.find(timeSlot) != chosenTimeSlots.end())
+                    {
+                        timeSlot = getRandomTimeSlot();
+                    }
+                    chosenTimeSlots.insert(timeSlot);
+                    moduleSlots--;
+
+                    // Randomly select a venue for this module
+                    Venue venue = getRandomVenue();
+
+                    // Create a ScheduledModule object
+                    ScheduledModule scheduledModule(module, timeSlot, venue, false, false, true);
+
+                    // Add this ScheduledModule object to the chromosome
+                    chromosome.addGene(scheduledModule);
+                }
+                else
+                {
+                    timeSlot = getRandomTimeSlot();
+                    while (chosenTimeSlots.find(timeSlot) != chosenTimeSlots.end() || isLastSlotOfDay(timeSlot))
+                    {
+                        timeSlot = getRandomTimeSlot();
+                    }
+                    chosenTimeSlots.insert(timeSlot);
+                    std::cout << "the first timeslot id is " << timeSlot.getTimeSlotID() << std::endl;
+                    TimeSlot nextSlot = timeSlot.getNextTimeSlot();
+                    std::cout << "the second timeslot id is " << nextSlot.getTimeSlotID() << std::endl;
+                    chosenTimeSlots.insert(nextSlot);
+                    moduleSlots -= 2;
+
+                    // Randomly select a venue for this module
+                    Venue venue = getRandomVenue();
+
+                    // Create the first slot ScheduledModule object
+                    ScheduledModule scheduledModule1(module, timeSlot, venue, false, false, true);
+                    // Create the second slot ScheduledModule object
+                    ScheduledModule scheduledModule2(module, nextSlot, venue, false, false, true);
+
+                    // Add these ScheduledModule object to the chromosome
+                    chromosome.addGene(scheduledModule1);
+                    // Add these ScheduledModule object to the chromosome
+                    chromosome.addGene(scheduledModule2);
+                }
+            }
+        }
+
         // Add this chromosome to the initial population
         addChromosome(chromosome);
-        std::cout << "Chromosome size: " << chromosome.getGenes().size() << std::endl;
 
         if (chromosome.getGenes().size() != 80)
         {
-            std::cout << "error in size of chromosome population error " << std::endl;
+            std::cout << "size of the chromosome is  " << chromosome.getGenes().size() << std::endl;
+            std::cout << "error in size of chromosome &%#&#&%#&#%&#%&%population error " << std::endl;
             exit(1);
         }
     }
@@ -307,4 +350,10 @@ bool Population::similarChromo(double threshold)
     double percentage = (double)count / (double)(n * (n - 1) / 2);
 
     return percentage >= threshold;
+}
+
+bool Population::isLastSlotOfDay(const TimeSlot &timeSlot)
+{
+    int slotId = timeSlot.getTimeSlotID();
+    return slotId % 8 == 0;
 }
