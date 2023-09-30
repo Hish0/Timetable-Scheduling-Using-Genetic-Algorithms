@@ -47,9 +47,39 @@ Chromosome GeneticAlgorithm::crossover(const Chromosome &parent1, const Chromoso
 
     // Identify valid crossover points (every 2 genes, for example)
     vector<int> crossoverPoints;
-    for (int i = 0; i <= geneLength; i += 2)
+    int currentPoint = 0;
+
+    // Always start with 0
+    crossoverPoints.push_back(currentPoint);
+    for (const Module &module : allModules)
     {
-        crossoverPoints.push_back(i);
+        int numSlots = module.getNumberOfTimeSlots();
+
+        // If the number of slots is even, we add points in increments of 2
+        if (numSlots % 2 == 0)
+        {
+            for (int i = 2; i <= numSlots; i += 2)
+            {
+                crossoverPoints.push_back(currentPoint + i);
+            }
+        }
+        // If the number of slots is odd, we add points in increments of 2, but also add the last slot
+        else
+        {
+            for (int i = 2; i < numSlots; i += 2)
+            {
+                crossoverPoints.push_back(currentPoint + i);
+            }
+            crossoverPoints.push_back(currentPoint + numSlots);
+        }
+
+        // Update the current point for the next module
+        currentPoint += numSlots;
+    }
+
+    for (int i = 0; i < crossoverPoints.size(); i++)
+    {
+        cout << "the crossoverpoints of the index  " << i << " is " << crossoverPoints[i] << endl;
     }
 
     // Randomly select two crossover points
@@ -87,7 +117,7 @@ Chromosome GeneticAlgorithm::crossover(const Chromosome &parent1, const Chromoso
     // Choose one child for the next generation based on fitness (you could also return both)
     if (child1.evaluateFitness() < child2.evaluateFitness())
     {
-        if (child1.getGenes().size() != 80)
+        if (child1.getGenes().size() != 153)
         {
             cout << "the child 1 ERROR" << endl;
             cout << "##########child size : " << child1.getGenes().size() << endl;
@@ -101,7 +131,7 @@ Chromosome GeneticAlgorithm::crossover(const Chromosome &parent1, const Chromoso
     }
     else
     {
-        if (child2.getGenes().size() != 80)
+        if (child2.getGenes().size() != 153)
         {
             cout << "the child 2 ERROR" << endl;
             cout << "##########child size : " << child2.getGenes().size() << endl;
@@ -276,8 +306,19 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
     cout << "After Selection, Size of parent population: " << parents.getChromosomes().size() << endl;
     cout << "After Selection, Size of population: " << population.getChromosomes().size() << endl;
 
+    // // every 5 runs we clear same chromosomes
+    // if (parents.similarChromo())
+    // {
+    //     int oldPopulationCount = parents.getChromosomes().size();
+    //     cout << "Before clearing the population, population size: " << parents.getChromosomes().size() << endl;
+    //     parents.clearPopulation();
+    //     int newPopulationCount = parents.getChromosomes().size();
+    //     cout << "After clearing the population, population size: " << parents.getChromosomes().size() << endl;
+    //     parents.populateClearedChromosomes(oldPopulationCount - newPopulationCount);
+    //     cout << "After populating the population, population size: " << parents.getChromosomes().size() << endl;
+    // }
     // every 5 runs we clear same chromosomes
-    if (parents.similarChromo())
+    if ((generationCount % 10) == 0)
     {
         int oldPopulationCount = parents.getChromosomes().size();
         cout << "Before clearing the population, population size: " << parents.getChromosomes().size() << endl;
@@ -347,7 +388,7 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
             counter++;
         }
 
-        if (child.getGenes().size() != 80)
+        if (child.getGenes().size() != 153)
         {
             cout << "the child ERROR" << endl;
             cout << "^^^^^^^^^^^^child size : " << child.getGenes().size() << endl;

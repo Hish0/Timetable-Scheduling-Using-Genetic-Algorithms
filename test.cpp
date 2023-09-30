@@ -26,11 +26,11 @@ int main()
     initializeModules();   // Assuming this function initializes all possible modules
 
     // Define GA parameters
-    int POPULATION_SIZE = 150;
+    int POPULATION_SIZE = 200;
     double MUTATION_RATE = 0.0;
-    double CROSSOVER_RATE = 0.78;
-    int ELITE_COUNT = 3;
-    int NUM_GENERATIONS = 1000;
+    double CROSSOVER_RATE = 0.7;
+    int ELITE_COUNT = 4;
+    int NUM_GENERATIONS = 10000;
 
     //  Step 2: Initialize the First Population
     Population initialPop;
