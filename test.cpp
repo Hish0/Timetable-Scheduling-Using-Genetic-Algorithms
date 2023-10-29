@@ -15,6 +15,7 @@ int main()
 {
     // Step alpha: Capture the starting time
     auto start = std::chrono::high_resolution_clock::now();
+    int x;
 
     // Step 0: Seed the random number generator
     srand(static_cast<unsigned int>(time(nullptr)));
