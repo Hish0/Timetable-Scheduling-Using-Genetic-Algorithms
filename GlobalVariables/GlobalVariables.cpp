@@ -56,10 +56,12 @@ void initializeTimeSlots()
             allTimeSlots.push_back(TimeSlot(id++, day, time));
         }
     }
-    for (int i = 0; i < allTimeSlots.size(); i++)
-    {
-        allTimeSlots[i].printInfo();
-    }
+
+    // printing info of all timeslots
+    // for (int i = 0; i < allTimeSlots.size(); i++)
+    // {
+    //     allTimeSlots[i].printInfo();
+    // }
 }
 
 // Initialize modules
@@ -127,4 +129,38 @@ void initializeVenues()
     allVenues.push_back(Venue(9, "HALL 73", 200, false));
     allVenues.push_back(Venue(10, "HALL 74", 200, false));
     // ... add more venues as needed
+}
+
+std::vector<int> crossoverPoints;
+
+void initializeCrossoverPoints()
+{
+    int currentPoint = 0;
+    crossoverPoints.push_back(currentPoint);
+
+    for (const Module &module : allModules)
+    {
+        int numSlots = module.getNumberOfTimeSlots();
+
+        // If the number of slots is even, we add points in increments of 2
+        if (numSlots % 2 == 0)
+        {
+            for (int i = 2; i <= numSlots; i += 2)
+            {
+                crossoverPoints.push_back(currentPoint + i);
+            }
+        }
+        // If the number of slots is odd, we add points in increments of 2, but also add the last slot
+        else
+        {
+            for (int i = 2; i < numSlots; i += 2)
+            {
+                crossoverPoints.push_back(currentPoint + i);
+            }
+            crossoverPoints.push_back(currentPoint + numSlots);
+        }
+
+        // Update the current point for the next module
+        currentPoint += numSlots;
+    }
 }

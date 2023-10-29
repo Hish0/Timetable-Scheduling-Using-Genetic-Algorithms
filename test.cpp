@@ -20,10 +20,11 @@ int main()
     srand(static_cast<unsigned int>(time(nullptr)));
 
     // Step 1: Initialize Required Data
-    initializeTimeSlots(); // Assuming this function initializes all possible time slots
-    initializeVenues();    // Assuming this function initializes all possible venues
-    initializeLecturers(); // Assuming this function initializes all possible lecturers
-    initializeModules();   // Assuming this function initializes all possible modules
+    initializeTimeSlots();       // Assuming this function initializes all possible time slots
+    initializeVenues();          // Assuming this function initializes all possible venues
+    initializeLecturers();       // Assuming this function initializes all possible lecturers
+    initializeModules();         // Assuming this function initializes all possible modules
+    initializeCrossoverPoints(); // Assuming this function initializes all possible CrossoverPoints
 
     // Define GA parameters
     int POPULATION_SIZE = 200;

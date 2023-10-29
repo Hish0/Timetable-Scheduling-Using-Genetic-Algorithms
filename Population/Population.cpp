@@ -152,9 +152,9 @@ void Population::initializeFirstPopulation(int POPULATION_SIZE)
                         timeSlot = getRandomTimeSlot();
                     }
                     chosenTimeSlots.insert(timeSlot);
-                    std::cout << "the first timeslot id is " << timeSlot.getTimeSlotID() << std::endl;
+                    // std::cout << "the first timeslot id is " << timeSlot.getTimeSlotID() << std::endl;
                     TimeSlot nextSlot = timeSlot.getNextTimeSlot();
-                    std::cout << "the second timeslot id is " << nextSlot.getTimeSlotID() << std::endl;
+                    // std::cout << "the second timeslot id is " << nextSlot.getTimeSlotID() << std::endl;
                     chosenTimeSlots.insert(nextSlot);
                     moduleSlots -= 2;
 

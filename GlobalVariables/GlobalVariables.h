@@ -10,8 +10,10 @@ extern std::vector<Lecturer> allLecturers;
 extern std::vector<TimeSlot> allTimeSlots;
 extern std::vector<Module> allModules;
 extern std::vector<Venue> allVenues;
+extern std::vector<int> crossoverPoints;
 
 void initializeLecturers();
 void initializeTimeSlots();
 void initializeModules();
 void initializeVenues();
+void initializeCrossoverPoints();

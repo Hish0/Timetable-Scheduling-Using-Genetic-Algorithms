@@ -36,7 +36,7 @@ Population GeneticAlgorithm::selectParents()
         selectedParents.push_back(best);
         // cout << "After adding the best individual, selectedParents size: " << selectedParents.size() << endl;
     }
-    cout << "Before returning the selectedParents, selectedParents size: " << selectedParents.size() << endl;
+    // cout << "Before returning the selectedParents, selectedParents size: " << selectedParents.size() << endl;
     return Population(selectedParents);
 }
 
@@ -45,42 +45,43 @@ Chromosome GeneticAlgorithm::crossover(const Chromosome &parent1, const Chromoso
     Chromosome child1, child2;
     int geneLength = parent1.getGenes().size();
 
-    // Identify valid crossover points (every 2 genes, for example)
-    vector<int> crossoverPoints;
-    int currentPoint = 0;
+    // // Identify valid crossover points (every 2 genes, for example)
+    // vector<int> crossoverPoints;
+    // int currentPoint = 0;
 
-    // Always start with 0
-    crossoverPoints.push_back(currentPoint);
-    for (const Module &module : allModules)
-    {
-        int numSlots = module.getNumberOfTimeSlots();
+    // // Always start with 0
+    // crossoverPoints.push_back(currentPoint);
+    // for (const Module &module : allModules)
+    // {
+    //     int numSlots = module.getNumberOfTimeSlots();
 
-        // If the number of slots is even, we add points in increments of 2
-        if (numSlots % 2 == 0)
-        {
-            for (int i = 2; i <= numSlots; i += 2)
-            {
-                crossoverPoints.push_back(currentPoint + i);
-            }
-        }
-        // If the number of slots is odd, we add points in increments of 2, but also add the last slot
-        else
-        {
-            for (int i = 2; i < numSlots; i += 2)
-            {
-                crossoverPoints.push_back(currentPoint + i);
-            }
-            crossoverPoints.push_back(currentPoint + numSlots);
-        }
+    //     // If the number of slots is even, we add points in increments of 2
+    //     if (numSlots % 2 == 0)
+    //     {
+    //         for (int i = 2; i <= numSlots; i += 2)
+    //         {
+    //             crossoverPoints.push_back(currentPoint + i);
+    //         }
+    //     }
+    //     // If the number of slots is odd, we add points in increments of 2, but also add the last slot
+    //     else
+    //     {
+    //         for (int i = 2; i < numSlots; i += 2)
+    //         {
+    //             crossoverPoints.push_back(currentPoint + i);
+    //         }
+    //         crossoverPoints.push_back(currentPoint + numSlots);
+    //     }
 
-        // Update the current point for the next module
-        currentPoint += numSlots;
-    }
+    //     // Update the current point for the next module
+    //     currentPoint += numSlots;
+    // }
 
-    for (int i = 0; i < crossoverPoints.size(); i++)
-    {
-        cout << "the crossoverpoints of the index  " << i << " is " << crossoverPoints[i] << endl;
-    }
+    // this is for knowing what are the right indexes that is being stored in crossoverPoints vector
+    // for (int i = 0; i < crossoverPoints.size(); i++)
+    // {
+    //     cout << "the crossoverpoints of the index  " << i << " is " << crossoverPoints[i] << endl;
+    // }
 
     // Randomly select two crossover points
     int crossoverIndex1 = crossoverPoints[rand() % crossoverPoints.size()];
@@ -97,7 +98,7 @@ Chromosome GeneticAlgorithm::crossover(const Chromosome &parent1, const Chromoso
         swap(crossoverIndex1, crossoverIndex2);
     }
 
-    cout << "the idices are : " << crossoverIndex1 << " and " << crossoverIndex2 << endl;
+    // cout << "the idices are : " << crossoverIndex1 << " and " << crossoverIndex2 << endl;
 
     // Perform crossover to create two children
     for (int i = 0; i < geneLength; ++i)
@@ -242,8 +243,8 @@ void GeneticAlgorithm::replacePopulation(const Population &offspringPopulation)
     vector<Chromosome> newOffspring = offspringPopulation.getChromosomes();
     vector<Chromosome> oldElites = this->population.getBestNChromosomes(eliteCount);
 
-    cout << "in--> Selection befor removing elites, Size of population: " << population.getChromosomes().size() << endl;
-    cout << "in--> Selection befor removing elites, Size of oldElites: " << oldElites.size() << endl;
+    // cout << "in--> Selection befor removing elites, Size of population: " << population.getChromosomes().size() << endl;
+    // cout << "in--> Selection befor removing elites, Size of oldElites: " << oldElites.size() << endl;
 
     // Remove elites from the old population
     for (const Chromosome &elite : oldElites)
@@ -251,17 +252,17 @@ void GeneticAlgorithm::replacePopulation(const Population &offspringPopulation)
         this->population.removeChromosome(elite);
     }
 
-    cout << "in--> Selection after removing elites, Size of population: " << population.getChromosomes().size() << endl;
-    cout << "in--> Selection after removing elites, Size of oldElites: " << oldElites.size() << endl;
+    // cout << "in--> Selection after removing elites, Size of population: " << population.getChromosomes().size() << endl;
+    // cout << "in--> Selection after removing elites, Size of oldElites: " << oldElites.size() << endl;
 
-    cout << "in--> Selection after removing elites, Size of newOffspring####: " << newOffspring.size() << endl;
-    //  Get the number of chromosomes to be replaced in the old population
+    // cout << "in--> Selection after removing elites, Size of newOffspring####: " << newOffspring.size() << endl;
+    //   Get the number of chromosomes to be replaced in the old population
     int numToReplace = newOffspring.size();
 
     // Get the worst-performing individuals to remove them
     vector<Chromosome> oldWorst = this->population.getWorstNChromosomes(numToReplace);
 
-    cout << "in--> Selection befor removing worst-performing, Size of population: " << population.getChromosomes().size() << endl;
+    // cout << "in--> Selection befor removing worst-performing, Size of population: " << population.getChromosomes().size() << endl;
 
     // Remove worst-performing individuals
     for (const Chromosome &worst : oldWorst)
@@ -269,18 +270,18 @@ void GeneticAlgorithm::replacePopulation(const Population &offspringPopulation)
         this->population.removeChromosome(worst);
     }
 
-    cout << "in--> Selection after removing worst-performing, Size of population: " << population.getChromosomes().size() << endl;
+    // cout << "in--> Selection after removing worst-performing, Size of population: " << population.getChromosomes().size() << endl;
 
-    cout << "in--> Selection before Add new offspring, Size of population: " << population.getChromosomes().size() << endl;
+    // cout << "in--> Selection before Add new offspring, Size of population: " << population.getChromosomes().size() << endl;
 
     // Add new offspring
     this->population.addChromosomes(newOffspring);
-    cout << "in--> Selection after Add new offspring, Size of population: " << population.getChromosomes().size() << endl;
-    cout << "in--> Selection before Add back the elites, Size of population: " << population.getChromosomes().size() << endl;
+    // cout << "in--> Selection after Add new offspring, Size of population: " << population.getChromosomes().size() << endl;
+    // cout << "in--> Selection before Add back the elites, Size of population: " << population.getChromosomes().size() << endl;
 
     // Add back the elites
     this->population.addChromosomes(oldElites);
-    cout << "in--> Selection after Add back the elites, Size of population: " << population.getChromosomes().size() << endl;
+    // cout << "in--> Selection after Add back the elites, Size of population: " << population.getChromosomes().size() << endl;
 }
 
 void GeneticAlgorithm::runOneGeneration(int generationCount)
@@ -293,18 +294,18 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
         // You may choose to return or throw an exception here
         return;
     }
-    cout << "Starting Elitism..." << endl;
-    //  1. Elitism
-    // vector<Chromosome> elites = population.getBestNChromosomes(eliteCount);
+    // cout << "Starting Elitism..." << endl;
+    //   1. Elitism
+    //  vector<Chromosome> elites = population.getBestNChromosomes(eliteCount);
     vector<Chromosome> elites = population.getBestNDiverseChromosomes(eliteCount);
 
-    cout << "Size of elites: " << elites.size() << endl;
+    // cout << "Size of elites: " << elites.size() << endl;
 
-    cout << "Completed Elitism. Starting Selection..." << endl;
-    //  2. Selection
+    // cout << "Completed Elitism. Starting Selection..." << endl;
+    //   2. Selection
     Population parents = selectParents();
-    cout << "After Selection, Size of parent population: " << parents.getChromosomes().size() << endl;
-    cout << "After Selection, Size of population: " << population.getChromosomes().size() << endl;
+    // cout << "After Selection, Size of parent population: " << parents.getChromosomes().size() << endl;
+    // cout << "After Selection, Size of population: " << population.getChromosomes().size() << endl;
 
     // // every 5 runs we clear same chromosomes
     // if (parents.similarChromo())
@@ -318,7 +319,7 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
     //     cout << "After populating the population, population size: " << parents.getChromosomes().size() << endl;
     // }
     // every 5 runs we clear same chromosomes
-    if ((generationCount % 10) == 0)
+    if ((generationCount % 15) == 0)
     {
         int oldPopulationCount = parents.getChromosomes().size();
         cout << "Before clearing the population, population size: " << parents.getChromosomes().size() << endl;
@@ -330,39 +331,39 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
     }
 
     parents.addChromosomes(elites); // Add elites
-    cout << "After adding the elites to the parents, Size of parent population: " << parents.getChromosomes().size() << endl;
-    cout << "After adding the elites to the parents, Size of population: " << population.getChromosomes().size() << endl;
+    // cout << "After adding the elites to the parents, Size of parent population: " << parents.getChromosomes().size() << endl;
+    // cout << "After adding the elites to the parents, Size of population: " << population.getChromosomes().size() << endl;
 
-    cout << "Completed Selection. Starting Crossover and Mutation..." << endl;
+    // cout << "Completed Selection. Starting Crossover and Mutation..." << endl;
 
     // 3.Crossover and Mutation
     Population offspring;
     for (int i = 0; i < parents.getChromosomes().size(); i += 2)
     {
-        cout << "----------> start <----------" << endl;
+        // cout << "----------> start <----------" << endl;
 
-        cout << "----------> before random values " << endl;
+        // cout << "----------> before random values " << endl;
 
         double randomValueForCrossover = static_cast<double>(rand()) / static_cast<double>(RAND_MAX);
         double randomValueForMutation = static_cast<double>(rand()) / static_cast<double>(RAND_MAX);
-        cout << "----------> after random values " << endl;
+        // cout << "----------> after random values " << endl;
 
         Chromosome child;
 
         if (randomValueForCrossover <= crossoverRate)
         {
-            cout << "----------> if true child size chromosome Before cross: " << child.getGenes().size() << endl;
+            // cout << "----------> if true child size chromosome Before cross: " << child.getGenes().size() << endl;
             child = crossover(parents.getChromosomes()[i], parents.getChromosomes()[i + 1]);
-            cout << "----------> if true child size chromosome After cross: " << child.getGenes().size() << endl;
+            // cout << "----------> if true child size chromosome After cross: " << child.getGenes().size() << endl;
         }
         else
         {
-            cout << "----------> if false child size chromosome Before not cross: " << child.getGenes().size() << endl;
-            // If not crossing over, add one of the parents to the next generation.
+            // cout << "----------> if false child size chromosome Before not cross: " << child.getGenes().size() << endl;
+            //  If not crossing over, add one of the parents to the next generation.
             child = parents.getChromosomes()[i];
-            cout << "----------> if false child size chromosome After not cross: " << child.getGenes().size() << endl;
+            // cout << "----------> if false child size chromosome After not cross: " << child.getGenes().size() << endl;
         }
-        cout << "----------> After crossover child size chromosome: " << child.getGenes().size() << endl;
+        // cout << "----------> After crossover child size chromosome: " << child.getGenes().size() << endl;
 
         // if (randomValueForMutation <= mutationRate)
         // {
@@ -374,19 +375,20 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
         //     cout << "After mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
         //     cout << "After mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
         // }
-        cout << "----------> offspring population: " << offspring.getChromosomes().size() << endl;
-        cout << "----------> child size chromosome: " << child.getGenes().size() << endl;
+        // cout << "----------> offspring population: " << offspring.getChromosomes().size() << endl;
+        // cout << "----------> child size chromosome: " << child.getGenes().size() << endl;
 
-        int counter = 1;
-        for (const ScheduledModule &gene : child.getGenes())
-        {
-            // Print information about the gene/module, venue, and time slot
-            cout << "Gene: " << counter << endl;
-            gene.getModule().printInfo();
-            gene.getTimeSlot().printInfo();
-            gene.getVenue().printInfo();
-            counter++;
-        }
+        // printing information about the gene/module (child in this case), venue, and time slot
+        // int counter = 1;
+        // for (const ScheduledModule &gene : child.getGenes())
+        // {
+        //     // Print information about the gene/module, venue, and time slot
+        //     cout << "Gene: " << counter << endl;
+        //     gene.getModule().printInfo();
+        //     gene.getTimeSlot().printInfo();
+        //     gene.getVenue().printInfo();
+        //     counter++;
+        // }
 
         if (child.getGenes().size() != 153)
         {
@@ -396,28 +398,28 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
             exit(1);
         }
         offspring.addChromosome(child);
-        cout << "----------> end <----------" << endl;
+        // cout << "----------> end <----------" << endl;
     }
-    cout << "After Crossover and Mutation, population size: " << population.getChromosomes().size() << endl;
-    cout << "After Crossover and Mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
-    cout << "After Crossover and Mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+    // cout << "After Crossover and Mutation, population size: " << population.getChromosomes().size() << endl;
+    // cout << "After Crossover and Mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+    // cout << "After Crossover and Mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
 
-    cout << "Before Replacement, population size: " << population.getChromosomes().size() << endl;
-    cout << "Before Replacement, Size of offspring population: " << offspring.getChromosomes().size() << endl;
-    cout << "Before Replacement, Size of parent population: " << parents.getChromosomes().size() << endl;
+    // cout << "Before Replacement, population size: " << population.getChromosomes().size() << endl;
+    // cout << "Before Replacement, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+    // cout << "Before Replacement, Size of parent population: " << parents.getChromosomes().size() << endl;
 
-    cout << "Completed Crossover and Mutation. Starting Replacement..." << endl;
+    // cout << "Completed Crossover and Mutation. Starting Replacement..." << endl;
 
     // 4. Replacement
     replacePopulation(offspring);
-    cout << "After Replacement, population size: " << population.getChromosomes().size() << endl;
-    cout << "After Replacement, Size of offspring population: " << offspring.getChromosomes().size() << endl;
-    cout << "After Replacement, Size of parent population: " << parents.getChromosomes().size() << endl;
+    // cout << "After Replacement, population size: " << population.getChromosomes().size() << endl;
+    // cout << "After Replacement, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+    // cout << "After Replacement, Size of parent population: " << parents.getChromosomes().size() << endl;
 
-    cout << "Completed Replacement." << endl;
+    // cout << "Completed Replacement." << endl;
 
     cout << "One generation completed." << endl;
-    //  After replacing the population, calculate and store the total fitness
+    //   After replacing the population, calculate and store the total fitness
     double totalFitness = population.getTotalFitness();
     cout << "Total fitness of the population: " << totalFitness << endl;
     totalFitnessHistory.push_back(totalFitness); // Assuming totalFitnessHistory is a member vector<double>
