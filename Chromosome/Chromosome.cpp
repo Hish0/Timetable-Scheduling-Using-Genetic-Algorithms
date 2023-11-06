@@ -204,21 +204,37 @@ double Chromosome::evaluateFitness()
     return fitness;
 }
 
+// bool Chromosome::isDiverse(const Chromosome &other) const
+// {
+//     int differingGenes = 0;
+//     const int diversityThreshold = 76; // You can adjust this value
+
+//     // Assuming both chromosomes have the same number of genes
+//     for (size_t i = 0; i < genes.size(); ++i)
+//     {
+//         if (!(genes[i] == other.getGenes()[i])) // Assuming you have implemented the equality operator for ScheduledModule
+//         {
+//             differingGenes++;
+//         }
+//     }
+
+//     return (differingGenes >= diversityThreshold);
+// }
+
 bool Chromosome::isDiverse(const Chromosome &other) const
 {
-    int differingGenes = 0;
-    const int diversityThreshold = 3; // You can adjust this value
+    int hammingDistance = 0;
+    const int diversityThreshold = 1; // Threshold of 4 for this example
 
-    // Assuming both chromosomes have the same number of genes
     for (size_t i = 0; i < genes.size(); ++i)
     {
-        if (!(genes[i] == other.getGenes()[i])) // Assuming you have implemented the equality operator for ScheduledModule
+        if (!(genes[i] == other.getGenes()[i]))
         {
-            differingGenes++;
+            hammingDistance++;
         }
     }
 
-    return (differingGenes >= diversityThreshold);
+    return (hammingDistance >= diversityThreshold);
 }
 
 int Chromosome::getModuleHours(int moduleID) const
@@ -233,4 +249,165 @@ int Chromosome::getModuleHours(int moduleID) const
     cout << "error in number of hours";
     exit(1);
     return 0; // Return 0 if the module ID was not found (you might want to handle this case differently)
+}
+
+ScheduledModule &Chromosome::getGene(int index)
+{
+    // You may want to add bounds checking here to ensure index is valid
+    return genes[index];
+}
+
+std::pair<int, std::string> Chromosome::catchViolation()
+{
+    // Constraint 6: Check for excess modules scheduled in one day
+    std::map<std::pair<int, int>, std::vector<int>> moduleDayMap;
+    const int numberOfTimeSlotsPerDay = 8; // Adjust this based on your specific timetable
+    for (size_t i = 0; i < genes.size(); ++i)
+    {
+        const ScheduledModule &gene = genes[i];
+        int moduleID = gene.getModule().getModuleID();
+        int timeSlotID = gene.getTimeSlot().getTimeSlotID();
+        int day = (timeSlotID - 1) / numberOfTimeSlotsPerDay;
+        moduleDayMap[{moduleID, day}].push_back(i);
+    }
+
+    for (const auto &entry : moduleDayMap)
+    {
+        int moduleID = entry.first.first;
+        int allowedSlotsPerDay = (getModuleHours(moduleID) > 2) ? 2 : 1; // Assuming getModuleHours() is a function you have
+        if (entry.second.size() > static_cast<size_t>(allowedSlotsPerDay))
+        {
+            std::string message = "Excess modules scheduled in one day for gene IDs: ";
+            for (int id : entry.second)
+            {
+                message += std::to_string(id) + " ";
+            }
+            return {entry.second[0], message};
+        }
+    }
+
+    // Constraint 1: Check for venue and time slot clashes
+    std::map<std::pair<int, int>, std::vector<int>> venueTimeSlotMap;
+    for (size_t i = 0; i < genes.size(); ++i)
+    {
+        const ScheduledModule &gene = genes[i];
+        int venueID = gene.getVenue().getVenueID();
+        int timeSlotID = gene.getTimeSlot().getTimeSlotID();
+        venueTimeSlotMap[{venueID, timeSlotID}].push_back(i);
+    }
+
+    for (const auto &entry : venueTimeSlotMap)
+    {
+        if (entry.second.size() > 1)
+        {
+            std::string message = "Venue and time slot clash detected for gene IDs: ";
+            for (int id : entry.second)
+            {
+                message += std::to_string(id) + " ";
+            }
+            return {entry.second[0], message};
+        }
+    }
+
+    // Constraint 2: Check for level and time slot clashes
+    std::map<std::pair<int, int>, std::vector<int>> levelTimeSlotMap;
+    for (size_t i = 0; i < genes.size(); ++i)
+    {
+        const ScheduledModule &gene = genes[i];
+        int level = gene.getModule().getLevel();
+        int timeSlotID = gene.getTimeSlot().getTimeSlotID();
+        levelTimeSlotMap[{level, timeSlotID}].push_back(i);
+    }
+
+    for (const auto &entry : levelTimeSlotMap)
+    {
+        if (entry.second.size() > 1)
+        {
+            std::string message = "Level and time slot clash detected for gene IDs: ";
+            for (int id : entry.second)
+            {
+                message += std::to_string(id) + " ";
+            }
+            return {entry.second[0], message};
+        }
+    }
+
+    // Constraint 3: Check for lecturer and time slot clashes
+    std::map<std::pair<int, int>, std::vector<int>> lecturerTimeSlotMap;
+    for (size_t i = 0; i < genes.size(); ++i)
+    {
+        const ScheduledModule &gene = genes[i];
+        int lecturerID = gene.getModule().getLecturer().getLecturerID();
+        int timeSlotID = gene.getTimeSlot().getTimeSlotID();
+        lecturerTimeSlotMap[{lecturerID, timeSlotID}].push_back(i);
+    }
+
+    for (const auto &entry : lecturerTimeSlotMap)
+    {
+        if (entry.second.size() > 1)
+        {
+            std::string message = "Lecturer and time slot clash detected for gene IDs: ";
+            for (int id : entry.second)
+            {
+                message += std::to_string(id) + " ";
+            }
+            return {entry.second[0], message};
+        }
+    }
+
+    // Constraint 4: Check for venue capacity violations
+    for (size_t i = 0; i < genes.size(); ++i)
+    {
+        const ScheduledModule &gene = genes[i];
+        int venueCapacity = gene.getVenue().getCapacity();
+        int numberOfStudents = gene.getModule().getNumberOfStudentsEnrolled();
+        if (numberOfStudents > venueCapacity)
+        {
+            std::string message = "Venue capacity exceeded for gene ID: " + std::to_string(i);
+            return {i, message};
+        }
+    }
+
+    // Constraint 5: Check for mismatched module and venue types
+    for (size_t i = 0; i < genes.size(); ++i)
+    {
+        const ScheduledModule &gene = genes[i];
+        bool moduleIsLab = gene.getModule().getIsLab();
+        bool venueIsLab = gene.getVenue().getIsLab();
+        if (moduleIsLab != venueIsLab)
+        {
+            std::string message = "Mismatched module and venue types for gene ID: " + std::to_string(i);
+            return {i, message};
+        }
+    }
+
+    // // Constraint 6: Check for excess modules scheduled in one day
+    // std::map<std::pair<int, int>, std::vector<int>> moduleDayMap;
+    // const int numberOfTimeSlotsPerDay = 8; // Adjust this based on your specific timetable
+    // for (size_t i = 0; i < genes.size(); ++i)
+    // {
+    //     const ScheduledModule &gene = genes[i];
+    //     int moduleID = gene.getModule().getModuleID();
+    //     int timeSlotID = gene.getTimeSlot().getTimeSlotID();
+    //     int day = (timeSlotID - 1) / numberOfTimeSlotsPerDay;
+    //     moduleDayMap[{moduleID, day}].push_back(i);
+    // }
+
+    // for (const auto &entry : moduleDayMap)
+    // {
+    //     int moduleID = entry.first.first;
+    //     int allowedSlotsPerDay = (getModuleHours(moduleID) > 2) ? 2 : 1; // Assuming getModuleHours() is a function you have
+    //     if (entry.second.size() > static_cast<size_t>(allowedSlotsPerDay))
+    //     {
+    //         std::string message = "Excess modules scheduled in one day for gene IDs: ";
+    //         for (int id : entry.second)
+    //         {
+    //             message += std::to_string(id) + " ";
+    //         }
+    //         return {entry.second[0], message};
+    //     }
+    // }
+
+    // If no violations are found
+    return {-1, "No violation detected"};
 }

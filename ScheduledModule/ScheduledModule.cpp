@@ -2,13 +2,13 @@
 
 // Default Constructor
 ScheduledModule::ScheduledModule()
-    : module(), timeSlot(), venue(), isLockedVenue(false), isLockedTimeSlot(false), isValid(false) {}
+    : module(), timeSlot(), venue(), isLockedVenue(false), isLockedTimeSlot(false), isValid(false), isFirstSlot(false), isOneSlot(false) {}
 
 // Parameterized Constructor
 ScheduledModule::ScheduledModule(const Module &mod, const TimeSlot &slot, const Venue &ven,
-                                 bool lockedVenue, bool lockedTimeSlot, bool validStatus)
+                                 bool lockedVenue, bool lockedTimeSlot, bool validStatus, bool FirstSlot, bool OneSlot)
     : module(mod), timeSlot(slot), venue(ven), isLockedVenue(lockedVenue),
-      isLockedTimeSlot(lockedTimeSlot), isValid(validStatus) {}
+      isLockedTimeSlot(lockedTimeSlot), isValid(validStatus), isFirstSlot(FirstSlot), isOneSlot(OneSlot) {}
 
 bool ScheduledModule::operator==(const ScheduledModule &other) const
 {
@@ -52,6 +52,16 @@ bool ScheduledModule::getIsValid() const
     return isValid;
 }
 
+bool ScheduledModule::getIsFirstSlot() const
+{
+    return isFirstSlot;
+}
+
+bool ScheduledModule::getIsOneSlot() const
+{
+    return isOneSlot;
+}
+
 // Setter methods
 void ScheduledModule::setModule(const Module &mod)
 {
@@ -81,4 +91,14 @@ void ScheduledModule::setIsLockedTimeSlot(bool lockedTimeSlot)
 void ScheduledModule::setIsValid(bool validStatus)
 {
     isValid = validStatus;
+}
+
+void ScheduledModule::setIsFirstSlot(bool FirstSlot)
+{
+    isFirstSlot = FirstSlot;
+}
+
+void ScheduledModule::setIsOneSlot(bool OneSlot)
+{
+    isOneSlot = OneSlot;
 }

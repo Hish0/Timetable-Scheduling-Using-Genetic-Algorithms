@@ -14,6 +14,8 @@ private:
     bool isLockedVenue;
     bool isLockedTimeSlot;
     bool isValid;
+    bool isFirstSlot;
+    bool isOneSlot;
 
 public:
     // Default Constructor
@@ -21,7 +23,7 @@ public:
 
     // Parameterized Constructor
     ScheduledModule(const Module &mod, const TimeSlot &slot, const Venue &ven,
-                    bool lockedVenue, bool lockedTimeSlot, bool validStatus);
+                    bool lockedVenue, bool lockedTimeSlot, bool validStatus, bool isFirstSlot, bool isOneSlot);
 
     bool operator==(const ScheduledModule &other) const;
 
@@ -32,6 +34,8 @@ public:
     bool getIsLockedVenue() const;
     bool getIsLockedTimeSlot() const;
     bool getIsValid() const;
+    bool getIsFirstSlot() const;
+    bool getIsOneSlot() const;
 
     // Setter methods
     void setModule(const Module &mod);
@@ -40,6 +44,8 @@ public:
     void setIsLockedVenue(bool lockedVenue);
     void setIsLockedTimeSlot(bool lockedTimeSlot);
     void setIsValid(bool validStatus);
+    void setIsFirstSlot(bool FirstSlot);
+    void setIsOneSlot(bool OneSlot);
 };
 
 #endif // SCHEDULED_MODULE_H
