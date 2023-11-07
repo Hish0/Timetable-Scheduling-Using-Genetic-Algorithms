@@ -4,7 +4,7 @@
 void initializeLecturers()
 {
     // Initialize lecturers with ID and Name
-    allLecturers.push_back(Lecturer(1, "Dr. Abd Alsalam Bnoor"));
+    allLecturers.push_back(Lecturer(1, "Dr. Abd Alsalam almaraghni"));
     allLecturers.push_back(Lecturer(2, "Dr. Lutfi alhaweji"));
     allLecturers.push_back(Lecturer(3, "Dr. Raneem Nashnoosh"));
     allLecturers.push_back(Lecturer(4, "Dr. Hassan Abuaisha"));
@@ -19,6 +19,21 @@ void initializeLecturers()
     allLecturers.push_back(Lecturer(13, "Dr. Alsunni"));
     allLecturers.push_back(Lecturer(14, "Dr. Fardous"));
     allLecturers.push_back(Lecturer(15, "Dr. Fathia Abu Amer"));
+    allLecturers.push_back(Lecturer(16, "Dr. Mo3eed 1"));
+    allLecturers.push_back(Lecturer(17, "Dr. Mo3eed 2"));
+    allLecturers.push_back(Lecturer(18, "Dr. Khadeja"));
+    allLecturers.push_back(Lecturer(19, "Dr. Salsabil"));
+    allLecturers.push_back(Lecturer(20, "Dr. Nabeel"));
+    allLecturers.push_back(Lecturer(21, "Dr. Mokhtar"));
+    allLecturers.push_back(Lecturer(22, "Dr. Elbadri"));
+    allLecturers.push_back(Lecturer(23, "Dr. Ahmed abd almutaleb"));
+    allLecturers.push_back(Lecturer(24, "Dr. Aljalali"));
+    allLecturers.push_back(Lecturer(25, "Dr. Ali alaswad"));
+    allLecturers.push_back(Lecturer(26, "Dr. Mariam British"));
+    allLecturers.push_back(Lecturer(27, "Dr. Amira alelagi"));
+    allLecturers.push_back(Lecturer(28, "Dr. Naema albadri"));
+    allLecturers.push_back(Lecturer(29, "Dr. Tasneem"));
+    allLecturers.push_back(Lecturer(30, "Dr. Farhat"));
     // ... add more lecturers as needed
 }
 
@@ -53,26 +68,50 @@ void initializeTimeSlots()
 void initializeModules()
 {
     // Initialize modules with ID, Lecturer, Name, Level, Number of Students, Is Lab, number of slots
-    allModules.push_back(Module(1, allLecturers[13], "CS100", 1, 100, false, 5));
-    allModules.push_back(Module(2, allLecturers[2], "CS111", 1, 95, false, 5));
-    allModules.push_back(Module(3, allLecturers[7], "CS115", 1, 85, false, 5));
-    allModules.push_back(Module(4, allLecturers[10], "CS200", 2, 30, true, 4));
-    allModules.push_back(Module(5, allLecturers[0], "CS207", 2, 25, true, 5));
-    allModules.push_back(Module(6, allLecturers[6], "CS211", 2, 30, true, 4));
-    allModules.push_back(Module(7, allLecturers[1], "CS215", 2, 30, true, 4));
-    allModules.push_back(Module(8, allLecturers[11], "CS315", 3, 27, true, 5));
-    allModules.push_back(Module(9, allLecturers[10], "CS319", 3, 26, true, 4));
-    allModules.push_back(Module(10, allLecturers[14], "CS321", 3, 20, true, 5));
-    allModules.push_back(Module(11, allLecturers[14], "CS322", 3, 24, true, 4));
-    allModules.push_back(Module(12, allLecturers[2], "CS331", 3, 22, true, 4));
-    allModules.push_back(Module(13, allLecturers[12], "CS332", 3, 23, true, 4));
-    allModules.push_back(Module(14, allLecturers[4], "CS336", 3, 18, true, 4));
-    allModules.push_back(Module(15, allLecturers[13], "CS340", 3, 17, true, 4));
-    allModules.push_back(Module(16, allLecturers[3], "CS436", 4, 15, true, 5));
-    allModules.push_back(Module(17, allLecturers[5], "CS443", 4, 13, true, 4));
-    allModules.push_back(Module(18, allLecturers[3], "CS456", 4, 14, true, 4));
-    allModules.push_back(Module(19, allLecturers[8], "CS431", 4, 16, true, 4));
-    allModules.push_back(Module(20, allLecturers[12], "CS437", 4, 19, true, 4));
+    allModules.push_back(Module(1, allLecturers[16], "CS100", 1, 100, false, 5));
+    allModules.push_back(Module(2, allLecturers[18], "MM101", 1, 100, false, 5));
+    allModules.push_back(Module(3, allLecturers[19], "MM102", 1, 100, false, 5));
+    allModules.push_back(Module(4, allLecturers[20], "ST101", 1, 100, false, 5));
+    allModules.push_back(Module(5, allLecturers[21], "PH112", 1, 100, false, 5));
+
+    allModules.push_back(Module(6, allLecturers[17], "CS111", 2, 100, false, 5));
+    allModules.push_back(Module(7, allLecturers[23], "MM103", 2, 100, false, 5));
+    allModules.push_back(Module(8, allLecturers[24], "MM104", 2, 100, false, 5));
+    allModules.push_back(Module(9, allLecturers[25], "ST102", 2, 100, false, 5));
+    allModules.push_back(Module(10, allLecturers[26], "EL101", 2, 100, false, 2));
+    allModules.push_back(Module(11, allLecturers[27], "AR051", 2, 100, false, 2));
+
+    allModules.push_back(Module(12, allLecturers[28], "CS115", 3, 25, true, 5));
+    allModules.push_back(Module(13, allLecturers[11], "CS200", 3, 25, true, 4));
+    allModules.push_back(Module(14, allLecturers[1], "CS207", 3, 25, true, 4));
+    allModules.push_back(Module(15, allLecturers[29], "MA200", 3, 100, false, 5));
+    allModules.push_back(Module(16, allLecturers[22], "PH200", 3, 100, false, 3));
+
+    allModules.push_back(Module(17, allLecturers[7], "CS211", 4, 25, true, 5));
+    allModules.push_back(Module(18, allLecturers[10], "CS215", 4, 25, true, 5));
+    allModules.push_back(Module(19, allLecturers[30], "MA206", 4, 100, false, 5));
+    allModules.push_back(Module(20, allLecturers[22], "PH201", 4, 100, false, 3));
+    allModules.push_back(Module(21, allLecturers[27], "AR052", 4, 100, false, 2));
+    allModules.push_back(Module(22, allLecturers[26], "EL102", 4, 100, false, 2));
+
+    allModules.push_back(Module(23, allLecturers[8], "CS321", 5, 25, true, 4));
+    allModules.push_back(Module(24, allLecturers[3], "CS331", 5, 25, true, 4));
+    allModules.push_back(Module(25, allLecturers[10], "CS315", 5, 25, true, 5));
+    allModules.push_back(Module(26, allLecturers[28], "CS319", 5, 25, true, 4));
+
+    allModules.push_back(Module(27, allLecturers[13], "CS332", 6, 25, true, 4));
+    allModules.push_back(Module(28, allLecturers[8], "CS322", 6, 25, true, 4));
+    allModules.push_back(Module(29, allLecturers[3], "CS336", 6, 25, true, 4));
+    allModules.push_back(Module(30, allLecturers[14], "CS340", 6, 25, true, 4));
+    allModules.push_back(Module(31, allLecturers[11], "CS355", 6, 25, true, 4));
+
+    allModules.push_back(Module(32, allLecturers[6], "CS443", 7, 25, true, 4));
+    allModules.push_back(Module(33, allLecturers[13], "CS437", 7, 25, true, 4));
+    allModules.push_back(Module(34, allLecturers[9], "CS431", 7, 25, true, 4));
+    allModules.push_back(Module(35, allLecturers[4], "CS456", 7, 25, true, 4));
+
+    allModules.push_back(Module(36, allLecturers[4], "CS436", 8, 25, true, 4));
+    allModules.push_back(Module(37, allLecturers[12], "CS438", 8, 25, true, 4));
 }
 
 // Initialize venues

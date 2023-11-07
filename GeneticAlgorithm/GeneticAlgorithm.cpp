@@ -119,7 +119,7 @@ Chromosome GeneticAlgorithm::crossover(const Chromosome &parent1, const Chromoso
     // Choose one child for the next generation based on fitness (you could also return both)
     if (child1.evaluateFitness() < child2.evaluateFitness())
     {
-        if (child1.getGenes().size() != 87)
+        if (child1.getGenes().size() != 153)
         {
             cout << "the child 1 ERROR" << endl;
             cout << "##########child size : " << child1.getGenes().size() << endl;
@@ -133,7 +133,7 @@ Chromosome GeneticAlgorithm::crossover(const Chromosome &parent1, const Chromoso
     }
     else
     {
-        if (child2.getGenes().size() != 87)
+        if (child2.getGenes().size() != 153)
         {
             cout << "the child 2 ERROR" << endl;
             cout << "##########child size : " << child2.getGenes().size() << endl;
@@ -408,19 +408,29 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
         }
         else
         {
-            if (randomValueForMutation <= 0.2)
+            if (randomValueForMutation <= mutationRate)
             {
                 // cout << "Before mutation, population size: " << population.getChromosomes().size() << endl;
                 // cout << "Before mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
-                cout << "Before mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+                // cout << "Before mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+                mutate(child);
+                // cout << "After mutation, population size: " << population.getChromosomes().size() << endl;
+                // cout << "After mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+                // cout << "After mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+            }
+            if (randomValueForMutation <= 0.3)
+            {
+                // cout << "Before mutation, population size: " << population.getChromosomes().size() << endl;
+                // cout << "Before mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+                // cout << "Before mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
                 offspring.addChromosome(child);
                 child = this->getBestChromosome();
-                cout << "------> best child time for first gene" << child.getGene(1).getTimeSlot().getTime();
+                // cout << "------> best child time for first gene" << child.getGene(1).getTimeSlot().getTime();
                 std::pair<int, std::string> violation = child.catchViolation();
                 surgeryMutation(child, violation.first);
                 // mutate(this->getBestChromosome());
                 // mutate(child);
-                cout << "After mutation, population size: " << population.getChromosomes().size() << endl;
+                // cout << "After mutation, population size: " << population.getChromosomes().size() << endl;
                 // cout << "After mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
                 // cout << "After mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
             }
@@ -463,7 +473,7 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
         //     counter++;
         // }
 
-        if (child.getGenes().size() != 87)
+        if (child.getGenes().size() != 153)
         {
             cout << "the child ERROR" << endl;
             cout << "^^^^^^^^^^^^child size : " << child.getGenes().size() << endl;
@@ -524,7 +534,7 @@ void GeneticAlgorithm::run(int numberOfGenerations)
         // cout << "Completed generation " << i + 1 << endl;
 
         Chromosome bestChromosome = getBestChromosome();
-        if (bestChromosome.evaluateFitness() == 0 || i == 1500)
+        if (bestChromosome.evaluateFitness() == 0)
         {
             cout << "Optimal solution found. Stopping GA." << endl;
             break;

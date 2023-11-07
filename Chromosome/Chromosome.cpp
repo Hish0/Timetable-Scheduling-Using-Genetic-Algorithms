@@ -190,7 +190,7 @@ double Chromosome::evaluateFitness()
     for (const auto &entry : moduleDayCount)
     {
         int moduleID = entry.first.first;
-        int allowedSlotsPerDay = (getModuleHours(moduleID) > 2) ? 2 : 1; // Assuming getModuleHours returns the number of hours for a module
+        int allowedSlotsPerDay = (getModuleHours(moduleID) >= 2) ? 2 : 1; // Assuming getModuleHours returns the number of hours for a module
 
         if (entry.second > allowedSlotsPerDay)
         {
@@ -274,7 +274,7 @@ std::pair<int, std::string> Chromosome::catchViolation()
     for (const auto &entry : moduleDayMap)
     {
         int moduleID = entry.first.first;
-        int allowedSlotsPerDay = (getModuleHours(moduleID) > 2) ? 2 : 1; // Assuming getModuleHours() is a function you have
+        int allowedSlotsPerDay = (getModuleHours(moduleID) >= 2) ? 2 : 1; // Assuming getModuleHours() is a function you have
         if (entry.second.size() > static_cast<size_t>(allowedSlotsPerDay))
         {
             std::string message = "Excess modules scheduled in one day for gene IDs: ";

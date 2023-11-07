@@ -29,7 +29,7 @@ int main()
     // Define GA parameters
     int POPULATION_SIZE = 50;
     double MUTATION_RATE = 0.1;
-    double CROSSOVER_RATE = 0.7;
+    double CROSSOVER_RATE = 0.75;
     int ELITE_COUNT = 2;
     int NUM_GENERATIONS = 10000;
 
