@@ -33,6 +33,8 @@ public:
     void printTotalFitnessHistory();
     void printTotalBestFitHistory();
     void printProgress();
+    bool isLastSlotOfDay(const TimeSlot &timeSlot);
+    void surgeryMutation(Chromosome &chromosome, int geneId);
 };
 
 #endif // GENETICALGORITHM_H

@@ -1,14 +1,15 @@
 #include "GeneticAlgorithm.h"
 #include <algorithm>
 #include <cstdlib>
-
+#include "../UtilityFunctions/UtilityFunctions.h"
+using namespace Utility;
 GeneticAlgorithm::GeneticAlgorithm(Population &initialPopulation, double mutationRate, double crossoverRate, int eliteCount)
     : population(initialPopulation), mutationRate(mutationRate), crossoverRate(crossoverRate), eliteCount(eliteCount) {}
 
 Population GeneticAlgorithm::selectParents()
 {
     vector<Chromosome> selectedParents;
-    int tournamentSize = 6; // You can change this
+    int tournamentSize = 2; // You can change this
 
     for (int i = 0; i < population.getChromosomes().size() - eliteCount; ++i) // Leave space for elites
     {
@@ -205,37 +206,65 @@ TimeSlot GeneticAlgorithm::getAnotherAvailableTimeSlot(const TimeSlot &current, 
 
 void GeneticAlgorithm::mutate(Chromosome &chromosome)
 {
-    // Assuming `chromosome.getGenes()` returns a reference to the vector of genes
-    // vector<ScheduledModule> &genes = chromosome.getGenes();
-    vector<ScheduledModule> genes = chromosome.getGenes();
+    // Randomly select a gene
+    int geneIndex = rand() % chromosome.getGenes().size();
+    ScheduledModule &geneToMutate = chromosome.getGene(geneIndex);
 
-    // Randomly pick one gene to change the venue
-    int randomIndexForVenue = rand() % genes.size();
-    // Venue newVenue = getRandomVenue();
-    // genes[randomIndexForVenue].setVenue(newVenue);
+    cout << endl
+         << "Selected gene at index: " << geneIndex << endl;
+    cout << "Initial time state of gene to mutate: " << geneToMutate.getTimeSlot().getTime() << endl;
+    cout << "Initial venue state of gene to mutate: " << geneToMutate.getVenue().getName() << endl;
 
-    // Randomly pick another gene to change the time slot
-    int randomIndexForTimeSlot = rand() % genes.size();
-    while (randomIndexForTimeSlot == randomIndexForVenue)
+    // Check if it's a one-slot or the first of a two-slot module
+    if (geneToMutate.getIsOneSlot())
     {
-        // Ensure we pick a different gene
-        randomIndexForTimeSlot = rand() % genes.size();
+        cout << "It's a one-slot module." << endl;
+
+        // It's a one-slot module, assign a new random time slot
+        TimeSlot newTimeSlot = getRandomTimeSlot();
+        Venue newVenue = getRandomVenue();
+        cout << "Assigning new time slot: " << newTimeSlot.getTime() << endl;
+        cout << "Assigning new venue name: " << newVenue.getName() << endl;
+
+        geneToMutate.setTimeSlot(newTimeSlot);
+        geneToMutate.setVenue(newVenue);
+    }
+    else if (geneToMutate.getIsFirstSlot())
+    {
+        cout << "It's the first of a two-slot module." << endl;
+
+        // It's the first of a two-slot module, assign new consecutive time slots
+        TimeSlot newTimeSlotForFirst = getRandomTimeSlot(); // Ensure this is a valid starting slot for two consecutive slots
+        // insure the new slot is not the last slot of the day
+        while (isLastSlotOfDay(newTimeSlotForFirst))
+        {
+            newTimeSlotForFirst = getRandomTimeSlot();
+        }
+
+        TimeSlot newTimeSlotForSecond = newTimeSlotForFirst.getNextTimeSlot(); // Get the consecutive slot
+
+        Venue newVenue = getRandomVenue();
+
+        cout << "Assigning new consecutive time slots: First - " << newTimeSlotForFirst.getTime() << ", Second - " << newTimeSlotForSecond.getTime() << endl;
+        cout << "Assigning new venue name: " << newVenue.getName() << endl;
+
+        geneToMutate.setTimeSlot(newTimeSlotForFirst);
+        chromosome.getGene(geneIndex + 1).setTimeSlot(newTimeSlotForSecond); // Update the second slot as well
+        geneToMutate.setVenue(newVenue);
+        chromosome.getGene(geneIndex + 1).setVenue(newVenue);
+
+        cout << "Updated gene at index: " << geneIndex << " to time slot " << newTimeSlotForFirst.getTime() << "and venue " << newVenue.getName() << endl;
+        cout << "Updated gene at index: " << geneIndex + 1 << " to time slot " << newTimeSlotForSecond.getTime() << "and venue " << newVenue.getName() << endl;
+    }
+    else
+    {
+        cout << "It's neither a one-slot module nor the first of a two-slot module. No mutation applied." << endl;
     }
 
-    string day = genes[randomIndexForTimeSlot].getTimeSlot().getDay();
-
-    // First, try to find an empty time slot
-    TimeSlot newTimeSlot = findEmptyTimeSlot(day, population.getChromosomes());
-
-    // If we can't find an empty time slot, get another available time slot
-    if (newTimeSlot.isEmpty())
-    { // Assuming TimeSlot() returns a special "empty" time slot
-        newTimeSlot = getAnotherAvailableTimeSlot(genes[randomIndexForTimeSlot].getTimeSlot(), allTimeSlots);
-    }
-
-    genes[randomIndexForTimeSlot].setTimeSlot(newTimeSlot);
-
-    chromosome.setGenes(genes);
+    // Make sure to re-evaluate and handle any violations this may cause
+    // handleViolations(chromosome, geneIndex);
+    cout << "Mutation complete. Need to handle potential violations." << endl
+         << endl;
 }
 
 void GeneticAlgorithm::replacePopulation(const Population &offspringPopulation)
@@ -256,7 +285,7 @@ void GeneticAlgorithm::replacePopulation(const Population &offspringPopulation)
     // cout << "in--> Selection after removing elites, Size of oldElites: " << oldElites.size() << endl;
 
     // cout << "in--> Selection after removing elites, Size of newOffspring####: " << newOffspring.size() << endl;
-    //   Get the number of chromosomes to be replaced in the old population
+    //    Get the number of chromosomes to be replaced in the old population
     int numToReplace = newOffspring.size();
 
     // Get the worst-performing individuals to remove them
@@ -319,7 +348,7 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
     //     cout << "After populating the population, population size: " << parents.getChromosomes().size() << endl;
     // }
     // every 5 runs we clear same chromosomes
-    if ((generationCount % 15) == 0)
+    if ((generationCount % 50) == 0)
     {
         int oldPopulationCount = parents.getChromosomes().size();
         cout << "Before clearing the population, population size: " << parents.getChromosomes().size() << endl;
@@ -364,16 +393,70 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
             // cout << "----------> if false child size chromosome After not cross: " << child.getGenes().size() << endl;
         }
         // cout << "----------> After crossover child size chromosome: " << child.getGenes().size() << endl;
+        if (generationCount <= 50)
+        {
+            if (randomValueForMutation <= mutationRate)
+            {
+                // cout << "Before mutation, population size: " << population.getChromosomes().size() << endl;
+                // cout << "Before mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+                // cout << "Before mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+                mutate(child);
+                // cout << "After mutation, population size: " << population.getChromosomes().size() << endl;
+                // cout << "After mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+                // cout << "After mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+            }
+        }
+        else
+        {
+            if (randomValueForMutation <= mutationRate)
+            {
+                // cout << "Before mutation, population size: " << population.getChromosomes().size() << endl;
+                // cout << "Before mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+                // cout << "Before mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+                mutate(child);
+                // cout << "After mutation, population size: " << population.getChromosomes().size() << endl;
+                // cout << "After mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+                // cout << "After mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+            }
+            if (randomValueForMutation <= 0.3)
+            {
+                // cout << "Before mutation, population size: " << population.getChromosomes().size() << endl;
+                // cout << "Before mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+                // cout << "Before mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+                offspring.addChromosome(child);
+                child = this->getBestChromosome();
+                // cout << "------> best child time for first gene" << child.getGene(1).getTimeSlot().getTime();
+                std::pair<int, std::string> violation = child.catchViolation();
+                surgeryMutation(child, violation.first);
+                // mutate(this->getBestChromosome());
+                // mutate(child);
+                // cout << "After mutation, population size: " << population.getChromosomes().size() << endl;
+                // cout << "After mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+                // cout << "After mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+            }
+            // child = this->getBestChromosome();
+            // mutate(child);
+            // if (randomValueForMutation <= 0.2)
+            // {
+            //     // cout << "Before mutation, population size: " << population.getChromosomes().size() << endl;
+            //     // cout << "Before mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+            //     // cout << "Before mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+            //     mutate(child);
+            //     // cout << "After mutation, population size: " << population.getChromosomes().size() << endl;
+            //     // cout << "After mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+            //     // cout << "After mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+            // }
+        }
 
         // if (randomValueForMutation <= mutationRate)
         // {
-        //     cout << "Before mutation, population size: " << population.getChromosomes().size() << endl;
-        //     cout << "Before mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
-        //     cout << "Before mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+        //     // cout << "Before mutation, population size: " << population.getChromosomes().size() << endl;
+        //     // cout << "Before mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+        //     // cout << "Before mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
         //     mutate(child);
-        //     cout << "After mutation, population size: " << population.getChromosomes().size() << endl;
-        //     cout << "After mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
-        //     cout << "After mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
+        //     // cout << "After mutation, population size: " << population.getChromosomes().size() << endl;
+        //     // cout << "After mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
+        //     // cout << "After mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
         // }
         // cout << "----------> offspring population: " << offspring.getChromosomes().size() << endl;
         // cout << "----------> child size chromosome: " << child.getGenes().size() << endl;
@@ -489,6 +572,7 @@ void GeneticAlgorithm::printTotalBestFitHistory()
 }
 
 void GeneticAlgorithm::printProgress()
+
 {
     std::cout << "=== Progress ===" << std::endl;
     // printTotalFitnessHistory();
@@ -498,4 +582,98 @@ void GeneticAlgorithm::printProgress()
         std::cout << "Generation " << (i + 1) << ": Total Generation Fitness =>" << totalFitnessHistory[i] << " Best fit individual =>" << totalBestFitHistory[i] << std::endl;
     }
     std::cout << "================" << std::endl;
+}
+
+// this function needs to be global for population and GA classes
+bool GeneticAlgorithm::isLastSlotOfDay(const TimeSlot &timeSlot)
+
+{
+    int slotId = timeSlot.getTimeSlotID();
+    return slotId % 8 == 0;
+}
+
+void GeneticAlgorithm::surgeryMutation(Chromosome &chromosome, int geneId)
+{
+    // Randomly select a gene
+    // int geneIndex = rand() % chromosome.getGenes().size();
+    ScheduledModule &geneToMutate = chromosome.getGene(geneId);
+
+    cout << endl
+         << "Selected gene at index: " << geneId << endl;
+    cout << "Initial time state of gene to mutate: " << geneToMutate.getTimeSlot().getTime() << endl;
+    cout << "Initial venue state of gene to mutate: " << geneToMutate.getVenue().getName() << endl;
+
+    // Check if it's a one-slot or the first of a two-slot module
+    if (geneToMutate.getIsOneSlot())
+    {
+        cout << "It's a one-slot module." << endl;
+
+        // It's a one-slot module, assign a new random time slot
+        TimeSlot newTimeSlot = getRandomTimeSlot();
+        Venue newVenue = getRandomVenue();
+        cout << "Assigning new time slot: " << newTimeSlot.getTime() << endl;
+        cout << "Assigning new venue name: " << newVenue.getName() << endl;
+
+        geneToMutate.setTimeSlot(newTimeSlot);
+        geneToMutate.setVenue(newVenue);
+    }
+    else if (geneToMutate.getIsFirstSlot())
+    {
+        cout << "It's the first of a two-slot module." << endl;
+
+        // It's the first of a two-slot module, assign new consecutive time slots
+        TimeSlot newTimeSlotForFirst = getRandomTimeSlot(); // Ensure this is a valid starting slot for two consecutive slots
+        // insure the new slot is not the last slot of the day
+        while (isLastSlotOfDay(newTimeSlotForFirst))
+        {
+            newTimeSlotForFirst = getRandomTimeSlot();
+        }
+
+        TimeSlot newTimeSlotForSecond = newTimeSlotForFirst.getNextTimeSlot(); // Get the consecutive slot
+
+        Venue newVenue = getRandomVenue();
+
+        cout << "Assigning new consecutive time slots: First - " << newTimeSlotForFirst.getTime() << ", Second - " << newTimeSlotForSecond.getTime() << endl;
+        cout << "Assigning new venue name: " << newVenue.getName() << endl;
+
+        geneToMutate.setTimeSlot(newTimeSlotForFirst);
+        chromosome.getGene(geneId + 1).setTimeSlot(newTimeSlotForSecond); // Update the second slot as well
+        geneToMutate.setVenue(newVenue);
+        chromosome.getGene(geneId + 1).setVenue(newVenue);
+
+        cout << "Updated gene at index: " << geneId << " to time slot " << newTimeSlotForFirst.getTime() << "and venue " << newVenue.getName() << endl;
+        cout << "Updated gene at index: " << geneId + 1 << " to time slot " << newTimeSlotForSecond.getTime() << "and venue " << newVenue.getName() << endl;
+    }
+    else
+    {
+        cout << "It's the second of a two-slot module." << endl;
+
+        // It's the second of a two-slot module, assign new consecutive time slots
+        TimeSlot newTimeSlotForFirst = getRandomTimeSlot(); // Ensure this is a valid starting slot for two consecutive slots
+        // insure the new slot is not the last slot of the day
+        while (isLastSlotOfDay(newTimeSlotForFirst))
+        {
+            newTimeSlotForFirst = getRandomTimeSlot();
+        }
+
+        TimeSlot newTimeSlotForSecond = newTimeSlotForFirst.getNextTimeSlot(); // Get the consecutive slot
+
+        Venue newVenue = getRandomVenue();
+
+        cout << "Assigning new consecutive time slots: First - " << newTimeSlotForFirst.getTime() << ", Second - " << newTimeSlotForSecond.getTime() << endl;
+        cout << "Assigning new venue name: " << newVenue.getName() << endl;
+
+        geneToMutate.setTimeSlot(newTimeSlotForSecond);
+        chromosome.getGene(geneId - 1).setTimeSlot(newTimeSlotForFirst); // Update the second slot as well
+        geneToMutate.setVenue(newVenue);
+        chromosome.getGene(geneId - 1).setVenue(newVenue);
+
+        cout << "Updated gene at index: " << geneId - 1 << " to time slot " << newTimeSlotForFirst.getTime() << "and venue " << newVenue.getName() << endl;
+        cout << "Updated gene at index: " << geneId << " to time slot " << newTimeSlotForSecond.getTime() << "and venue " << newVenue.getName() << endl;
+    }
+
+    // Make sure to re-evaluate and handle any violations this may cause
+    // handleViolations(chromosome, geneIndex);
+    cout << "Mutation complete. Need to handle potential violations." << endl
+         << endl;
 }

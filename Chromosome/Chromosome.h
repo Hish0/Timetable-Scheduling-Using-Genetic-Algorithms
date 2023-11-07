@@ -28,6 +28,8 @@ public:
     double evaluateFitness();
     bool isDiverse(const Chromosome &other) const;
     int getModuleHours(int moduleID) const;
+    ScheduledModule &getGene(int index);
+    std::pair<int, std::string> catchViolation();
 };
 
 #endif // CHROMOSOME_H

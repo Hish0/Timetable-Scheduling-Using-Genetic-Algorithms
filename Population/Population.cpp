@@ -66,7 +66,7 @@ Chromosome Population::generateRandomChromosome()
                 Venue venue = getRandomVenue();
 
                 // Create a ScheduledModule object
-                ScheduledModule scheduledModule(module, timeSlot, venue, false, false, true);
+                ScheduledModule scheduledModule(module, timeSlot, venue, false, false, true, false, true);
 
                 // Add this ScheduledModule object to the chromosome
                 chromosome.addGene(scheduledModule);
@@ -79,9 +79,9 @@ Chromosome Population::generateRandomChromosome()
                     timeSlot = getRandomTimeSlot();
                 }
                 chosenTimeSlots.insert(timeSlot);
-                std::cout << "the first timeslot id is " << timeSlot.getTimeSlotID() << std::endl;
+                // std::cout << "the first timeslot id is " << timeSlot.getTimeSlotID() << std::endl;
                 TimeSlot nextSlot = timeSlot.getNextTimeSlot();
-                std::cout << "the second timeslot id is " << nextSlot.getTimeSlotID() << std::endl;
+                // std::cout << "the second timeslot id is " << nextSlot.getTimeSlotID() << std::endl;
                 chosenTimeSlots.insert(nextSlot);
                 moduleSlots -= 2;
 
@@ -89,9 +89,9 @@ Chromosome Population::generateRandomChromosome()
                 Venue venue = getRandomVenue();
 
                 // Create the first slot ScheduledModule object
-                ScheduledModule scheduledModule1(module, timeSlot, venue, false, false, true);
+                ScheduledModule scheduledModule1(module, timeSlot, venue, false, false, true, true, false);
                 // Create the second slot ScheduledModule object
-                ScheduledModule scheduledModule2(module, nextSlot, venue, false, false, true);
+                ScheduledModule scheduledModule2(module, nextSlot, venue, false, false, true, false, false);
 
                 // Add these ScheduledModule object to the chromosome
                 chromosome.addGene(scheduledModule1);
@@ -139,7 +139,7 @@ void Population::initializeFirstPopulation(int POPULATION_SIZE)
                     Venue venue = getRandomVenue();
 
                     // Create a ScheduledModule object
-                    ScheduledModule scheduledModule(module, timeSlot, venue, false, false, true);
+                    ScheduledModule scheduledModule(module, timeSlot, venue, false, false, true, false, true);
 
                     // Add this ScheduledModule object to the chromosome
                     chromosome.addGene(scheduledModule);
@@ -162,9 +162,9 @@ void Population::initializeFirstPopulation(int POPULATION_SIZE)
                     Venue venue = getRandomVenue();
 
                     // Create the first slot ScheduledModule object
-                    ScheduledModule scheduledModule1(module, timeSlot, venue, false, false, true);
+                    ScheduledModule scheduledModule1(module, timeSlot, venue, false, false, true, true, false);
                     // Create the second slot ScheduledModule object
-                    ScheduledModule scheduledModule2(module, nextSlot, venue, false, false, true);
+                    ScheduledModule scheduledModule2(module, nextSlot, venue, false, false, true, false, false);
 
                     // Add these ScheduledModule object to the chromosome
                     chromosome.addGene(scheduledModule1);
@@ -284,6 +284,40 @@ vector<Chromosome> Population::getBestNDiverseChromosomes(int n)
     return newElites;
 }
 
+// void Population::clearPopulation()
+// {
+//     // Sort the population by fitness
+//     sort(chromosomes.begin(), chromosomes.end(),
+//          [](Chromosome &a, Chromosome &b)
+//          {
+//              return a.evaluateFitness() < b.evaluateFitness();
+//          });
+
+//     vector<Chromosome> clearedPopulation = chromosomes; // Initialize with the current population
+
+//     // Clear the population
+//     for (const Chromosome &individual : chromosomes)
+//     {
+//         bool isDiverse = true;
+
+//         for (const Chromosome &cleared : clearedPopulation)
+//         {
+//             if (!individual.isDiverse(cleared))
+//             {
+//                 isDiverse = false;
+//                 break;
+//             }
+//         }
+
+//         if (isDiverse)
+//         {
+//             clearedPopulation.push_back(individual);
+//         }
+//     }
+
+//     // Replace the old population with the cleared population
+//     chromosomes = clearedPopulation;
+// }
 void Population::clearPopulation()
 {
     // Sort the population by fitness
@@ -295,11 +329,12 @@ void Population::clearPopulation()
 
     vector<Chromosome> clearedPopulation;
 
-    // Clear the population
+    // Clear the population by keeping only diverse chromosomes
     for (const Chromosome &individual : chromosomes)
     {
         bool isDiverse = true;
 
+        // Compare with the rest of the cleared population
         for (const Chromosome &cleared : clearedPopulation)
         {
             if (!individual.isDiverse(cleared))
@@ -328,30 +363,31 @@ void Population::populateClearedChromosomes(int numberOfChromosomesToAdd)
     }
 }
 
-bool Population::similarChromo(double threshold)
-{
-    int count = 0;              // To keep track of the number of similar chromosomes
-    int n = chromosomes.size(); // Total number of chromosomes in the population
+// bool Population::similarChromo(double threshold)
+// {
+//     int count = 0;              // To keep track of the number of similar chromosomes
+//     int n = chromosomes.size(); // Total number of chromosomes in the population
 
-    // Nested loop to compare each pair of chromosomes
-    for (int i = 0; i < n; ++i)
-    {
-        for (int j = i + 1; j < n; ++j)
-        {
-            // Assuming you have implemented the isDiverse method in Chromosome class
-            if (!chromosomes[i].isDiverse(chromosomes[j]))
-            {
-                count++; // Increase count if the chromosomes are not diverse
-            }
-        }
-    }
+//     // Nested loop to compare each pair of chromosomes
+//     for (int i = 0; i < n; ++i)
+//     {
+//         for (int j = i + 1; j < n; ++j)
+//         {
+//             // Assuming you have implemented the isDiverse method in Chromosome class
+//             if (!chromosomes[i].isDiverse(chromosomes[j]))
+//             {
+//                 count++; // Increase count if the chromosomes are not diverse
+//             }
+//         }
+//     }
 
-    // Calculate the percentage of similar chromosomes
-    double percentage = (double)count / (double)(n * (n - 1) / 2);
+//     // Calculate the percentage of similar chromosomes
+//     double percentage = (double)count / (double)(n * (n - 1) / 2);
 
-    return percentage >= threshold;
-}
+//     return percentage >= threshold;
+// }
 
+// this function needs to be global for population and GA classes
 bool Population::isLastSlotOfDay(const TimeSlot &timeSlot)
 {
     int slotId = timeSlot.getTimeSlotID();

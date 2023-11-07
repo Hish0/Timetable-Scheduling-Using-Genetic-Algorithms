@@ -15,7 +15,6 @@ int main()
 {
     // Step alpha: Capture the starting time
     auto start = std::chrono::high_resolution_clock::now();
-    int x;
 
     // Step 0: Seed the random number generator
     srand(static_cast<unsigned int>(time(nullptr)));
@@ -28,10 +27,10 @@ int main()
     initializeCrossoverPoints(); // Assuming this function initializes all possible CrossoverPoints
 
     // Define GA parameters
-    int POPULATION_SIZE = 200;
-    double MUTATION_RATE = 0.0;
-    double CROSSOVER_RATE = 0.7;
-    int ELITE_COUNT = 4;
+    int POPULATION_SIZE = 50;
+    double MUTATION_RATE = 0.1;
+    double CROSSOVER_RATE = 0.75;
+    int ELITE_COUNT = 2;
     int NUM_GENERATIONS = 10000;
 
     //  Step 2: Initialize the First Population
@@ -64,7 +63,22 @@ int main()
     cout << "Best Chromosome Fitness: " << fitness << endl;
 
     GA.printProgress();
+    ////////////////////////////////////////
+    // Call the function to check for violations
+    std::pair<int, std::string> violation = bestChromosome.catchViolation();
 
+    // Check if a violation was detected
+    if (violation.first != -1)
+    {
+        // A violation was detected
+        std::cout << "Violation detected at gene index " << violation.first << ": " << violation.second << std::endl;
+    }
+    else
+    {
+        // No violation was detected
+        std::cout << violation.second << std::endl;
+    }
+    ////////////////////////////////////////
     // Step 6: Capture the ending time
     auto end = std::chrono::high_resolution_clock::now();
 
