@@ -21,14 +21,14 @@ def generate_venue_table(venue_name, schedule):
     html += '''
     <tr class="header">
         <th>Days / Time</th>
-        <th>8:00 AM</th>
-        <th>9:00 AM</th>
-        <th>10:00 AM</th>
-        <th>11:00 AM</th>
-        <th>12:00 PM</th>
-        <th>1:00 PM</th>
-        <th>2:00 PM</th>
-        <th>3:00 PM</th>
+        <th>8:00 AM - 9:00 AM</th>
+        <th>9:00 AM - 10:00 AM</th>
+        <th>10:00 AM - 11:00 AM</th>
+        <th>11:00 AM - 12:00 PM</th>
+        <th>12:00 PM - 1:00 PM</th>
+        <th>1:00 PM - 2:00 PM</th>
+        <th>2:00 PM - 3:00 PM</th>
+        <th>3:00 PM - 4:00 PM</th>
     </tr>
     '''
     # Days of the week
@@ -54,14 +54,14 @@ def generate_consolidated_table(consolidated_schedule):
     html += '''
     <tr class="header">
         <th>Days / Time</th>
-        <th>8:00 AM</th>
-        <th>9:00 AM</th>
-        <th>10:00 AM</th>
-        <th>11:00 AM</th>
-        <th>12:00 PM</th>
-        <th>1:00 PM</th>
-        <th>2:00 PM</th>
-        <th>3:00 PM</th>
+        <th>8:00 AM - 9:00 AM</th>
+        <th>9:00 AM - 10:00 AM</th>
+        <th>10:00 AM - 11:00 AM</th>
+        <th>11:00 AM - 12:00 PM</th>
+        <th>12:00 PM - 1:00 PM</th>
+        <th>1:00 PM - 2:00 PM</th>
+        <th>2:00 PM - 3:00 PM</th>
+        <th>3:00 PM - 4:00 PM</th>
     </tr>
     '''
     # Days of the week
@@ -711,10 +711,10 @@ for gene_block in gene_blocks:
         timetables[venue_name] = {}
     if day not in timetables[venue_name]:
         timetables[venue_name][day] = {}
-    timetables[venue_name][day][time] = f"{module_name} by {lecturer_name}"
+    timetables[venue_name][day][time] = f"{module_name} | {lecturer_name}"
 
     # Populate the consolidated timetable using data from individual venue timetables
-    cell_content = f"{module_name} by {lecturer_name} in {venue_name}"
+    cell_content = f"{module_name} | {lecturer_name} | {venue_name}"
     if day not in consolidated_timetable:
         consolidated_timetable[day] = {}
     if time not in consolidated_timetable[day]:

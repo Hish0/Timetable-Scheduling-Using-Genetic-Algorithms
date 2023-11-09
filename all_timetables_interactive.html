@@ -1,0 +1,1272 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+   <title>All Timetables</title>
+   <style>
+       /* Table styling */
+       table {
+           border-collapse: collapse;
+           width: 100%;
+           margin-bottom: 20px;
+       }
+       th, td {
+           border: 1px solid black;
+           text-align: center;
+           padding: 8px;
+       }
+       /* Header styling */
+       .header {
+           background-color: #4CAF50;
+           color: white;
+       }
+
+
+       /* Tooltip styling */
+       .module-info {
+           position: relative; /* Set relative positioning context for the tooltip */
+           display: inline-block; /* Ensure the divs line up next to each other */
+           margin-right: -4px; /* Negative margin to reduce space between modules */
+           padding: 2px; /* Reduced padding */
+           cursor: pointer;
+       }
+       .tooltip-text {
+           visibility: hidden;
+           width: 120px;
+           background-color: black;
+           color: #fff;
+           text-align: center;
+           border-radius: 6px;
+           padding: 5px;
+           position: absolute;
+           z-index: 1;
+           bottom: 100%;
+           left: 50%;
+           margin-left: -60px;
+           transition: opacity 0.5s linear;
+           opacity: 0;
+       }
+       .module-info:hover .tooltip-text {
+           visibility: visible;
+           opacity: 1;
+       }
+
+
+       /* Popup styling */
+       .popup {
+           display: none;
+           position: fixed;
+           left: 50%;
+           top: 50%;
+           transform: translate(-50%, -50%);
+           border: 1px solid #ccc;
+           background-color: white;
+           padding: 10px;
+           z-index: 2;
+       }
+   </style>
+</head>
+<body style="background-color: #d3d3d3;">
+<h2>All Timetables</h2><h3>HALL 72</h3><table>
+    <tr class="header">
+        <th>Days / Time</th>
+        <th>8:00 AM - 9:00 AM</th>
+        <th>9:00 AM - 10:00 AM</th>
+        <th>10:00 AM - 11:00 AM</th>
+        <th>11:00 AM - 12:00 PM</th>
+        <th>12:00 PM - 1:00 PM</th>
+        <th>1:00 PM - 2:00 PM</th>
+        <th>2:00 PM - 3:00 PM</th>
+        <th>3:00 PM - 4:00 PM</th>
+    </tr>
+    <tr><td>Saturday</td><td></td><td></td><td></td><td></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS111
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 2<br>Venue: HALL 72</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS111
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 2<br>Venue: HALL 72</span>
+        </div>
+    </td><td></td><td></td></tr><tr><td>Sunday</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Monday</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Tuesday</td><td>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            AR052
+            <span class="tooltip-text">Lecturer: Dr. Amira alelagi<br>Venue: HALL 72</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            AR052
+            <span class="tooltip-text">Lecturer: Dr. Amira alelagi<br>Venue: HALL 72</span>
+        </div>
+    </td><td></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM103
+            <span class="tooltip-text">Lecturer: Dr. Ahmed abd almutaleb<br>Venue: HALL 72</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM103
+            <span class="tooltip-text">Lecturer: Dr. Ahmed abd almutaleb<br>Venue: HALL 72</span>
+        </div>
+    </td><td></td><td></td><td></td></tr><tr><td>Wednesday</td><td></td><td></td><td></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM102
+            <span class="tooltip-text">Lecturer: Dr. Salsabil<br>Venue: HALL 72</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM102
+            <span class="tooltip-text">Lecturer: Dr. Salsabil<br>Venue: HALL 72</span>
+        </div>
+    </td><td></td><td></td><td></td></tr><tr><td>Thursday</td><td></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH112
+            <span class="tooltip-text">Lecturer: Dr. Mokhtar<br>Venue: HALL 72</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH112
+            <span class="tooltip-text">Lecturer: Dr. Mokhtar<br>Venue: HALL 72</span>
+        </div>
+    </td><td></td><td>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            EL102
+            <span class="tooltip-text">Lecturer: Dr. Mariam British<br>Venue: HALL 72</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            EL102
+            <span class="tooltip-text">Lecturer: Dr. Mariam British<br>Venue: HALL 72</span>
+        </div>
+    </td><td></td><td></td></tr><tr><td>Friday</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table><h3>HALL 73</h3><table>
+    <tr class="header">
+        <th>Days / Time</th>
+        <th>8:00 AM - 9:00 AM</th>
+        <th>9:00 AM - 10:00 AM</th>
+        <th>10:00 AM - 11:00 AM</th>
+        <th>11:00 AM - 12:00 PM</th>
+        <th>12:00 PM - 1:00 PM</th>
+        <th>1:00 PM - 2:00 PM</th>
+        <th>2:00 PM - 3:00 PM</th>
+        <th>3:00 PM - 4:00 PM</th>
+    </tr>
+    <tr><td>Saturday</td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM101
+            <span class="tooltip-text">Lecturer: Dr. Khadeja<br>Venue: HALL 73</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM101
+            <span class="tooltip-text">Lecturer: Dr. Khadeja<br>Venue: HALL 73</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA200
+            <span class="tooltip-text">Lecturer: Dr. Farhat<br>Venue: HALL 73</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA200
+            <span class="tooltip-text">Lecturer: Dr. Farhat<br>Venue: HALL 73</span>
+        </div>
+    </td><td></td><td></td><td></td><td></td></tr><tr><td>Sunday</td><td></td><td></td><td></td><td>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA206
+            <span class="tooltip-text">Lecturer: Dr. Tasneem<br>Venue: HALL 73</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA206
+            <span class="tooltip-text">Lecturer: Dr. Tasneem<br>Venue: HALL 73</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH201
+            <span class="tooltip-text">Lecturer: Dr. Elbadri<br>Venue: HALL 73</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH201
+            <span class="tooltip-text">Lecturer: Dr. Elbadri<br>Venue: HALL 73</span>
+        </div>
+    </td><td></td></tr><tr><td>Monday</td><td>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA206
+            <span class="tooltip-text">Lecturer: Dr. Tasneem<br>Venue: HALL 73</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA206
+            <span class="tooltip-text">Lecturer: Dr. Tasneem<br>Venue: HALL 73</span>
+        </div>
+    </td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Tuesday</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Wednesday</td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            EL101
+            <span class="tooltip-text">Lecturer: Dr. Mariam British<br>Venue: HALL 73</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            EL101
+            <span class="tooltip-text">Lecturer: Dr. Mariam British<br>Venue: HALL 73</span>
+        </div>
+    </td><td></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM103
+            <span class="tooltip-text">Lecturer: Dr. Ahmed abd almutaleb<br>Venue: HALL 73</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM103
+            <span class="tooltip-text">Lecturer: Dr. Ahmed abd almutaleb<br>Venue: HALL 73</span>
+        </div>
+    </td><td></td><td></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS100
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 1<br>Venue: HALL 73</span>
+        </div>
+    </td></tr><tr><td>Thursday</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA200
+            <span class="tooltip-text">Lecturer: Dr. Farhat<br>Venue: HALL 73</span>
+        </div>
+    </td></tr><tr><td>Friday</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table><h3>HALL 70</h3><table>
+    <tr class="header">
+        <th>Days / Time</th>
+        <th>8:00 AM - 9:00 AM</th>
+        <th>9:00 AM - 10:00 AM</th>
+        <th>10:00 AM - 11:00 AM</th>
+        <th>11:00 AM - 12:00 PM</th>
+        <th>12:00 PM - 1:00 PM</th>
+        <th>1:00 PM - 2:00 PM</th>
+        <th>2:00 PM - 3:00 PM</th>
+        <th>3:00 PM - 4:00 PM</th>
+    </tr>
+    <tr><td>Saturday</td><td>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA206
+            <span class="tooltip-text">Lecturer: Dr. Tasneem<br>Venue: HALL 70</span>
+        </div>
+    </td><td></td><td></td><td></td><td></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM102
+            <span class="tooltip-text">Lecturer: Dr. Salsabil<br>Venue: HALL 70</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM102
+            <span class="tooltip-text">Lecturer: Dr. Salsabil<br>Venue: HALL 70</span>
+        </div>
+    </td><td></td></tr><tr><td>Sunday</td><td></td><td></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS100
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 1<br>Venue: HALL 70</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS100
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 1<br>Venue: HALL 70</span>
+        </div>
+    </td><td></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            AR051
+            <span class="tooltip-text">Lecturer: Dr. Amira alelagi<br>Venue: HALL 70</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            AR051
+            <span class="tooltip-text">Lecturer: Dr. Amira alelagi<br>Venue: HALL 70</span>
+        </div>
+    </td><td></td></tr><tr><td>Monday</td><td></td><td></td><td></td><td></td><td></td><td></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST102
+            <span class="tooltip-text">Lecturer: Dr. Ali alaswad<br>Venue: HALL 70</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST102
+            <span class="tooltip-text">Lecturer: Dr. Ali alaswad<br>Venue: HALL 70</span>
+        </div>
+    </td></tr><tr><td>Tuesday</td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS111
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 2<br>Venue: HALL 70</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS111
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 2<br>Venue: HALL 70</span>
+        </div>
+    </td><td></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM102
+            <span class="tooltip-text">Lecturer: Dr. Salsabil<br>Venue: HALL 70</span>
+        </div>
+    </td><td></td><td></td><td>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH200
+            <span class="tooltip-text">Lecturer: Dr. Elbadri<br>Venue: HALL 70</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST101
+            <span class="tooltip-text">Lecturer: Dr. Nabeel<br>Venue: HALL 70</span>
+        </div>
+    </td></tr><tr><td>Wednesday</td><td></td><td></td><td></td><td></td><td></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM104
+            <span class="tooltip-text">Lecturer: Dr. Aljalali<br>Venue: HALL 70</span>
+        </div>
+    </td><td></td><td></td></tr><tr><td>Thursday</td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM101
+            <span class="tooltip-text">Lecturer: Dr. Khadeja<br>Venue: HALL 70</span>
+        </div>
+    </td><td></td><td></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST101
+            <span class="tooltip-text">Lecturer: Dr. Nabeel<br>Venue: HALL 70</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST101
+            <span class="tooltip-text">Lecturer: Dr. Nabeel<br>Venue: HALL 70</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS111
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 2<br>Venue: HALL 70</span>
+        </div>
+    </td><td></td><td></td></tr><tr><td>Friday</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table><h3>HALL 71</h3><table>
+    <tr class="header">
+        <th>Days / Time</th>
+        <th>8:00 AM - 9:00 AM</th>
+        <th>9:00 AM - 10:00 AM</th>
+        <th>10:00 AM - 11:00 AM</th>
+        <th>11:00 AM - 12:00 PM</th>
+        <th>12:00 PM - 1:00 PM</th>
+        <th>1:00 PM - 2:00 PM</th>
+        <th>2:00 PM - 3:00 PM</th>
+        <th>3:00 PM - 4:00 PM</th>
+    </tr>
+    <tr><td>Saturday</td><td></td><td></td><td></td><td>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH201
+            <span class="tooltip-text">Lecturer: Dr. Elbadri<br>Venue: HALL 71</span>
+        </div>
+    </td><td></td><td></td><td></td><td></td></tr><tr><td>Sunday</td><td></td><td></td><td></td><td></td><td></td><td></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM101
+            <span class="tooltip-text">Lecturer: Dr. Khadeja<br>Venue: HALL 71</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM101
+            <span class="tooltip-text">Lecturer: Dr. Khadeja<br>Venue: HALL 71</span>
+        </div>
+    </td></tr><tr><td>Monday</td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH112
+            <span class="tooltip-text">Lecturer: Dr. Mokhtar<br>Venue: HALL 71</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH112
+            <span class="tooltip-text">Lecturer: Dr. Mokhtar<br>Venue: HALL 71</span>
+        </div>
+    </td><td></td><td></td><td></td><td></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS100
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 1<br>Venue: HALL 71</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS100
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 1<br>Venue: HALL 71</span>
+        </div>
+    </td></tr><tr><td>Tuesday</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Wednesday</td><td></td><td>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA200
+            <span class="tooltip-text">Lecturer: Dr. Farhat<br>Venue: HALL 71</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA200
+            <span class="tooltip-text">Lecturer: Dr. Farhat<br>Venue: HALL 71</span>
+        </div>
+    </td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Thursday</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Friday</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table><h3>HALL 74</h3><table>
+    <tr class="header">
+        <th>Days / Time</th>
+        <th>8:00 AM - 9:00 AM</th>
+        <th>9:00 AM - 10:00 AM</th>
+        <th>10:00 AM - 11:00 AM</th>
+        <th>11:00 AM - 12:00 PM</th>
+        <th>12:00 PM - 1:00 PM</th>
+        <th>1:00 PM - 2:00 PM</th>
+        <th>2:00 PM - 3:00 PM</th>
+        <th>3:00 PM - 4:00 PM</th>
+    </tr>
+    <tr><td>Saturday</td><td></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM104
+            <span class="tooltip-text">Lecturer: Dr. Aljalali<br>Venue: HALL 74</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM104
+            <span class="tooltip-text">Lecturer: Dr. Aljalali<br>Venue: HALL 74</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST101
+            <span class="tooltip-text">Lecturer: Dr. Nabeel<br>Venue: HALL 74</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST101
+            <span class="tooltip-text">Lecturer: Dr. Nabeel<br>Venue: HALL 74</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH200
+            <span class="tooltip-text">Lecturer: Dr. Elbadri<br>Venue: HALL 74</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH200
+            <span class="tooltip-text">Lecturer: Dr. Elbadri<br>Venue: HALL 74</span>
+        </div>
+    </td><td></td></tr><tr><td>Sunday</td><td></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST102
+            <span class="tooltip-text">Lecturer: Dr. Ali alaswad<br>Venue: HALL 74</span>
+        </div>
+    </td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Monday</td><td></td><td></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM104
+            <span class="tooltip-text">Lecturer: Dr. Aljalali<br>Venue: HALL 74</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM104
+            <span class="tooltip-text">Lecturer: Dr. Aljalali<br>Venue: HALL 74</span>
+        </div>
+    </td><td></td><td></td><td></td><td></td></tr><tr><td>Tuesday</td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH112
+            <span class="tooltip-text">Lecturer: Dr. Mokhtar<br>Venue: HALL 74</span>
+        </div>
+    </td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Wednesday</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Thursday</td><td></td><td></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST102
+            <span class="tooltip-text">Lecturer: Dr. Ali alaswad<br>Venue: HALL 74</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST102
+            <span class="tooltip-text">Lecturer: Dr. Ali alaswad<br>Venue: HALL 74</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM103
+            <span class="tooltip-text">Lecturer: Dr. Ahmed abd almutaleb<br>Venue: HALL 74</span>
+        </div>
+    </td><td></td><td></td><td></td></tr><tr><td>Friday</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table><h3>Consolidated Timetable</h3><table>
+   <tr class="header">
+       <th>Days / Time</th>
+       <th>8:00 AM - 9:00 AM</th>
+       <th>9:00 AM - 10:00 AM</th>
+       <th>10:00 AM - 11:00 AM</th>
+       <th>11:00 AM - 12:00 PM</th>
+       <th>12:00 PM - 1:00 PM</th>
+       <th>1:00 PM - 2:00 PM</th>
+       <th>2:00 PM - 3:00 PM</th>
+       <th>3:00 PM - 4:00 PM</th>
+   </tr>
+   <tr><td>Saturday</td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM101
+            <span class="tooltip-text">Lecturer: Dr. Khadeja<br>Venue: HALL 73</span>
+        </div>
+    
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS115
+            <span class="tooltip-text">Lecturer: Dr. Naema albadri<br>Venue: LAB 5</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA206
+            <span class="tooltip-text">Lecturer: Dr. Tasneem<br>Venue: HALL 70</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM101
+            <span class="tooltip-text">Lecturer: Dr. Khadeja<br>Venue: HALL 73</span>
+        </div>
+    
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM104
+            <span class="tooltip-text">Lecturer: Dr. Aljalali<br>Venue: HALL 74</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS115
+            <span class="tooltip-text">Lecturer: Dr. Naema albadri<br>Venue: LAB 5</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS315
+            <span class="tooltip-text">Lecturer: Dr. Omaima Alsheli<br>Venue: LAB 4</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkolivegreen;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS436
+            <span class="tooltip-text">Lecturer: Dr. Hassan Abuaisha<br>Venue: LAB 1</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM104
+            <span class="tooltip-text">Lecturer: Dr. Aljalali<br>Venue: HALL 74</span>
+        </div>
+    
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA200
+            <span class="tooltip-text">Lecturer: Dr. Farhat<br>Venue: HALL 73</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS315
+            <span class="tooltip-text">Lecturer: Dr. Omaima Alsheli<br>Venue: LAB 4</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS355
+            <span class="tooltip-text">Lecturer: Dr. Adnan Alshreef<br>Venue: LAB 3</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkolivegreen;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS436
+            <span class="tooltip-text">Lecturer: Dr. Hassan Abuaisha<br>Venue: LAB 1</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST101
+            <span class="tooltip-text">Lecturer: Dr. Nabeel<br>Venue: HALL 74</span>
+        </div>
+    
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA200
+            <span class="tooltip-text">Lecturer: Dr. Farhat<br>Venue: HALL 73</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH201
+            <span class="tooltip-text">Lecturer: Dr. Elbadri<br>Venue: HALL 71</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS355
+            <span class="tooltip-text">Lecturer: Dr. Adnan Alshreef<br>Venue: LAB 3</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST101
+            <span class="tooltip-text">Lecturer: Dr. Nabeel<br>Venue: HALL 74</span>
+        </div>
+    
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS111
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 2<br>Venue: HALL 72</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS322
+            <span class="tooltip-text">Lecturer: Dr. Wafaa Nasser<br>Venue: LAB 1</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM102
+            <span class="tooltip-text">Lecturer: Dr. Salsabil<br>Venue: HALL 70</span>
+        </div>
+    
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS111
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 2<br>Venue: HALL 72</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH200
+            <span class="tooltip-text">Lecturer: Dr. Elbadri<br>Venue: HALL 74</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS211
+            <span class="tooltip-text">Lecturer: Dr. Fatima Hmeed<br>Venue: LAB 5</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS322
+            <span class="tooltip-text">Lecturer: Dr. Wafaa Nasser<br>Venue: LAB 1</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM102
+            <span class="tooltip-text">Lecturer: Dr. Salsabil<br>Venue: HALL 70</span>
+        </div>
+    
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH200
+            <span class="tooltip-text">Lecturer: Dr. Elbadri<br>Venue: HALL 74</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS211
+            <span class="tooltip-text">Lecturer: Dr. Fatima Hmeed<br>Venue: LAB 5</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS443
+            <span class="tooltip-text">Lecturer: Dr. Samir Embarek<br>Venue: LAB 3</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS443
+            <span class="tooltip-text">Lecturer: Dr. Samir Embarek<br>Venue: LAB 3</span>
+        </div>
+    </td></tr><tr><td>Sunday</td><td>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS215
+            <span class="tooltip-text">Lecturer: Dr. Omaima Alsheli<br>Venue: LAB 2</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST102
+            <span class="tooltip-text">Lecturer: Dr. Ali alaswad<br>Venue: HALL 74</span>
+        </div>
+    
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS215
+            <span class="tooltip-text">Lecturer: Dr. Omaima Alsheli<br>Venue: LAB 2</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS336
+            <span class="tooltip-text">Lecturer: Dr. Raneem Nashnoosh<br>Venue: LAB 4</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS431
+            <span class="tooltip-text">Lecturer: Dr. Abd Allatif Alshwehdi<br>Venue: LAB 3</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS100
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 1<br>Venue: HALL 70</span>
+        </div>
+    
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS336
+            <span class="tooltip-text">Lecturer: Dr. Raneem Nashnoosh<br>Venue: LAB 4</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS431
+            <span class="tooltip-text">Lecturer: Dr. Abd Allatif Alshwehdi<br>Venue: LAB 3</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS100
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 1<br>Venue: HALL 70</span>
+        </div>
+    
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA206
+            <span class="tooltip-text">Lecturer: Dr. Tasneem<br>Venue: HALL 73</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS315
+            <span class="tooltip-text">Lecturer: Dr. Omaima Alsheli<br>Venue: LAB 1</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS437
+            <span class="tooltip-text">Lecturer: Dr. Alsunni<br>Venue: LAB 3</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA206
+            <span class="tooltip-text">Lecturer: Dr. Tasneem<br>Venue: HALL 73</span>
+        </div>
+    
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS315
+            <span class="tooltip-text">Lecturer: Dr. Omaima Alsheli<br>Venue: LAB 1</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS437
+            <span class="tooltip-text">Lecturer: Dr. Alsunni<br>Venue: LAB 3</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkolivegreen;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS438
+            <span class="tooltip-text">Lecturer: Dr. Ali Aborass<br>Venue: LAB 4</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            AR051
+            <span class="tooltip-text">Lecturer: Dr. Amira alelagi<br>Venue: HALL 70</span>
+        </div>
+    
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH201
+            <span class="tooltip-text">Lecturer: Dr. Elbadri<br>Venue: HALL 73</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS331
+            <span class="tooltip-text">Lecturer: Dr. Raneem Nashnoosh<br>Venue: LAB 5</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkolivegreen;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS438
+            <span class="tooltip-text">Lecturer: Dr. Ali Aborass<br>Venue: LAB 4</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM101
+            <span class="tooltip-text">Lecturer: Dr. Khadeja<br>Venue: HALL 71</span>
+        </div>
+    
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            AR051
+            <span class="tooltip-text">Lecturer: Dr. Amira alelagi<br>Venue: HALL 70</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH201
+            <span class="tooltip-text">Lecturer: Dr. Elbadri<br>Venue: HALL 73</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS331
+            <span class="tooltip-text">Lecturer: Dr. Raneem Nashnoosh<br>Venue: LAB 5</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS340
+            <span class="tooltip-text">Lecturer: Dr. Fardous<br>Venue: LAB 3</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM101
+            <span class="tooltip-text">Lecturer: Dr. Khadeja<br>Venue: HALL 71</span>
+        </div>
+    
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS340
+            <span class="tooltip-text">Lecturer: Dr. Fardous<br>Venue: LAB 3</span>
+        </div>
+    <br></td></tr><tr><td>Monday</td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH112
+            <span class="tooltip-text">Lecturer: Dr. Mokhtar<br>Venue: HALL 71</span>
+        </div>
+    
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA206
+            <span class="tooltip-text">Lecturer: Dr. Tasneem<br>Venue: HALL 73</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH112
+            <span class="tooltip-text">Lecturer: Dr. Mokhtar<br>Venue: HALL 71</span>
+        </div>
+    
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS207
+            <span class="tooltip-text">Lecturer: Dr. Abd Alsalam almaraghni<br>Venue: LAB 3</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA206
+            <span class="tooltip-text">Lecturer: Dr. Tasneem<br>Venue: HALL 73</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS319
+            <span class="tooltip-text">Lecturer: Dr. Naema albadri<br>Venue: LAB 2</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS332
+            <span class="tooltip-text">Lecturer: Dr. Alsunni<br>Venue: LAB 5</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM104
+            <span class="tooltip-text">Lecturer: Dr. Aljalali<br>Venue: HALL 74</span>
+        </div>
+    
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS207
+            <span class="tooltip-text">Lecturer: Dr. Abd Alsalam almaraghni<br>Venue: LAB 3</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS319
+            <span class="tooltip-text">Lecturer: Dr. Naema albadri<br>Venue: LAB 2</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS332
+            <span class="tooltip-text">Lecturer: Dr. Alsunni<br>Venue: LAB 5</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM104
+            <span class="tooltip-text">Lecturer: Dr. Aljalali<br>Venue: HALL 74</span>
+        </div>
+    
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS200
+            <span class="tooltip-text">Lecturer: Dr. Adnan Alshreef<br>Venue: LAB 2</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS200
+            <span class="tooltip-text">Lecturer: Dr. Adnan Alshreef<br>Venue: LAB 2</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS431
+            <span class="tooltip-text">Lecturer: Dr. Abd Allatif Alshwehdi<br>Venue: LAB 2</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS100
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 1<br>Venue: HALL 71</span>
+        </div>
+    
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST102
+            <span class="tooltip-text">Lecturer: Dr. Ali alaswad<br>Venue: HALL 70</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS336
+            <span class="tooltip-text">Lecturer: Dr. Raneem Nashnoosh<br>Venue: LAB 3</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS431
+            <span class="tooltip-text">Lecturer: Dr. Abd Allatif Alshwehdi<br>Venue: LAB 2</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS100
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 1<br>Venue: HALL 71</span>
+        </div>
+    
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST102
+            <span class="tooltip-text">Lecturer: Dr. Ali alaswad<br>Venue: HALL 70</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS336
+            <span class="tooltip-text">Lecturer: Dr. Raneem Nashnoosh<br>Venue: LAB 3</span>
+        </div>
+    <br></td></tr><tr><td>Tuesday</td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH112
+            <span class="tooltip-text">Lecturer: Dr. Mokhtar<br>Venue: HALL 74</span>
+        </div>
+    
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS111
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 2<br>Venue: HALL 70</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            AR052
+            <span class="tooltip-text">Lecturer: Dr. Amira alelagi<br>Venue: HALL 72</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS315
+            <span class="tooltip-text">Lecturer: Dr. Omaima Alsheli<br>Venue: LAB 5</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS111
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 2<br>Venue: HALL 70</span>
+        </div>
+    
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS207
+            <span class="tooltip-text">Lecturer: Dr. Abd Alsalam almaraghni<br>Venue: LAB 1</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            AR052
+            <span class="tooltip-text">Lecturer: Dr. Amira alelagi<br>Venue: HALL 72</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS437
+            <span class="tooltip-text">Lecturer: Dr. Alsunni<br>Venue: LAB 3</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS207
+            <span class="tooltip-text">Lecturer: Dr. Abd Alsalam almaraghni<br>Venue: LAB 1</span>
+        </div>
+    
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS437
+            <span class="tooltip-text">Lecturer: Dr. Alsunni<br>Venue: LAB 3</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM102
+            <span class="tooltip-text">Lecturer: Dr. Salsabil<br>Venue: HALL 70</span>
+        </div>
+    
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM103
+            <span class="tooltip-text">Lecturer: Dr. Ahmed abd almutaleb<br>Venue: HALL 72</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkolivegreen;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS436
+            <span class="tooltip-text">Lecturer: Dr. Hassan Abuaisha<br>Venue: LAB 5</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM103
+            <span class="tooltip-text">Lecturer: Dr. Ahmed abd almutaleb<br>Venue: HALL 72</span>
+        </div>
+    
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS115
+            <span class="tooltip-text">Lecturer: Dr. Naema albadri<br>Venue: LAB 3</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS355
+            <span class="tooltip-text">Lecturer: Dr. Adnan Alshreef<br>Venue: LAB 1</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkolivegreen;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS436
+            <span class="tooltip-text">Lecturer: Dr. Hassan Abuaisha<br>Venue: LAB 5</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS115
+            <span class="tooltip-text">Lecturer: Dr. Naema albadri<br>Venue: LAB 3</span>
+        </div>
+    
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS355
+            <span class="tooltip-text">Lecturer: Dr. Adnan Alshreef<br>Venue: LAB 1</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH200
+            <span class="tooltip-text">Lecturer: Dr. Elbadri<br>Venue: HALL 70</span>
+        </div>
+    
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS215
+            <span class="tooltip-text">Lecturer: Dr. Omaima Alsheli<br>Venue: LAB 3</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS321
+            <span class="tooltip-text">Lecturer: Dr. Wafaa Nasser<br>Venue: LAB 4</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST101
+            <span class="tooltip-text">Lecturer: Dr. Nabeel<br>Venue: HALL 70</span>
+        </div>
+    
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS321
+            <span class="tooltip-text">Lecturer: Dr. Wafaa Nasser<br>Venue: LAB 4</span>
+        </div>
+    <br></td></tr><tr><td>Wednesday</td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            EL101
+            <span class="tooltip-text">Lecturer: Dr. Mariam British<br>Venue: HALL 73</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            EL101
+            <span class="tooltip-text">Lecturer: Dr. Mariam British<br>Venue: HALL 73</span>
+        </div>
+    
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA200
+            <span class="tooltip-text">Lecturer: Dr. Farhat<br>Venue: HALL 71</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS456
+            <span class="tooltip-text">Lecturer: Dr. Hassan Abuaisha<br>Venue: LAB 1</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA200
+            <span class="tooltip-text">Lecturer: Dr. Farhat<br>Venue: HALL 71</span>
+        </div>
+    
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS215
+            <span class="tooltip-text">Lecturer: Dr. Omaima Alsheli<br>Venue: LAB 2</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS319
+            <span class="tooltip-text">Lecturer: Dr. Naema albadri<br>Venue: LAB 3</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS456
+            <span class="tooltip-text">Lecturer: Dr. Hassan Abuaisha<br>Venue: LAB 1</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM102
+            <span class="tooltip-text">Lecturer: Dr. Salsabil<br>Venue: HALL 72</span>
+        </div>
+    
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM103
+            <span class="tooltip-text">Lecturer: Dr. Ahmed abd almutaleb<br>Venue: HALL 73</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS215
+            <span class="tooltip-text">Lecturer: Dr. Omaima Alsheli<br>Venue: LAB 2</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS319
+            <span class="tooltip-text">Lecturer: Dr. Naema albadri<br>Venue: LAB 3</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM102
+            <span class="tooltip-text">Lecturer: Dr. Salsabil<br>Venue: HALL 72</span>
+        </div>
+    
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM103
+            <span class="tooltip-text">Lecturer: Dr. Ahmed abd almutaleb<br>Venue: HALL 73</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS322
+            <span class="tooltip-text">Lecturer: Dr. Wafaa Nasser<br>Venue: LAB 4</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkolivegreen;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS438
+            <span class="tooltip-text">Lecturer: Dr. Ali Aborass<br>Venue: LAB 3</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM104
+            <span class="tooltip-text">Lecturer: Dr. Aljalali<br>Venue: HALL 70</span>
+        </div>
+    
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS322
+            <span class="tooltip-text">Lecturer: Dr. Wafaa Nasser<br>Venue: LAB 4</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkolivegreen;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS438
+            <span class="tooltip-text">Lecturer: Dr. Ali Aborass<br>Venue: LAB 3</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS211
+            <span class="tooltip-text">Lecturer: Dr. Fatima Hmeed<br>Venue: LAB 1</span>
+        </div>
+    
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS340
+            <span class="tooltip-text">Lecturer: Dr. Fardous<br>Venue: LAB 2</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS443
+            <span class="tooltip-text">Lecturer: Dr. Samir Embarek<br>Venue: LAB 4</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS100
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 1<br>Venue: HALL 73</span>
+        </div>
+    
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS211
+            <span class="tooltip-text">Lecturer: Dr. Fatima Hmeed<br>Venue: LAB 1</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS340
+            <span class="tooltip-text">Lecturer: Dr. Fardous<br>Venue: LAB 2</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS443
+            <span class="tooltip-text">Lecturer: Dr. Samir Embarek<br>Venue: LAB 4</span>
+        </div>
+    <br></td></tr><tr><td>Thursday</td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM101
+            <span class="tooltip-text">Lecturer: Dr. Khadeja<br>Venue: HALL 70</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH112
+            <span class="tooltip-text">Lecturer: Dr. Mokhtar<br>Venue: HALL 72</span>
+        </div>
+    
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS115
+            <span class="tooltip-text">Lecturer: Dr. Naema albadri<br>Venue: LAB 5</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS331
+            <span class="tooltip-text">Lecturer: Dr. Raneem Nashnoosh<br>Venue: LAB 3</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS456
+            <span class="tooltip-text">Lecturer: Dr. Hassan Abuaisha<br>Venue: LAB 4</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            PH112
+            <span class="tooltip-text">Lecturer: Dr. Mokhtar<br>Venue: HALL 72</span>
+        </div>
+    
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST102
+            <span class="tooltip-text">Lecturer: Dr. Ali alaswad<br>Venue: HALL 74</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS331
+            <span class="tooltip-text">Lecturer: Dr. Raneem Nashnoosh<br>Venue: LAB 3</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS332
+            <span class="tooltip-text">Lecturer: Dr. Alsunni<br>Venue: LAB 2</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:brown;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS456
+            <span class="tooltip-text">Lecturer: Dr. Hassan Abuaisha<br>Venue: LAB 4</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST101
+            <span class="tooltip-text">Lecturer: Dr. Nabeel<br>Venue: HALL 70</span>
+        </div>
+    
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST102
+            <span class="tooltip-text">Lecturer: Dr. Ali alaswad<br>Venue: HALL 74</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:darkcyan;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS332
+            <span class="tooltip-text">Lecturer: Dr. Alsunni<br>Venue: LAB 2</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:red;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            ST101
+            <span class="tooltip-text">Lecturer: Dr. Nabeel<br>Venue: HALL 70</span>
+        </div>
+    
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MM103
+            <span class="tooltip-text">Lecturer: Dr. Ahmed abd almutaleb<br>Venue: HALL 74</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            EL102
+            <span class="tooltip-text">Lecturer: Dr. Mariam British<br>Venue: HALL 72</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS321
+            <span class="tooltip-text">Lecturer: Dr. Wafaa Nasser<br>Venue: LAB 3</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:blue;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS111
+            <span class="tooltip-text">Lecturer: Dr. Mo3eed 2<br>Venue: HALL 70</span>
+        </div>
+    
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS200
+            <span class="tooltip-text">Lecturer: Dr. Adnan Alshreef<br>Venue: LAB 2</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            EL102
+            <span class="tooltip-text">Lecturer: Dr. Mariam British<br>Venue: HALL 72</span>
+        </div>
+    <br>
+        <div class="module-info" style="color:purple;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS321
+            <span class="tooltip-text">Lecturer: Dr. Wafaa Nasser<br>Venue: LAB 3</span>
+        </div>
+    <br></td><td>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS200
+            <span class="tooltip-text">Lecturer: Dr. Adnan Alshreef<br>Venue: LAB 2</span>
+        </div>
+    </td><td>
+        <div class="module-info" style="color:green;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            MA200
+            <span class="tooltip-text">Lecturer: Dr. Farhat<br>Venue: HALL 73</span>
+        </div>
+    
+        <div class="module-info" style="color:orange;" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+            CS211
+            <span class="tooltip-text">Lecturer: Dr. Fatima Hmeed<br>Venue: LAB 3</span>
+        </div>
+    <br></td></tr><tr><td>Friday</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></table>
+   <div id="popup" class="popup"></div>
+   <script>
+       // Function to show the popup
+       function showPopup(module, lecturer, venue) {
+           var popup = document.getElementById('popup');
+           popup.innerHTML = 'Module: ' + module + '<br>Lecturer: ' + lecturer + '<br>Venue: ' + venue;
+           popup.style.display = 'block';
+       }
+
+        
+
+       // Clicking on the popup closes it
+       document.getElementById('popup').addEventListener('click', function() {
+           this.style.display = 'none';
+       });
+       
+       
+   </script>
+</body>
+</html>
