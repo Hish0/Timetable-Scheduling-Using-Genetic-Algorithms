@@ -1,6 +1,7 @@
 #include "Chromosome.h"
 #include <iostream>
 #include <map>
+#include "../GlobalVariables/GlobalVariables.h"
 
 using namespace std;
 

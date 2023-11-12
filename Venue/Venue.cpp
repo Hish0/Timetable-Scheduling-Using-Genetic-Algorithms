@@ -1,4 +1,5 @@
 #include "Venue.h"
+#include "../GlobalVariables/GlobalVariables.h"
 
 // Default Constructor
 Venue::Venue() : venueID(0), name("Unknown"), capacity(0), isLab(false) {}
@@ -73,4 +74,42 @@ string Venue::toString() const
         << ", Capacity: " << capacity
         << ", Is Lab: " << (isLab ? "Yes" : "No");
     return oss.str();
+}
+
+void Venue::fromString(const std::string &str)
+{
+    std::istringstream iss(str);
+    std::string token;
+
+    // Parse the string and set the attributes of the Venue
+    while (getline(iss, token, ','))
+    {
+        std::istringstream tokenStream(token);
+        std::string key;
+        std::string value;
+
+        // Split the token into key and value
+        getline(tokenStream, key, ':');
+        getline(tokenStream, value);
+        trimString(key);   // Function to trim leading and trailing spaces
+        trimString(value); // Function to trim leading and trailing spaces
+
+        // Set the appropriate attribute based on the key
+        if (key == "Venue ID")
+        {
+            this->venueID = stoi(value);
+        }
+        else if (key == "Name")
+        {
+            this->name = value;
+        }
+        else if (key == "Capacity")
+        {
+            this->capacity = stoi(value);
+        }
+        else if (key == "Is Lab")
+        {
+            this->isLab = (value == "Yes");
+        }
+    }
 }

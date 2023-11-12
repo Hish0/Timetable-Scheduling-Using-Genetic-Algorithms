@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <map>
+#include <sstream>
+#include <fstream>
 #include "../ScheduledModule/ScheduledModule.h" // Adjust this path based on your folder structure
 
 using namespace std;

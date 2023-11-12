@@ -119,7 +119,7 @@ Chromosome GeneticAlgorithm::crossover(const Chromosome &parent1, const Chromoso
     // Choose one child for the next generation based on fitness (you could also return both)
     if (child1.evaluateFitness() < child2.evaluateFitness())
     {
-        if (child1.getGenes().size() != 164)
+        if (child1.getGenes().size() != 108)
         {
             cout << "the child 1 ERROR" << endl;
             cout << "##########child size : " << child1.getGenes().size() << endl;
@@ -133,7 +133,7 @@ Chromosome GeneticAlgorithm::crossover(const Chromosome &parent1, const Chromoso
     }
     else
     {
-        if (child2.getGenes().size() != 164)
+        if (child2.getGenes().size() != 108)
         {
             cout << "the child 2 ERROR" << endl;
             cout << "##########child size : " << child2.getGenes().size() << endl;
@@ -473,7 +473,7 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
         //     counter++;
         // }
 
-        if (child.getGenes().size() != 164)
+        if (child.getGenes().size() != 108)
         {
             cout << "the child ERROR" << endl;
             cout << "^^^^^^^^^^^^child size : " << child.getGenes().size() << endl;

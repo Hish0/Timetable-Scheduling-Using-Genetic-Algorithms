@@ -17,3 +17,6 @@ void initializeTimeSlots();
 void initializeModules();
 void initializeVenues();
 void initializeCrossoverPoints();
+void trimString(std::string &str);
+bool parseBool(const string &str);
+Lecturer findLecturerByName(const std::string &name);
