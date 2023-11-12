@@ -53,6 +53,12 @@ void initializeTimeSlots()
     {
         for (const auto &time : times)
         {
+            // the lecturer meeting of the week is in monday from 12 to 2 , no modules allowed in this time
+            if (day == "Monday" && (time == "12:00 PM" || time == "1:00 PM"))
+            {
+                continue;
+            }
+
             allTimeSlots.push_back(TimeSlot(id++, day, time));
         }
     }
@@ -111,7 +117,9 @@ void initializeModules()
     allModules.push_back(Module(35, allLecturers[3], "CS456", 7, 25, true, 4));
 
     allModules.push_back(Module(36, allLecturers[3], "CS436", 8, 25, true, 4));
-    allModules.push_back(Module(37, allLecturers[11], "CS438", 8, 25, true, 4));
+    allModules.push_back(Module(37, allLecturers[11], "CS438", 8, 25, true, 5));
+    allModules.push_back(Module(38, allLecturers[11], "CS438", 8, 25, true, 5));
+    allModules.push_back(Module(39, allLecturers[2], "CS438", 9, 25, true, 5));
 }
 
 // Initialize venues

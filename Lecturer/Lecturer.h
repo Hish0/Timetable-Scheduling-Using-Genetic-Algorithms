@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -30,6 +31,8 @@ public:
     void setLecturerName(const string &name);
 
     void printInfo() const;
+    string toString() const;
+    void fromString(const std::string &str);
 };
 
 #endif // LECTURER_H

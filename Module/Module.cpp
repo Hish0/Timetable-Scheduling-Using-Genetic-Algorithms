@@ -99,5 +99,28 @@ void Module::printInfo() const
          << ", Name: " << name
          << ", Level: " << level
          << ", Enrolled Students: " << numberOfStudentsEnrolled
-         << ", Is Lab: " << (isLab ? "Yes" : "No") << endl;
+         << ", Is Lab: " << (isLab ? "Yes" : "No")
+         << ", Number of time slots: " << numberOfTimeSlots << endl;
+}
+
+// Convert printInfo to toString
+std::string Module::toString() const
+{
+    std::ostringstream oss;
+    oss << "Module ID: " << moduleID
+        << ", Lecturer: " << lecturer.getLecturerName()
+        << ", Name: " << name
+        << ", Level: " << level
+        << ", Enrolled Students: " << numberOfStudentsEnrolled
+        << ", Is Lab: " << (isLab ? "Yes" : "No")
+        << ", Number of time slots: " << numberOfTimeSlots;
+    return oss.str();
+}
+
+// New fromString method
+void Module::fromString(const std::string &str)
+{
+    std::istringstream iss(str);
+    // Parse the string and set the attributes of the Module
+    // This might involve some more complex parsing logic
 }

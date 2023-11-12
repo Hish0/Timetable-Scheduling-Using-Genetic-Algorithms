@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -36,6 +37,7 @@ public:
     void setIsLab(bool lab);
 
     void printInfo() const;
+    string toString() const;
 };
 
 #endif // VENUE_H

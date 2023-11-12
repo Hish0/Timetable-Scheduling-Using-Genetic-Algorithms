@@ -79,3 +79,12 @@ TimeSlot TimeSlot::getNextTimeSlot() const
     // Return the current time slot
     return *this;
 }
+
+string TimeSlot::toString() const
+{
+    std::ostringstream oss;
+    oss << "TimeSlot ID: " << timeSlotID
+        << ", Day: " << day
+        << ", Time: " << time;
+    return oss.str();
+}

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 #include "../Lecturer/Lecturer.h" // Assuming Lecturer.h is in a folder named Lecturer
 
 using namespace std;
@@ -46,6 +47,8 @@ public:
     void setNumberOfTimeSlots(int slots);
 
     void printInfo() const;
+    string toString() const;
+    void fromString(const string &str);
 };
 
 #endif // MODULE_H

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
@@ -35,6 +36,7 @@ public:
     void printInfo() const;
     bool isEmpty() const;
     TimeSlot getNextTimeSlot() const;
+    string toString() const;
 };
 
 struct TimeSlotComparator

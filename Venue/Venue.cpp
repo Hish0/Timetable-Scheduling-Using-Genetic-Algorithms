@@ -64,3 +64,13 @@ void Venue::printInfo() const
          << ", Capacity: " << capacity
          << ", Is Lab: " << (isLab ? "Yes" : "No") << endl;
 }
+
+string Venue::toString() const
+{
+    std::ostringstream oss;
+    oss << "Venue ID: " << venueID
+        << ", Name: " << name
+        << ", Capacity: " << capacity
+        << ", Is Lab: " << (isLab ? "Yes" : "No");
+    return oss.str();
+}

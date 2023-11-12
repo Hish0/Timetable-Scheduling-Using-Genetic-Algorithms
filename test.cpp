@@ -2,6 +2,7 @@
 #include <cstdlib> // for rand and srand
 #include <ctime>   // for time
 #include <chrono>
+#include <fstream>
 #include "GeneticAlgorithm/GeneticAlgorithm.h"
 
 using namespace std;
@@ -10,6 +11,28 @@ vector<TimeSlot> allTimeSlots; // Global array to hold all time slots
 vector<Module> allModules;     // Global array to hold all modules
 vector<Venue> allVenues;       // Global array to hold all venues
 vector<Chromosome> initialPopulation;
+
+void chromosomeToTextFile(const Chromosome &chromosome, const string &filename)
+{
+    ofstream file(filename);
+    int counter = 1;
+    for (const ScheduledModule &gene : chromosome.getGenes())
+    {
+        file << "Gene: " << counter << "\n";
+        // Write Module, TimeSlot, and Venue info
+        file << gene.getModule().toString() << "\n";
+        file << gene.getTimeSlot().toString() << "\n";
+        file << gene.getVenue().toString() << "\n";
+        // Write additional gene attributes
+        file << "IsLockedVenue: " << gene.getIsLockedVenue() << "\n";
+        file << "IsLockedTimeSlot: " << gene.getIsLockedTimeSlot() << "\n";
+        file << "IsValid: " << gene.getIsValid() << "\n";
+        file << "IsFirstSlot: " << gene.getIsFirstSlot() << "\n";
+        file << "IsOneSlot: " << gene.getIsOneSlot() << "\n";
+        counter++;
+    }
+    file.close();
+}
 
 int main()
 {
@@ -55,8 +78,15 @@ int main()
         gene.getModule().printInfo();
         gene.getTimeSlot().printInfo();
         gene.getVenue().printInfo();
+        cout << "IsLockedVenue: " << gene.getIsLockedVenue() << endl;
+        cout << "IsLockedTimeSlot: " << gene.getIsLockedTimeSlot() << endl;
+        cout << "IsValid: " << gene.getIsValid() << endl;
+        cout << "IsFirstSlot: " << gene.getIsFirstSlot() << endl;
+        cout << "IsOneSlot: " << gene.getIsOneSlot() << endl;
         counter++;
     }
+    // save the best chromosome in a file named "chromosome_data"
+    chromosomeToTextFile(bestChromosome, "chromosome_data.txt");
 
     // Evaluate fitness of the best chromosome
     double fitness = bestChromosome.evaluateFitness();
