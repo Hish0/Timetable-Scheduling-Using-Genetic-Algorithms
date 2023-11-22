@@ -10,6 +10,7 @@ vector<Lecturer> allLecturers; // Global array to hold all lecturers
 vector<TimeSlot> allTimeSlots; // Global array to hold all time slots
 vector<Module> allModules;     // Global array to hold all modules
 vector<Venue> allVenues;       // Global array to hold all venues
+vector<LecturerTimeSlotPreference> globalLecturerPreferences;
 vector<Chromosome> initialPopulation;
 
 void chromosomeToTextFile(const Chromosome &chromosome, const string &filename)
@@ -98,6 +99,7 @@ int main()
     initializeLecturers();       // Assuming this function initializes all possible lecturers
     initializeModules();         // Assuming this function initializes all possible modules
     initializeCrossoverPoints(); // Assuming this function initializes all possible CrossoverPoints
+    initializeLecturerTimeSlotPreference();
 
     // Define GA parameters
     int POPULATION_SIZE = 50;
@@ -107,110 +109,188 @@ int main()
     int NUM_GENERATIONS = 10000;
     /////////////////////////////////////////////////
 
-    // std::string moduleData = "Module ID: 1, Lecturer: Dr. Mo3eed 1, Name: CS100, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 5";
-    // std::string timeSlotData = "TimeSlot ID: 3, Day: Saturday, Time: 10:00 AM";
-    // std::string venueData = "Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No";
-
-    // // Create a Module object
-    // Module myModule;
-    // TimeSlot myTimeSlot;
-    // Venue myVenue;
-
-    // // Use fromString to initialize the Module object
-    // myModule.fromString(moduleData);
-    // myTimeSlot.fromString(timeSlotData);
-    // myVenue.fromString(venueData);
-
-    // myModule.printInfo();
-    // myTimeSlot.printInfo();
-    // myVenue.printInfo();
-
     Chromosome reconstructedChromosome = textFileToChromosome("chromosome_data.txt");
     //  chromosomeToTextFile(reconstructedChromosome, "chromosome_data_testing.txt");
-    // int counter = 1;
-    // for (const ScheduledModule &gene : reconstructedChromosome.getGenes())
-    // {
-    //     // Print information about the gene/module, venue, and time slot
-    //     cout << "Gene: " << counter << endl;
-    //     gene.getModule().printInfo();
-    //     gene.getTimeSlot().printInfo();
-    //     gene.getVenue().printInfo();
-    //     cout << "IsLockedVenue: " << gene.getIsLockedVenue() << endl;
-    //     cout << "IsLockedTimeSlot: " << gene.getIsLockedTimeSlot() << endl;
-    //     cout << "IsValid: " << gene.getIsValid() << endl;
-    //     cout << "IsFirstSlot: " << gene.getIsFirstSlot() << endl;
-    //     cout << "IsOneSlot: " << gene.getIsOneSlot() << endl;
-    //     counter++;
-    // }
-    cout << "Best Chromosome Fitness:######## " << reconstructedChromosome.evaluateFitness() << endl;
 
     /////////////////////////////////////////////////
-    //  Step 2: Initialize the First Population
-    Population initialPop;
-    // initialPop.initializeFirstPopulation(POPULATION_SIZE);
-    initialPop.initializePopulationChromosome(POPULATION_SIZE, reconstructedChromosome);
+    int menueChoice = 0;
+    while (menueChoice != 3)
+    {
+        cout << "please choose an option:" << endl
+             << "1 :- Run the Genetic algorithm" << endl
+             << "2 :- Edit a schedule" << endl
+             << "3 :- Exit" << endl;
+        cin >> menueChoice;
+        if (menueChoice == 1)
+        {
 
-    // Step 3: Initialize the Genetic Algorithm
-    GeneticAlgorithm GA(initialPop, MUTATION_RATE, CROSSOVER_RATE, ELITE_COUNT);
+            //  Step 2: Initialize the First Population
+            Population initialPop;
+            initialPop.initializeFirstPopulation(POPULATION_SIZE);
 
-    // Step 4: Run the Genetic Algorithm
-    GA.run(NUM_GENERATIONS);
+            // Step 3: Initialize the Genetic Algorithm
+            GeneticAlgorithm GA(initialPop, MUTATION_RATE, CROSSOVER_RATE, ELITE_COUNT);
 
-    // Step 5: Evaluate and Display the Best Solution Found
-    Chromosome bestChromosome = GA.getBestChromosome(); // Assuming you add a function to return the best chromosome
-    // cout << "Best Chromosome: " << endl;
+            // Step 4: Run the Genetic Algorithm
+            GA.run(NUM_GENERATIONS);
 
-    // int counter = 1;
-    // for (const ScheduledModule &gene : bestChromosome.getGenes())
+            // Step 5: Evaluate and Display the Best Solution Found
+            Chromosome bestChromosome = GA.getBestChromosome(); // Assuming you add a function to return the best chromosome
+
+            // Step 6: save the best chromosome in a file named "chromosome_data"
+            chromosomeToTextFile(bestChromosome, "chromosome_data.txt");
+            chromosomeToTextFile(bestChromosome, "chromosome_data_editing.txt");
+
+            // Step 7: Evaluate fitness of the best chromosome
+            double fitness = bestChromosome.evaluateFitness();
+            cout << "Best Chromosome Fitness: " << fitness << endl;
+
+            // Step 8: print the progress of the Genetic Algorithm
+            GA.printProgress();
+
+            // Step 9: check the state of the best chromosome
+            if (fitness == 0)
+            {
+                cout << "Found a valid solution and is saved in chromosome_data.txt file ready to parse.";
+            }
+            else
+            {
+                // Call the function to hold the id of the genes that is violating the constraints violations
+                std::pair<int, std::string> violation = bestChromosome.catchViolation();
+
+                // A violation was detected
+                std::cout << "Violation detected at gene index " << violation.first << ": " << violation.second << std::endl;
+            }
+
+            // Step 10: Capture the ending time
+            auto end = std::chrono::high_resolution_clock::now();
+
+            // Compute the total duration in seconds
+            auto totalSeconds = std::chrono::duration_cast<std::chrono::seconds>(end - start);
+
+            // Extract minutes and seconds
+            auto minutes = totalSeconds.count() / 60;
+            auto seconds = totalSeconds.count() % 60;
+
+            std::cout << "Time taken to finish is: " << minutes << " minutes and " << seconds << " seconds" << std::endl;
+            // exite the code
+            menueChoice = 3;
+        }
+        else if (menueChoice == 2)
+        {
+            Chromosome reconstructedChromosome = textFileToChromosome("chromosome_data_editing.txt");
+            double fitness = reconstructedChromosome.evaluateFitness();
+
+            cout << "Best Chromosome Fitness: " << fitness << endl;
+
+            //  Step 2: Initialize the First Population
+            Population initialPop;
+            initialPop.initializePopulationChromosome(POPULATION_SIZE, reconstructedChromosome);
+
+            // Step 3: Initialize the Genetic Algorithm
+            GeneticAlgorithm GA(initialPop, MUTATION_RATE, CROSSOVER_RATE, ELITE_COUNT);
+
+            // Step 4: Run the Genetic Algorithm
+            GA.run(NUM_GENERATIONS);
+
+            // Step 5: Evaluate and Display the Best Solution Found
+            Chromosome bestChromosome = GA.getBestChromosome(); // Assuming you add a function to return the best chromosome
+            // cout << "Best Chromosome: " << endl;
+
+            // save the best chromosome in a file named "chromosome_data"
+            chromosomeToTextFile(bestChromosome, "chromosome_data.txt");
+
+            // Evaluate fitness of the best chromosome
+            // double fitness = bestChromosome.evaluateFitness();
+            // cout << "Best Chromosome Fitness: " << fitness << endl;
+
+            GA.printProgress();
+            ////////////////////////////////////////
+            if (fitness == 0)
+            {
+                cout << "Found a valid solution and is saved in chromosome_data.txt file ready to parse.";
+            }
+            else
+            {
+                // Call the function to check for violations
+                std::pair<int, std::string> violation = bestChromosome.catchViolation();
+
+                // A violation was detected
+                std::cout << "Violation detected at gene index " << violation.first << ": " << violation.second << std::endl;
+            }
+
+            ////////////////////////////////////////
+            // Step 6: Capture the ending time
+            auto end = std::chrono::high_resolution_clock::now();
+
+            // Compute the total duration in seconds
+            auto totalSeconds = std::chrono::duration_cast<std::chrono::seconds>(end - start);
+
+            // Extract minutes and seconds
+            auto minutes = totalSeconds.count() / 60;
+            auto seconds = totalSeconds.count() % 60;
+
+            std::cout << "Time taken to finish is: " << minutes << " minutes and " << seconds << " seconds" << std::endl;
+        }
+        else if (menueChoice == 3)
+        {
+            exit(1);
+        }
+        else
+        {
+            cout << "Your input is incorrect , try again!.." << endl;
+        }
+    }
+
+    // //  Step 2: Initialize the First Population
+    // Population initialPop;
+    // // initialPop.initializeFirstPopulation(POPULATION_SIZE);
+    // initialPop.initializePopulationChromosome(POPULATION_SIZE, reconstructedChromosome);
+
+    // // Step 3: Initialize the Genetic Algorithm
+    // GeneticAlgorithm GA(initialPop, MUTATION_RATE, CROSSOVER_RATE, ELITE_COUNT);
+
+    // // Step 4: Run the Genetic Algorithm
+    // GA.run(NUM_GENERATIONS);
+
+    // // Step 5: Evaluate and Display the Best Solution Found
+    // Chromosome bestChromosome = GA.getBestChromosome(); // Assuming you add a function to return the best chromosome
+    // // cout << "Best Chromosome: " << endl;
+
+    // // save the best chromosome in a file named "chromosome_data"
+    // chromosomeToTextFile(bestChromosome, "chromosome_data.txt");
+
+    // // Evaluate fitness of the best chromosome
+    // double fitness = bestChromosome.evaluateFitness();
+    // cout << "Best Chromosome Fitness: " << fitness << endl;
+
+    // GA.printProgress();
+    ////////////////////////////////////////
+    // if (fitness == 0)
     // {
-    //     // Print information about the gene/module, venue, and time slot
-    //     cout << "Gene: " << counter << endl;
-    //     gene.getModule().printInfo();
-    //     gene.getTimeSlot().printInfo();
-    //     gene.getVenue().printInfo();
-    //     cout << "IsLockedVenue: " << gene.getIsLockedVenue() << endl;
-    //     cout << "IsLockedTimeSlot: " << gene.getIsLockedTimeSlot() << endl;
-    //     cout << "IsValid: " << gene.getIsValid() << endl;
-    //     cout << "IsFirstSlot: " << gene.getIsFirstSlot() << endl;
-    //     cout << "IsOneSlot: " << gene.getIsOneSlot() << endl;
-    //     counter++;
+    //     cout << "Found a valid solution and is saved in chromosome_data.txt file ready to parse.";
+    // }
+    // else
+    // {
+    //     // Call the function to check for violations
+    //     std::pair<int, std::string> violation = bestChromosome.catchViolation();
+
+    //     // A violation was detected
+    //     std::cout << "Violation detected at gene index " << violation.first << ": " << violation.second << std::endl;
     // }
 
-    // save the best chromosome in a file named "chromosome_data"
-    chromosomeToTextFile(bestChromosome, "chromosome_data.txt");
+    // ////////////////////////////////////////
+    // // Step 6: Capture the ending time
+    // auto end = std::chrono::high_resolution_clock::now();
 
-    // Evaluate fitness of the best chromosome
-    double fitness = bestChromosome.evaluateFitness();
-    cout << "Best Chromosome Fitness: " << fitness << endl;
+    // // Compute the total duration in seconds
+    // auto totalSeconds = std::chrono::duration_cast<std::chrono::seconds>(end - start);
 
-    GA.printProgress();
-    ////////////////////////////////////////
-    // Call the function to check for violations
-    std::pair<int, std::string> violation = bestChromosome.catchViolation();
+    // // Extract minutes and seconds
+    // auto minutes = totalSeconds.count() / 60;
+    // auto seconds = totalSeconds.count() % 60;
 
-    // Check if a violation was detected
-    if (violation.first != -1)
-    {
-        // A violation was detected
-        std::cout << "Violation detected at gene index " << violation.first << ": " << violation.second << std::endl;
-    }
-    else
-    {
-        // No violation was detected
-        std::cout << violation.second << std::endl;
-    }
-    ////////////////////////////////////////
-    // Step 6: Capture the ending time
-    auto end = std::chrono::high_resolution_clock::now();
-
-    // Compute the total duration in seconds
-    auto totalSeconds = std::chrono::duration_cast<std::chrono::seconds>(end - start);
-
-    // Extract minutes and seconds
-    auto minutes = totalSeconds.count() / 60;
-    auto seconds = totalSeconds.count() % 60;
-
-    std::cout << "Time taken to finish is: " << minutes << " minutes and " << seconds << " seconds" << std::endl;
+    // std::cout << "Time taken to finish is: " << minutes << " minutes and " << seconds << " seconds" << std::endl;
 
     return 0;
 }

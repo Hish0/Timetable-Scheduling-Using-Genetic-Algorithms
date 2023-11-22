@@ -74,7 +74,7 @@ Chromosome Population::generateRandomChromosome()
             else
             {
                 timeSlot = getRandomTimeSlot();
-                while (chosenTimeSlots.find(timeSlot) != chosenTimeSlots.end() || isLastSlotOfDay(timeSlot))
+                while (chosenTimeSlots.find(timeSlot) != chosenTimeSlots.end() || isLastSlotOfDay(timeSlot) || timeSlot.getTimeSlotID() == 20)
                 {
                     timeSlot = getRandomTimeSlot();
                 }
@@ -101,7 +101,7 @@ Chromosome Population::generateRandomChromosome()
         }
     }
 
-    if (chromosome.getGenes().size() != 108)
+    if (chromosome.getGenes().size() != 159)
     {
         std::cout << "size of the chromosome is  " << chromosome.getGenes().size() << std::endl;
         std::cout << "error in size of chromosome &%#&#&%#&#%&#%&%population error " << std::endl;
@@ -147,7 +147,7 @@ void Population::initializeFirstPopulation(int POPULATION_SIZE)
                 else
                 {
                     timeSlot = getRandomTimeSlot();
-                    while (chosenTimeSlots.find(timeSlot) != chosenTimeSlots.end() || isLastSlotOfDay(timeSlot))
+                    while (chosenTimeSlots.find(timeSlot) != chosenTimeSlots.end() || isLastSlotOfDay(timeSlot) || timeSlot.getTimeSlotID() == 20)
                     {
                         timeSlot = getRandomTimeSlot();
                     }
@@ -177,7 +177,7 @@ void Population::initializeFirstPopulation(int POPULATION_SIZE)
         // Add this chromosome to the initial population
         addChromosome(chromosome);
 
-        if (chromosome.getGenes().size() != 108)
+        if (chromosome.getGenes().size() != 159)
         {
             std::cout << "size of the chromosome is  " << chromosome.getGenes().size() << std::endl;
             std::cout << "error in size of chromosome &%#&#&%#&#%&#%&%population error " << std::endl;
@@ -223,7 +223,7 @@ void Population::initializePopulationChromosome(int POPULATION_SIZE, Chromosome 
                 else
                 {
                     timeSlot = getRandomTimeSlot();
-                    while (chosenTimeSlots.find(timeSlot) != chosenTimeSlots.end() || isLastSlotOfDay(timeSlot))
+                    while (chosenTimeSlots.find(timeSlot) != chosenTimeSlots.end() || isLastSlotOfDay(timeSlot) || timeSlot.getTimeSlotID() == 20)
                     {
                         timeSlot = getRandomTimeSlot();
                     }
@@ -253,7 +253,7 @@ void Population::initializePopulationChromosome(int POPULATION_SIZE, Chromosome 
         // Add this chromosome to the initial population
         addChromosome(chromosome);
 
-        if (chromosome.getGenes().size() != 108)
+        if (chromosome.getGenes().size() != 159)
         {
             std::cout << "size of the chromosome is  " << chromosome.getGenes().size() << std::endl;
             std::cout << "error in size of chromosome &%#&#&%#&#%&#%&%population error " << std::endl;

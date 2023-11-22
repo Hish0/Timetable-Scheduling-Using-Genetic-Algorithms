@@ -20,6 +20,7 @@ public:
 
     // Parameterized Constructor
     Chromosome(const vector<ScheduledModule> &genes);
+    int findGeneIndexByTimeSlotID(int timeSlotID, int lecturerID) const;
 
     void addGene(const ScheduledModule &gene);
     vector<ScheduledModule> getGenes() const;
