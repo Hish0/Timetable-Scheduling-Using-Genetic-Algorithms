@@ -38,6 +38,7 @@ public:
 
     void printInfo() const;
     string toString() const;
+    void fromString(const std::string &str);
 };
 
 #endif // VENUE_H

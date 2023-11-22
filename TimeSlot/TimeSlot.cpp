@@ -88,3 +88,37 @@ string TimeSlot::toString() const
         << ", Time: " << time;
     return oss.str();
 }
+
+void TimeSlot::fromString(const std::string &str)
+{
+    std::istringstream iss(str);
+    std::string token;
+
+    // Parse the string and set the attributes of the TimeSlot
+    while (getline(iss, token, ','))
+    {
+        std::istringstream tokenStream(token);
+        std::string key;
+        std::string value;
+
+        // Split the token into key and value
+        getline(tokenStream, key, ':');
+        getline(tokenStream, value);
+        trimString(key);   // Function to trim leading and trailing spaces
+        trimString(value); // Function to trim leading and trailing spaces
+
+        // Set the appropriate attribute based on the key
+        if (key == "TimeSlot ID")
+        {
+            this->timeSlotID = stoi(value);
+        }
+        else if (key == "Day")
+        {
+            this->day = value;
+        }
+        else if (key == "Time")
+        {
+            this->time = value;
+        }
+    }
+}

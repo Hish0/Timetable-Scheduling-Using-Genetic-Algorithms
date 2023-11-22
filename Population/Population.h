@@ -24,6 +24,7 @@ public:
     void setChromosomes(const vector<Chromosome> &newChromosomes);
     Chromosome generateRandomChromosome();
     void initializeFirstPopulation(int POPULATION_SIZE);
+    void initializePopulationChromosome(int POPULATION_SIZE, Chromosome &givenChromosome);
     vector<Chromosome> getBestNChromosomes(int n);
     vector<Chromosome> getWorstNChromosomes(int n);
     double getTotalFitness();

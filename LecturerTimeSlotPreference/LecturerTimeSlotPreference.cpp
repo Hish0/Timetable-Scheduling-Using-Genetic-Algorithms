@@ -1,11 +1,11 @@
 #include "LecturerTimeSlotPreference.h"
 
 // Default Constructor
-LecturerTimeSlotPreference::LecturerTimeSlotPreference() : lecturer(), timeSlot(), rank(0) {}
+LecturerTimeSlotPreference::LecturerTimeSlotPreference() : lecturer(), timeSlots(), rank(0) {}
 
 // Parameterized Constructor
-LecturerTimeSlotPreference::LecturerTimeSlotPreference(const Lecturer &lect, const TimeSlot &slot, int r)
-    : lecturer(lect), timeSlot(slot), rank(r) {}
+LecturerTimeSlotPreference::LecturerTimeSlotPreference(const Lecturer &lect, const std::vector<TimeSlot> &slots, int r)
+    : lecturer(lect), timeSlots(slots), rank(r) {}
 
 // Getter methods
 Lecturer LecturerTimeSlotPreference::getLecturer() const
@@ -13,9 +13,9 @@ Lecturer LecturerTimeSlotPreference::getLecturer() const
     return lecturer;
 }
 
-TimeSlot LecturerTimeSlotPreference::getTimeSlot() const
+std::vector<TimeSlot> LecturerTimeSlotPreference::getTimeSlots() const
 {
-    return timeSlot;
+    return timeSlots;
 }
 
 int LecturerTimeSlotPreference::getRank() const
@@ -29,9 +29,9 @@ void LecturerTimeSlotPreference::setLecturer(const Lecturer &lect)
     lecturer = lect;
 }
 
-void LecturerTimeSlotPreference::setTimeSlot(const TimeSlot &slot)
+void LecturerTimeSlotPreference::setTimeSlots(const std::vector<TimeSlot> &slots)
 {
-    timeSlot = slot;
+    timeSlots = slots;
 }
 
 void LecturerTimeSlotPreference::setRank(int r)

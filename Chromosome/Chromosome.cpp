@@ -1,6 +1,7 @@
 #include "Chromosome.h"
 #include <iostream>
 #include <map>
+#include "../GlobalVariables/GlobalVariables.h"
 
 using namespace std;
 
@@ -13,6 +14,19 @@ Chromosome::Chromosome(const vector<ScheduledModule> &genes) : genes(genes) {}
 void Chromosome::addGene(const ScheduledModule &gene)
 {
     genes.push_back(gene);
+}
+
+int Chromosome::findGeneIndexByTimeSlotID(int timeSlotID, int lecturerID) const
+{
+    for (size_t i = 0; i < genes.size(); ++i)
+    {
+        if (genes[i].getTimeSlot().getTimeSlotID() == timeSlotID &&
+            genes[i].getModule().getLecturer().getLecturerID() == lecturerID)
+        {
+            return i; // Return the index of the gene with the matching time slot ID and lecturer ID
+        }
+    }
+    return -1; // Return -1 if no matching gene is found
 }
 
 vector<ScheduledModule> Chromosome::getGenes() const
@@ -198,6 +212,129 @@ double Chromosome::evaluateFitness()
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////constraint no7///////////////////////////////////
+    for (const ScheduledModule &gene : genes)
+    {
+        int lecturerID = gene.getModule().getLecturer().getLecturerID();
+        int timeSlotID = gene.getTimeSlot().getTimeSlotID();
+
+        // Flag to check if the lecturer's preference is found
+        bool preferenceFound = false;
+        bool lecturerHasPreference = false;
+
+        // Iterate through the global lecturer preferences
+        for (const LecturerTimeSlotPreference &preference : globalLecturerPreferences)
+        {
+            if (preference.getLecturer().getLecturerID() == lecturerID)
+            {
+                lecturerHasPreference = true;
+                const vector<TimeSlot> &preferredSlots = preference.getTimeSlots();
+
+                // Check if the current time slot is in the lecturer's list of preferred time slots
+                for (const TimeSlot &slot : preferredSlots)
+                {
+                    if (slot.getTimeSlotID() == timeSlotID)
+                    {
+                        preferenceFound = true;
+                        break; // Break this loop as preferred slot is found
+                    }
+                }
+            }
+
+            // If preference is found, no need to check further
+            if (preferenceFound)
+                break;
+        }
+
+        // Apply penalty if the lecturer has preferences and the time slot is not preferred
+        if (lecturerHasPreference && !preferenceFound)
+        {
+            fitness += 10; // Or another penalty value as appropriate
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////////////
+
+    ///////////////////////////////constraint no8///////////////////////////////////
+    map<pair<int, int>, vector<int>> lecturerDayTimeSlots; // Map with key as (lecturerID, day) and value as list of time slot IDs
+
+    // Function to determine the day from the time slot ID
+    auto getDayFromTimeSlot = [](int timeSlotID) -> int
+    {
+        return (timeSlotID - 1) / 8; // Adjust based on your day organization and time slot ID distribution
+    };
+
+    // Populate the map
+    for (const ScheduledModule &gene : genes)
+    {
+        int lecturerID = gene.getModule().getLecturer().getLecturerID();
+        int timeSlotID = gene.getTimeSlot().getTimeSlotID();
+        int day = getDayFromTimeSlot(timeSlotID);
+
+        lecturerDayTimeSlots[make_pair(lecturerID, day)].push_back(timeSlotID);
+    }
+
+    // Check for gaps in the time slots for each lecturer each day
+    for (const auto &entry : lecturerDayTimeSlots)
+    {
+        const auto &timeSlots = entry.second;
+
+        // Sort the time slots
+        vector<int> sortedTimeSlots = timeSlots;
+        sort(sortedTimeSlots.begin(), sortedTimeSlots.end());
+
+        // Check for gaps within the same day
+        for (size_t i = 1; i < sortedTimeSlots.size(); ++i)
+        {
+            // Special case handling for Monday with timeslot 20 (11:00 AM)
+            bool isMondayGapAcceptable = (sortedTimeSlots[i - 1] == 20 || sortedTimeSlots[i - 1] == 19) && sortedTimeSlots[i] > 20;
+            if (getDayFromTimeSlot(sortedTimeSlots[i]) == getDayFromTimeSlot(sortedTimeSlots[i - 1]) &&
+                sortedTimeSlots[i] - sortedTimeSlots[i - 1] > 1 && !isMondayGapAcceptable)
+            {
+                fitness += 10; // Adding penalty for each gap
+            }
+        }
+    }
+    //////////////////////////////////////////////////////////////////////////////////
+
+    // ///////////////////////////////constraint no8///////////////////////////////////
+    // map<pair<int, int>, vector<int>> lecturerDayTimeSlots; // Map with key as (lecturerID, day) and value as list of time slot IDs
+
+    // // Function to determine the day from the time slot ID
+    // auto getDayFromTimeSlot = [](int timeSlotID) -> int
+    // {
+    //     return (timeSlotID - 1) / 8; // Adjust based on your day organization and time slot ID distribution
+    // };
+
+    // // Populate the map
+    // for (const ScheduledModule &gene : genes)
+    // {
+    //     int lecturerID = gene.getModule().getLecturer().getLecturerID();
+    //     int timeSlotID = gene.getTimeSlot().getTimeSlotID();
+    //     int day = getDayFromTimeSlot(timeSlotID);
+
+    //     lecturerDayTimeSlots[make_pair(lecturerID, day)].push_back(timeSlotID);
+    // }
+
+    // // Check for gaps in the time slots for each lecturer each day
+    // for (const auto &entry : lecturerDayTimeSlots)
+    // {
+    //     const auto &timeSlots = entry.second;
+
+    //     // Sort the time slots
+    //     vector<int> sortedTimeSlots = timeSlots;
+    //     sort(sortedTimeSlots.begin(), sortedTimeSlots.end());
+
+    //     // Check for gaps within the same day
+    //     for (size_t i = 1; i < sortedTimeSlots.size(); ++i)
+    //     {
+    //         if (getDayFromTimeSlot(sortedTimeSlots[i]) == getDayFromTimeSlot(sortedTimeSlots[i - 1]) &&
+    //             sortedTimeSlots[i] - sortedTimeSlots[i - 1] > 1)
+    //         {
+    //             fitness += 10; // Adding penalty for each gap
+    //         }
+    //     }
+    // }
+    // //////////////////////////////////////////////////////////////////////////////////
 
     // ... (evaluate other constraints here)
 
@@ -259,33 +396,6 @@ ScheduledModule &Chromosome::getGene(int index)
 
 std::pair<int, std::string> Chromosome::catchViolation()
 {
-    // Constraint 6: Check for excess modules scheduled in one day
-    std::map<std::pair<int, int>, std::vector<int>> moduleDayMap;
-    const int numberOfTimeSlotsPerDay = 8; // Adjust this based on your specific timetable
-    for (size_t i = 0; i < genes.size(); ++i)
-    {
-        const ScheduledModule &gene = genes[i];
-        int moduleID = gene.getModule().getModuleID();
-        int timeSlotID = gene.getTimeSlot().getTimeSlotID();
-        int day = (timeSlotID - 1) / numberOfTimeSlotsPerDay;
-        moduleDayMap[{moduleID, day}].push_back(i);
-    }
-
-    for (const auto &entry : moduleDayMap)
-    {
-        int moduleID = entry.first.first;
-        int allowedSlotsPerDay = (getModuleHours(moduleID) >= 2) ? 2 : 1; // Assuming getModuleHours() is a function you have
-        if (entry.second.size() > static_cast<size_t>(allowedSlotsPerDay))
-        {
-            std::string message = "Excess modules scheduled in one day for gene IDs: ";
-            for (int id : entry.second)
-            {
-                message += std::to_string(id) + " ";
-            }
-            return {entry.second[0], message};
-        }
-    }
-
     // Constraint 1: Check for venue and time slot clashes
     std::map<std::pair<int, int>, std::vector<int>> venueTimeSlotMap;
     for (size_t i = 0; i < genes.size(); ++i)
@@ -380,6 +490,200 @@ std::pair<int, std::string> Chromosome::catchViolation()
             return {i, message};
         }
     }
+
+    // Constraint 6: Check for excess modules scheduled in one day
+    std::map<std::pair<int, int>, std::vector<int>> moduleDayMap;
+    const int numberOfTimeSlotsPerDay = 8; // Adjust this based on your specific timetable
+    for (size_t i = 0; i < genes.size(); ++i)
+    {
+        const ScheduledModule &gene = genes[i];
+        int moduleID = gene.getModule().getModuleID();
+        int timeSlotID = gene.getTimeSlot().getTimeSlotID();
+        int day = (timeSlotID - 1) / numberOfTimeSlotsPerDay;
+        moduleDayMap[{moduleID, day}].push_back(i);
+    }
+
+    for (const auto &entry : moduleDayMap)
+    {
+        int moduleID = entry.first.first;
+        int allowedSlotsPerDay = (getModuleHours(moduleID) >= 2) ? 2 : 1; // Assuming getModuleHours() is a function you have
+        if (entry.second.size() > static_cast<size_t>(allowedSlotsPerDay))
+        {
+            std::string message = "Excess modules scheduled in one day for gene IDs: ";
+            for (int id : entry.second)
+            {
+                message += std::to_string(id) + " ";
+            }
+            return {entry.second[0], message};
+        }
+    }
+
+    // Constraint 7: Check for lecturer's time slot preference violations
+    for (size_t i = 0; i < genes.size(); ++i)
+    {
+        const ScheduledModule &gene = genes[i];
+        int lecturerID = gene.getModule().getLecturer().getLecturerID();
+        int timeSlotID = gene.getTimeSlot().getTimeSlotID();
+
+        bool lecturerHasPreference = false;
+        bool preferenceViolated = false;
+
+        // Iterate through the global lecturer preferences
+        for (const LecturerTimeSlotPreference &preference : globalLecturerPreferences)
+        {
+            if (preference.getLecturer().getLecturerID() == lecturerID)
+            {
+                lecturerHasPreference = true;
+                const vector<TimeSlot> &preferredSlots = preference.getTimeSlots();
+
+                // Check if the current time slot is not in the lecturer's list of preferred time slots
+                if (std::find_if(preferredSlots.begin(), preferredSlots.end(),
+                                 [timeSlotID](const TimeSlot &slot)
+                                 { return slot.getTimeSlotID() == timeSlotID; }) == preferredSlots.end())
+                {
+                    preferenceViolated = true;
+                }
+
+                break; // Break the loop once the matching lecturer is found
+            }
+        }
+
+        // Record violation if the lecturer has preferences and the time slot is not preferred
+        if (lecturerHasPreference && preferenceViolated)
+        {
+            return {i, "Lecturer's time slot preference violated for gene ID: " + std::to_string(i)};
+        }
+    }
+
+    // Constraint 8: Check for time gaps between modules for the same lecturer on the same day
+    map<pair<int, int>, vector<int>> lecturerDayTimeSlots; // Map with key as (lecturerID, day) and value as list of time slot IDs
+
+    // Function to determine the day from the time slot ID
+    auto getDayFromTimeSlot = [](int timeSlotID) -> int
+    {
+        return (timeSlotID - 1) / 8; // Adjust this logic based on how your days are organized in relation to time slot IDs
+    };
+
+    // Populate the map
+    for (size_t i = 0; i < genes.size(); ++i)
+    {
+        const ScheduledModule &gene = genes[i];
+        int lecturerID = gene.getModule().getLecturer().getLecturerID();
+        int timeSlotID = gene.getTimeSlot().getTimeSlotID();
+        int day = getDayFromTimeSlot(timeSlotID);
+
+        lecturerDayTimeSlots[make_pair(lecturerID, day)].push_back(timeSlotID);
+    }
+
+    // Check for gaps in the time slots for each lecturer each day
+    for (const auto &entry : lecturerDayTimeSlots)
+    {
+        const auto &lecturerDayPair = entry.first;
+        const auto &timeSlots = entry.second;
+
+        // Sort the time slots
+        vector<int> sortedTimeSlots = timeSlots;
+        sort(sortedTimeSlots.begin(), sortedTimeSlots.end());
+
+        // Check for gaps within the same day
+        for (size_t i = 1; i < sortedTimeSlots.size(); ++i)
+        {
+            // Special case handling for Monday with timeslot 20 (11:00 AM)
+            bool isMondayGapAcceptable = (sortedTimeSlots[i - 1] == 20 || sortedTimeSlots[i - 1] == 19) && sortedTimeSlots[i] > 20;
+            if (getDayFromTimeSlot(sortedTimeSlots[i]) == getDayFromTimeSlot(sortedTimeSlots[i - 1]) &&
+                sortedTimeSlots[i] - sortedTimeSlots[i - 1] > 1 && !isMondayGapAcceptable)
+            {
+                // Find the gene index of the module that comes after the gap
+                int geneIndexAfterGap = findGeneIndexByTimeSlotID(sortedTimeSlots[i], lecturerDayPair.first);
+
+                std::string message = "Time gap detected for lecturer ID " + std::to_string(lecturerDayPair.first) +
+                                      ", between time slots " + std::to_string(sortedTimeSlots[i - 1]) +
+                                      " and " + std::to_string(sortedTimeSlots[i]) +
+                                      "; last slot ID of previous module: " + std::to_string(sortedTimeSlots[i - 1]);
+
+                return {geneIndexAfterGap, message}; // Returning the index of the gene after the gap
+            }
+        }
+    }
+
+    // // Constraint 8: Check for time gaps between modules for the same lecturer on the same day
+    // map<pair<int, int>, vector<int>> lecturerDayTimeSlots; // Map with key as (lecturerID, day) and value as list of time slot IDs
+
+    // // Function to determine the day from the time slot ID
+    // auto getDayFromTimeSlot = [](int timeSlotID) -> int
+    // {
+    //     return (timeSlotID - 1) / 8; // Adjust this logic based on how your days are organized in relation to time slot IDs
+    // };
+
+    // // Populate the map
+    // for (size_t i = 0; i < genes.size(); ++i)
+    // {
+    //     const ScheduledModule &gene = genes[i];
+    //     int lecturerID = gene.getModule().getLecturer().getLecturerID();
+    //     int timeSlotID = gene.getTimeSlot().getTimeSlotID();
+    //     int day = getDayFromTimeSlot(timeSlotID);
+
+    //     lecturerDayTimeSlots[make_pair(lecturerID, day)].push_back(timeSlotID);
+    // }
+
+    // // Check for gaps in the time slots for each lecturer each day
+    // for (const auto &entry : lecturerDayTimeSlots)
+    // {
+    //     const auto &lecturerDayPair = entry.first;
+    //     const auto &timeSlots = entry.second;
+
+    //     // Sort the time slots
+    //     vector<int> sortedTimeSlots = timeSlots;
+    //     sort(sortedTimeSlots.begin(), sortedTimeSlots.end());
+
+    //     // Check for gaps within the same day
+    //     for (size_t i = 1; i < sortedTimeSlots.size(); ++i)
+    //     {
+    //         if (getDayFromTimeSlot(sortedTimeSlots[i]) == getDayFromTimeSlot(sortedTimeSlots[i - 1]) &&
+    //             sortedTimeSlots[i] - sortedTimeSlots[i - 1] > 1)
+    //         {
+    //             // Find the gene index of the module that comes after the gap
+    //             int geneIndexAfterGap = findGeneIndexByTimeSlotID(sortedTimeSlots[i], lecturerDayPair.first);
+
+    //             std::string message = "Time gap detected for lecturer ID " + std::to_string(lecturerDayPair.first) +
+    //                                   ", between time slots " + std::to_string(sortedTimeSlots[i - 1]) +
+    //                                   " and " + std::to_string(sortedTimeSlots[i]) +
+    //                                   "; last slot ID of previous module: " + std::to_string(sortedTimeSlots[i - 1]);
+
+    //             return {geneIndexAfterGap, message}; // Returning the index of the gene after the gap
+    //         }
+    //     }
+    // }
+
+    // // Check for gaps in the time slots for each lecturer each day
+    // for (const auto &entry : lecturerDayTimeSlots)
+    // {
+    //     const auto &lecturerDayPair = entry.first;
+    //     const auto &timeSlots = entry.second;
+
+    //     // Debug output to show the lecturer and day being processed
+    //     std::cout << "Checking lecturer ID " << lecturerDayPair.first << " on day " << lecturerDayPair.second << std::endl;
+
+    //     // Sort the time slots
+    //     vector<int> sortedTimeSlots = timeSlots;
+    //     sort(sortedTimeSlots.begin(), sortedTimeSlots.end());
+
+    //     // Check for gaps within the same day
+    //     for (size_t i = 1; i < sortedTimeSlots.size(); ++i)
+    //     {
+    //         if (getDayFromTimeSlot(sortedTimeSlots[i]) == getDayFromTimeSlot(sortedTimeSlots[i - 1]) &&
+    //             sortedTimeSlots[i] - sortedTimeSlots[i - 1] > 1)
+    //         {
+    //             // Include the last time slot ID of the previous module in the message
+    //             std::string message = "Time gap detected for lecturer ID " + std::to_string(lecturerDayPair.first) +
+    //                                   ", between time slots " + std::to_string(sortedTimeSlots[i - 1]) +
+    //                                   " and " + std::to_string(sortedTimeSlots[i]) +
+    //                                   "; last slot ID of previous module: " + std::to_string(sortedTimeSlots[i - 1]);
+    //             std::cout << "Generated message: " << message << std::endl;
+    //             return {lecturerDayPair.first, message};
+    //         }
+    //     }
+    // }
 
     // // Constraint 6: Check for excess modules scheduled in one day
     // std::map<std::pair<int, int>, std::vector<int>> moduleDayMap;

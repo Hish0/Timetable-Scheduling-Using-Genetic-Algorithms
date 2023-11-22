@@ -37,6 +37,7 @@ public:
     bool isEmpty() const;
     TimeSlot getNextTimeSlot() const;
     string toString() const;
+    void fromString(const std::string &str);
 };
 
 struct TimeSlotComparator

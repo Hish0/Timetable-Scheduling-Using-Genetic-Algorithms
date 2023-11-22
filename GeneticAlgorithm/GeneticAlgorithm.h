@@ -35,6 +35,8 @@ public:
     void printProgress();
     bool isLastSlotOfDay(const TimeSlot &timeSlot);
     void surgeryMutation(Chromosome &chromosome, int geneId);
+    void surgeryMutationForTimeSlotPrefrence(Chromosome &chromosome, int geneId);
+    void surgeryMutationForTimeSlotGap(Chromosome &chromosome, int geneIdToMove, int lastTimeSlotIdOfPreviousModule);
 };
 
 #endif // GENETICALGORITHM_H

@@ -1,32 +1,33 @@
 #ifndef LECTURER_TIMESLOT_PREFERENCE_H
 #define LECTURER_TIMESLOT_PREFERENCE_H
 
+#include <vector>
 #include <string>
-#include "../Lecturer/Lecturer.h" // Assuming Lecturer.h is in a folder named Lecturer
-#include "../TimeSlot/TimeSlot.h" // Assuming TimeSlot.h is in a folder named TimeSlot
+#include "../Lecturer/Lecturer.h"
+#include "../TimeSlot/TimeSlot.h"
 
 class LecturerTimeSlotPreference
 {
 private:
     Lecturer lecturer;
-    TimeSlot timeSlot;
-    int rank; // Preference rank
+    std::vector<TimeSlot> timeSlots; // Changed to a vector of TimeSlot objects
+    int rank;                        // Preference rank
 
 public:
     // Default Constructor
     LecturerTimeSlotPreference();
 
     // Parameterized Constructor
-    LecturerTimeSlotPreference(const Lecturer &lect, const TimeSlot &slot, int r);
+    LecturerTimeSlotPreference(const Lecturer &lect, const std::vector<TimeSlot> &slots, int r);
 
     // Getter methods
     Lecturer getLecturer() const;
-    TimeSlot getTimeSlot() const;
+    std::vector<TimeSlot> getTimeSlots() const; // Updated to return a vector
     int getRank() const;
 
     // Setter methods
     void setLecturer(const Lecturer &lect);
-    void setTimeSlot(const TimeSlot &slot);
+    void setTimeSlots(const std::vector<TimeSlot> &slots); // Updated to accept a vector
     void setRank(int r);
 };
 

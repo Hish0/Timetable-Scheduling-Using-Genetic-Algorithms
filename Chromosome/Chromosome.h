@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <map>
+#include <sstream>
+#include <fstream>
 #include "../ScheduledModule/ScheduledModule.h" // Adjust this path based on your folder structure
 
 using namespace std;
@@ -18,6 +20,7 @@ public:
 
     // Parameterized Constructor
     Chromosome(const vector<ScheduledModule> &genes);
+    int findGeneIndexByTimeSlotID(int timeSlotID, int lecturerID) const;
 
     void addGene(const ScheduledModule &gene);
     vector<ScheduledModule> getGenes() const;

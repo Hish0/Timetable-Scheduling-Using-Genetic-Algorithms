@@ -119,7 +119,7 @@ Chromosome GeneticAlgorithm::crossover(const Chromosome &parent1, const Chromoso
     // Choose one child for the next generation based on fitness (you could also return both)
     if (child1.evaluateFitness() < child2.evaluateFitness())
     {
-        if (child1.getGenes().size() != 164)
+        if (child1.getGenes().size() != 159)
         {
             cout << "the child 1 ERROR" << endl;
             cout << "##########child size : " << child1.getGenes().size() << endl;
@@ -133,7 +133,7 @@ Chromosome GeneticAlgorithm::crossover(const Chromosome &parent1, const Chromoso
     }
     else
     {
-        if (child2.getGenes().size() != 164)
+        if (child2.getGenes().size() != 159)
         {
             cout << "the child 2 ERROR" << endl;
             cout << "##########child size : " << child2.getGenes().size() << endl;
@@ -426,8 +426,35 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
                 offspring.addChromosome(child);
                 child = this->getBestChromosome();
                 // cout << "------> best child time for first gene" << child.getGene(1).getTimeSlot().getTime();
+                // std::pair<int, std::string> violation = child.catchViolation();
+                // if (startsWith(violation.second, "Lecturer's time slot preference violated for gene"))
+                // {
+                //     surgeryMutationForTimeSlotPrefrence(child, violation.first);
+                // }
+                // else
+                // {
+                //     surgeryMutation(child, violation.first);
+                // }
+
                 std::pair<int, std::string> violation = child.catchViolation();
-                surgeryMutation(child, violation.first);
+                if (startsWith(violation.second, "Lecturer's time slot preference violated for gene"))
+                {
+                    surgeryMutationForTimeSlotPrefrence(child, violation.first);
+                }
+                else if (startsWith(violation.second, "Time gap detected"))
+                {
+                    int geneIdToMove = violation.first;                                       // The gene ID to move
+                    int lastTimeSlotIdOfPreviousModule = extractLastSlotId(violation.second); // Extract the last slot ID from the message
+                    // lastTimeSlotIdOfPreviousModule++;
+                    cout << "000000last slot id is " << lastTimeSlotIdOfPreviousModule << " 000000" << endl;
+                    surgeryMutationForTimeSlotGap(child, geneIdToMove, lastTimeSlotIdOfPreviousModule);
+                }
+                else
+                {
+                    surgeryMutation(child, violation.first);
+                }
+
+                // surgeryMutation(child, violation.first);
                 // mutate(this->getBestChromosome());
                 // mutate(child);
                 // cout << "After mutation, population size: " << population.getChromosomes().size() << endl;
@@ -473,7 +500,7 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
         //     counter++;
         // }
 
-        if (child.getGenes().size() != 164)
+        if (child.getGenes().size() != 159)
         {
             cout << "the child ERROR" << endl;
             cout << "^^^^^^^^^^^^child size : " << child.getGenes().size() << endl;
@@ -624,7 +651,7 @@ void GeneticAlgorithm::surgeryMutation(Chromosome &chromosome, int geneId)
         // It's the first of a two-slot module, assign new consecutive time slots
         TimeSlot newTimeSlotForFirst = getRandomTimeSlot(); // Ensure this is a valid starting slot for two consecutive slots
         // insure the new slot is not the last slot of the day
-        while (isLastSlotOfDay(newTimeSlotForFirst))
+        while (isLastSlotOfDay(newTimeSlotForFirst) || newTimeSlotForFirst.getTimeSlotID() == 20)
         {
             newTimeSlotForFirst = getRandomTimeSlot();
         }
@@ -651,7 +678,7 @@ void GeneticAlgorithm::surgeryMutation(Chromosome &chromosome, int geneId)
         // It's the second of a two-slot module, assign new consecutive time slots
         TimeSlot newTimeSlotForFirst = getRandomTimeSlot(); // Ensure this is a valid starting slot for two consecutive slots
         // insure the new slot is not the last slot of the day
-        while (isLastSlotOfDay(newTimeSlotForFirst))
+        while (isLastSlotOfDay(newTimeSlotForFirst) || newTimeSlotForFirst.getTimeSlotID() == 20)
         {
             newTimeSlotForFirst = getRandomTimeSlot();
         }
@@ -674,6 +701,167 @@ void GeneticAlgorithm::surgeryMutation(Chromosome &chromosome, int geneId)
 
     // Make sure to re-evaluate and handle any violations this may cause
     // handleViolations(chromosome, geneIndex);
+    cout << "Mutation complete. Need to handle potential violations." << endl
+         << endl;
+}
+
+void GeneticAlgorithm::surgeryMutationForTimeSlotPrefrence(Chromosome &chromosome, int geneId)
+{
+    // Randomly select a gene
+    // int geneIndex = rand() % chromosome.getGenes().size();
+    ScheduledModule &geneToMutate = chromosome.getGene(geneId);
+
+    cout << endl
+         << "Selected gene at index: " << geneId << endl;
+    cout << "Initial time state of gene to mutate: " << geneToMutate.getTimeSlot().getTime() << endl;
+    cout << "Initial venue state of gene to mutate: " << geneToMutate.getVenue().getName() << endl;
+
+    // Check if it's a one-slot or the first of a two-slot module
+    if (geneToMutate.getIsOneSlot())
+    {
+        cout << "It's a one-slot module." << endl;
+
+        // It's a one-slot module, assign a new random time slot
+        TimeSlot newTimeSlot = getRandomTimeSlotFromPreference(geneToMutate.getModule());
+        Venue newVenue = getRandomVenue();
+        cout << "Assigning new time slot: " << newTimeSlot.getTime() << endl;
+        cout << "Assigning new venue name: " << newVenue.getName() << endl;
+
+        geneToMutate.setTimeSlot(newTimeSlot);
+        geneToMutate.setVenue(newVenue);
+    }
+    else if (geneToMutate.getIsFirstSlot())
+    {
+        cout << "It's the first of a two-slot module." << endl;
+
+        // It's the first of a two-slot module, assign new consecutive time slots
+        TimeSlot newTimeSlotForFirst = getRandomTimeSlotFromPreference(geneToMutate.getModule()); // Ensure this is a valid starting slot for two consecutive slots
+        // insure the new slot is not the last slot of the day
+        while (isLastSlotOfDay(newTimeSlotForFirst) || newTimeSlotForFirst.getTimeSlotID() == 20)
+        {
+            newTimeSlotForFirst = getRandomTimeSlotFromPreference(geneToMutate.getModule());
+        }
+
+        TimeSlot newTimeSlotForSecond = newTimeSlotForFirst.getNextTimeSlot(); // Get the consecutive slot
+
+        Venue newVenue = getRandomVenue();
+
+        cout << "Assigning new consecutive time slots: First - " << newTimeSlotForFirst.getTime() << ", Second - " << newTimeSlotForSecond.getTime() << endl;
+        cout << "Assigning new venue name: " << newVenue.getName() << endl;
+
+        geneToMutate.setTimeSlot(newTimeSlotForFirst);
+        chromosome.getGene(geneId + 1).setTimeSlot(newTimeSlotForSecond); // Update the second slot as well
+        geneToMutate.setVenue(newVenue);
+        chromosome.getGene(geneId + 1).setVenue(newVenue);
+
+        cout << "Updated gene at index: " << geneId << " to time slot " << newTimeSlotForFirst.getTime() << "and venue " << newVenue.getName() << endl;
+        cout << "Updated gene at index: " << geneId + 1 << " to time slot " << newTimeSlotForSecond.getTime() << "and venue " << newVenue.getName() << endl;
+    }
+    else
+    {
+        cout << "It's the second of a two-slot module." << endl;
+
+        // It's the second of a two-slot module, assign new consecutive time slots
+        TimeSlot newTimeSlotForFirst = getRandomTimeSlotFromPreference(geneToMutate.getModule()); // Ensure this is a valid starting slot for two consecutive slots
+        // insure the new slot is not the last slot of the day
+        while (isLastSlotOfDay(newTimeSlotForFirst) || newTimeSlotForFirst.getTimeSlotID() == 20)
+        {
+            newTimeSlotForFirst = getRandomTimeSlotFromPreference(geneToMutate.getModule());
+        }
+
+        TimeSlot newTimeSlotForSecond = newTimeSlotForFirst.getNextTimeSlot(); // Get the consecutive slot
+
+        Venue newVenue = getRandomVenue();
+
+        cout << "Assigning new consecutive time slots: First - " << newTimeSlotForFirst.getTime() << ", Second - " << newTimeSlotForSecond.getTime() << endl;
+        cout << "Assigning new venue name: " << newVenue.getName() << endl;
+
+        geneToMutate.setTimeSlot(newTimeSlotForSecond);
+        chromosome.getGene(geneId - 1).setTimeSlot(newTimeSlotForFirst); // Update the second slot as well
+        geneToMutate.setVenue(newVenue);
+        chromosome.getGene(geneId - 1).setVenue(newVenue);
+
+        cout << "Updated gene at index: " << geneId - 1 << " to time slot " << newTimeSlotForFirst.getTime() << "and venue " << newVenue.getName() << endl;
+        cout << "Updated gene at index: " << geneId << " to time slot " << newTimeSlotForSecond.getTime() << "and venue " << newVenue.getName() << endl;
+    }
+
+    // Make sure to re-evaluate and handle any violations this may cause
+    // handleViolations(chromosome, geneIndex);
+    cout << "Mutation complete. Need to handle potential violations." << endl
+         << endl;
+}
+
+void GeneticAlgorithm::surgeryMutationForTimeSlotGap(Chromosome &chromosome, int geneIdToMove, int lastTimeSlotIdOfPreviousModule)
+{
+    // Retrieve the gene that needs to be moved
+    ScheduledModule &geneToMutate = chromosome.getGene(geneIdToMove);
+
+    cout << "Selected gene at index: " << geneIdToMove << endl;
+    cout << "Initial time state of gene to mutate: " << geneToMutate.getTimeSlot().getTime() << endl;
+    cout << "Initial venue state of gene to mutate: " << geneToMutate.getVenue().getName() << endl;
+
+    // Check the type of module and handle accordingly
+    if (geneToMutate.getIsOneSlot())
+    {
+        cout << "It's a one-slot module." << endl;
+        // For one-slot module, the new time slot is just after the last module
+        int newTimeSlotId = lastTimeSlotIdOfPreviousModule + 1;
+        if (newTimeSlotId == 21 || newTimeSlotId == 22)
+        {
+            newTimeSlotId = 23;
+        }
+        TimeSlot newTimeSlot = getTimeSlotById(newTimeSlotId);
+        // Venue newVenue = getRandomVenue();
+
+        cout << "Assigning new time slot: " << newTimeSlot.getTime() << endl;
+        // cout << "Assigning new venue name: " << newVenue.getName() << endl;
+
+        geneToMutate.setTimeSlot(newTimeSlot);
+        // geneToMutate.setVenue(newVenue);
+    }
+    else if (geneToMutate.getIsFirstSlot())
+    {
+        cout << "It's the first of a two-slot module." << endl;
+        // For the first of a two-slot module, assign new consecutive time slots
+        int newTimeSlotIdForFirst = lastTimeSlotIdOfPreviousModule + 1;
+        if (newTimeSlotIdForFirst == 21 || newTimeSlotIdForFirst == 22)
+        {
+            newTimeSlotIdForFirst = 23;
+        }
+        TimeSlot newTimeSlotForFirst = getTimeSlotById(newTimeSlotIdForFirst);
+        TimeSlot newTimeSlotForSecond = newTimeSlotForFirst.getNextTimeSlot();
+        // Venue newVenue = getRandomVenue();
+
+        cout << "Assigning new consecutive time slots: First - " << newTimeSlotForFirst.getTime() << ", Second - " << newTimeSlotForSecond.getTime() << endl;
+        // cout << "Assigning new venue name: " << newVenue.getName() << endl;
+
+        geneToMutate.setTimeSlot(newTimeSlotForFirst);
+        chromosome.getGene(geneIdToMove + 1).setTimeSlot(newTimeSlotForSecond);
+        // geneToMutate.setVenue(newVenue);
+        // chromosome.getGene(geneIdToMove + 1).setVenue(newVenue);
+    }
+    else
+    {
+        cout << "It's the second of a two-slot module." << endl;
+        // For the second of a two-slot module, adjust the first slot accordingly
+        int newTimeSlotIdForFirst = lastTimeSlotIdOfPreviousModule + 1;
+        if (newTimeSlotIdForFirst == 21 || newTimeSlotIdForFirst == 22)
+        {
+            newTimeSlotIdForFirst = 23;
+        }
+        TimeSlot newTimeSlotForFirst = getTimeSlotById(newTimeSlotIdForFirst);
+        TimeSlot newTimeSlotForSecond = newTimeSlotForFirst.getNextTimeSlot();
+        // Venue newVenue = getRandomVenue();
+
+        cout << "Assigning new consecutive time slots: First - " << newTimeSlotForFirst.getTime() << ", Second - " << newTimeSlotForSecond.getTime() << endl;
+        // cout << "Assigning new venue name: " << newVenue.getName() << endl;
+
+        chromosome.getGene(geneIdToMove - 1).setTimeSlot(newTimeSlotForFirst);
+        geneToMutate.setTimeSlot(newTimeSlotForSecond);
+        // chromosome.getGene(geneIdToMove - 1).setVenue(newVenue);
+        // geneToMutate.setVenue(newVenue);
+    }
+
     cout << "Mutation complete. Need to handle potential violations." << endl
          << endl;
 }

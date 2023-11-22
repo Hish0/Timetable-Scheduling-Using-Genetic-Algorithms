@@ -1,4 +1,5 @@
 #include "Module.h"
+#include "../GlobalVariables/GlobalVariables.h"
 
 // Default Constructor
 Module::Module() : moduleID(0), lecturer(), name("Unknown"), level(0),
@@ -121,6 +122,50 @@ std::string Module::toString() const
 void Module::fromString(const std::string &str)
 {
     std::istringstream iss(str);
-    // Parse the string and set the attributes of the Module
-    // This might involve some more complex parsing logic
+    std::string token;
+
+    // Assuming the format is like "Module ID: 1, Lecturer: Dr. Mo3eed 1, Name: CS100, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 5"
+    while (getline(iss, token, ','))
+    {
+        std::istringstream tokenStream(token);
+        std::string key;
+        std::string value;
+
+        // Split the token into key and value
+        getline(tokenStream, key, ':');
+        getline(tokenStream, value);
+        trimString(key);   // Function to trim leading and trailing spaces
+        trimString(value); // Function to trim leading and trailing spaces
+
+        // Set the appropriate attribute based on the key
+        if (key == "Module ID")
+        {
+            this->moduleID = stoi(value);
+        }
+        else if (key == "Lecturer")
+        {
+            Lecturer foundLecturer = findLecturerByName(value);
+            this->lecturer = foundLecturer;
+        }
+        else if (key == "Name")
+        {
+            this->name = value;
+        }
+        else if (key == "Level")
+        {
+            this->level = stoi(value);
+        }
+        else if (key == "Enrolled Students")
+        {
+            this->numberOfStudentsEnrolled = stoi(value);
+        }
+        else if (key == "Is Lab")
+        {
+            this->isLab = (value == "Yes");
+        }
+        else if (key == "Number of time slots")
+        {
+            this->numberOfTimeSlots = stoi(value);
+        }
+    }
 }
