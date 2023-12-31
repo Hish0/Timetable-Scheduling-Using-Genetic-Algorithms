@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gene Data Entry Form</title>
+    <!-- Include your CSS links here -->
+</head>
+<body>
+    <form id="geneForm">
+        <h1>Gene Data Entry Form</h1>
+
+        <label for="geneId">Gene ID:</label>
+        <input type="number" id="geneId" name="Gene" required>
+
+        <!-- Module Details -->
+        <label for="moduleId">Module ID:</label>
+        <input type="number" id="moduleId" name="Module ID" required>
+
+        <label for="lecturer">Lecturer:</label>
+        <input type="text" id="lecturer" name="Lecturer" required>
+
+        <label for="moduleName">Module Name:</label>
+        <input type="text" id="moduleName" name="Name" required>
+
+        <label for="moduleLevel">Level:</label>
+        <input type="number" id="moduleLevel" name="Level" required>
+
+        <label for="enrolledStudents">Enrolled Students:</label>
+        <input type="number" id="enrolledStudents" name="Enrolled Students" required>
+
+        <label for="isLab">Is Lab:</label>
+        <select id="isLab" name="Is Lab">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+        </select>
+
+        <label for="numTimeSlots">Number of Time Slots:</label>
+        <input type="number" id="numTimeSlots" name="Number of time slots" required>
+
+        <!-- TimeSlot Details -->
+        <label for="timeSlotId">TimeSlot ID:</label>
+        <input type="number" id="timeSlotId" name="TimeSlot ID" required>
+
+        <label for="day">Day:</label>
+        <input type="text" id="day" name="Day" required>
+
+        <label for="time">Time:</label>
+        <input type="text" id="time" name="Time" required>
+
+        <!-- Venue Details -->
+        <label for="venueId">Venue ID:</label>
+        <input type="number" id="venueId" name="Venue ID" required>
+
+        <label for="venueName">Venue Name:</label>
+        <input type="text" id="venueName" name="Venue Name" required>
+
+        <label for="capacity">Capacity:</label>
+        <input type="number" id="capacity" name="Capacity" required>
+
+        <label for="isVenueLab">Is Lab (Venue):</label>
+        <select id="isVenueLab" name="Is Lab (Venue)">
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+        </select>
+
+        <!-- Additional Boolean Fields -->
+        <label for="isLockedVenue">Is Locked Venue:</label>
+        <input type="checkbox" id="isLockedVenue" name="IsLockedVenue" value="1">
+
+        <label for="isLockedTimeSlot">Is Locked TimeSlot:</label>
+        <input type="checkbox" id="isLockedTimeSlot" name="IsLockedTimeSlot" value="1">
+
+        <label for="isValid">Is Valid:</label>
+        <input type="checkbox" id="isValid" name="IsValid" value="1" checked>
+
+        <label for="isFirstSlot">Is First Slot:</label>
+        <input type="checkbox" id="isFirstSlot" name="IsFirstSlot" value="1">
+
+        <label for="isOneSlot">Is One Slot:</label>
+        <input type="checkbox" id="isOneSlot" name="IsOneSlot" value="1">
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="outputContainer">
+        <h2>Formatted Data:</h2>
+        <textarea id="output" rows="20" cols="80" readonly></textarea>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

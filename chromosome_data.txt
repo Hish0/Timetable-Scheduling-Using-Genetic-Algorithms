@@ -1,7 +1,7 @@
 Gene: 1
 Module ID: 1, Lecturer: Dr. Mo3eed 1, Name: CS100, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 5
-TimeSlot ID: 15, Day: Sunday, Time: 2:00 PM
-Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
+TimeSlot ID: 17, Day: Monday, Time: 8:00 AM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -9,8 +9,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 2
 Module ID: 1, Lecturer: Dr. Mo3eed 1, Name: CS100, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 5
-TimeSlot ID: 16, Day: Sunday, Time: 3:00 PM
-Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
+TimeSlot ID: 18, Day: Monday, Time: 9:00 AM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -18,8 +18,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 3
 Module ID: 1, Lecturer: Dr. Mo3eed 1, Name: CS100, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 5
-TimeSlot ID: 33, Day: Wednesday, Time: 8:00 AM
-Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
+TimeSlot ID: 35, Day: Wednesday, Time: 10:00 AM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -27,8 +27,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 4
 Module ID: 1, Lecturer: Dr. Mo3eed 1, Name: CS100, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 5
-TimeSlot ID: 34, Day: Wednesday, Time: 9:00 AM
-Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
+TimeSlot ID: 36, Day: Wednesday, Time: 11:00 AM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -36,8 +36,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 5
 Module ID: 1, Lecturer: Dr. Mo3eed 1, Name: CS100, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 5
-TimeSlot ID: 29, Day: Tuesday, Time: 12:00 PM
-Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
+TimeSlot ID: 27, Day: Tuesday, Time: 10:00 AM
+Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -46,7 +46,7 @@ IsOneSlot: 1
 Gene: 6
 Module ID: 2, Lecturer: Dr. Khadeja, Name: MM101, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
 TimeSlot ID: 30, Day: Tuesday, Time: 1:00 PM
-Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
+Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -55,7 +55,7 @@ IsOneSlot: 0
 Gene: 7
 Module ID: 2, Lecturer: Dr. Khadeja, Name: MM101, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
 TimeSlot ID: 31, Day: Tuesday, Time: 2:00 PM
-Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
+Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -63,8 +63,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 8
 Module ID: 2, Lecturer: Dr. Khadeja, Name: MM101, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 36, Day: Wednesday, Time: 11:00 AM
-Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
+TimeSlot ID: 37, Day: Wednesday, Time: 12:00 PM
+Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -72,8 +72,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 9
 Module ID: 2, Lecturer: Dr. Khadeja, Name: MM101, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 37, Day: Wednesday, Time: 12:00 PM
-Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
+TimeSlot ID: 38, Day: Wednesday, Time: 1:00 PM
+Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -81,7 +81,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 10
 Module ID: 3, Lecturer: Dr. Salsabil, Name: MM102, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 25, Day: Tuesday, Time: 8:00 AM
+TimeSlot ID: 39, Day: Wednesday, Time: 2:00 PM
 Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -90,7 +90,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 11
 Module ID: 3, Lecturer: Dr. Salsabil, Name: MM102, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 26, Day: Tuesday, Time: 9:00 AM
+TimeSlot ID: 40, Day: Wednesday, Time: 3:00 PM
 Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -99,8 +99,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 12
 Module ID: 3, Lecturer: Dr. Salsabil, Name: MM102, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 1, Day: Saturday, Time: 8:00 AM
-Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
+TimeSlot ID: 41, Day: Thursday, Time: 8:00 AM
+Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -108,8 +108,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 13
 Module ID: 3, Lecturer: Dr. Salsabil, Name: MM102, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 2, Day: Saturday, Time: 9:00 AM
-Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
+TimeSlot ID: 42, Day: Thursday, Time: 9:00 AM
+Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -117,8 +117,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 14
 Module ID: 4, Lecturer: Dr. Nabeel, Name: ST101, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 46, Day: Thursday, Time: 1:00 PM
-Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
+TimeSlot ID: 19, Day: Monday, Time: 10:00 AM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -126,8 +126,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 15
 Module ID: 4, Lecturer: Dr. Nabeel, Name: ST101, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 47, Day: Thursday, Time: 2:00 PM
-Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
+TimeSlot ID: 20, Day: Monday, Time: 11:00 AM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -135,8 +135,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 16
 Module ID: 4, Lecturer: Dr. Nabeel, Name: ST101, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 17, Day: Monday, Time: 8:00 AM
-Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
+TimeSlot ID: 33, Day: Wednesday, Time: 8:00 AM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -144,8 +144,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 17
 Module ID: 4, Lecturer: Dr. Nabeel, Name: ST101, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 18, Day: Monday, Time: 9:00 AM
-Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
+TimeSlot ID: 34, Day: Wednesday, Time: 9:00 AM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -153,8 +153,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 18
 Module ID: 5, Lecturer: Dr. Mokhtar, Name: PH112, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 5, Day: Saturday, Time: 12:00 PM
-Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
+TimeSlot ID: 44, Day: Thursday, Time: 11:00 AM
+Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -162,8 +162,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 19
 Module ID: 5, Lecturer: Dr. Mokhtar, Name: PH112, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 6, Day: Saturday, Time: 1:00 PM
-Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
+TimeSlot ID: 45, Day: Thursday, Time: 12:00 PM
+Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -171,8 +171,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 20
 Module ID: 5, Lecturer: Dr. Mokhtar, Name: PH112, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 43, Day: Thursday, Time: 10:00 AM
-Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
+TimeSlot ID: 11, Day: Sunday, Time: 10:00 AM
+Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -180,8 +180,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 21
 Module ID: 5, Lecturer: Dr. Mokhtar, Name: PH112, Level: 1, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 44, Day: Thursday, Time: 11:00 AM
-Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
+TimeSlot ID: 12, Day: Sunday, Time: 11:00 AM
+Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -189,8 +189,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 22
 Module ID: 6, Lecturer: Dr. Mo3eed 2, Name: CS111, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 5
-TimeSlot ID: 13, Day: Sunday, Time: 12:00 PM
-Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
+TimeSlot ID: 23, Day: Monday, Time: 2:00 PM
+Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -198,8 +198,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 23
 Module ID: 6, Lecturer: Dr. Mo3eed 2, Name: CS111, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 5
-TimeSlot ID: 14, Day: Sunday, Time: 1:00 PM
-Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
+TimeSlot ID: 24, Day: Monday, Time: 3:00 PM
+Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -207,7 +207,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 24
 Module ID: 6, Lecturer: Dr. Mo3eed 2, Name: CS111, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 5
-TimeSlot ID: 41, Day: Thursday, Time: 8:00 AM
+TimeSlot ID: 39, Day: Wednesday, Time: 2:00 PM
 Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -216,7 +216,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 25
 Module ID: 6, Lecturer: Dr. Mo3eed 2, Name: CS111, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 5
-TimeSlot ID: 42, Day: Thursday, Time: 9:00 AM
+TimeSlot ID: 40, Day: Wednesday, Time: 3:00 PM
 Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -225,8 +225,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 26
 Module ID: 6, Lecturer: Dr. Mo3eed 2, Name: CS111, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 5
-TimeSlot ID: 37, Day: Wednesday, Time: 12:00 PM
-Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
+TimeSlot ID: 16, Day: Sunday, Time: 3:00 PM
+Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -234,7 +234,7 @@ IsFirstSlot: 0
 IsOneSlot: 1
 Gene: 27
 Module ID: 7, Lecturer: Dr. Ahmed abd almutaleb, Name: MM103, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 2, Day: Saturday, Time: 9:00 AM
+TimeSlot ID: 43, Day: Thursday, Time: 10:00 AM
 Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -243,7 +243,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 28
 Module ID: 7, Lecturer: Dr. Ahmed abd almutaleb, Name: MM103, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 3, Day: Saturday, Time: 10:00 AM
+TimeSlot ID: 44, Day: Thursday, Time: 11:00 AM
 Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -252,8 +252,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 29
 Module ID: 7, Lecturer: Dr. Ahmed abd almutaleb, Name: MM103, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 28, Day: Tuesday, Time: 11:00 AM
-Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
+TimeSlot ID: 31, Day: Tuesday, Time: 2:00 PM
+Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -261,8 +261,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 30
 Module ID: 7, Lecturer: Dr. Ahmed abd almutaleb, Name: MM103, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 29, Day: Tuesday, Time: 12:00 PM
-Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
+TimeSlot ID: 32, Day: Tuesday, Time: 3:00 PM
+Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -270,7 +270,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 31
 Module ID: 8, Lecturer: Dr. Aljalali, Name: MM104, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 17, Day: Monday, Time: 8:00 AM
+TimeSlot ID: 33, Day: Wednesday, Time: 8:00 AM
 Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -279,7 +279,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 32
 Module ID: 8, Lecturer: Dr. Aljalali, Name: MM104, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 18, Day: Monday, Time: 9:00 AM
+TimeSlot ID: 34, Day: Wednesday, Time: 9:00 AM
 Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -288,8 +288,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 33
 Module ID: 8, Lecturer: Dr. Aljalali, Name: MM104, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 46, Day: Thursday, Time: 1:00 PM
-Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
+TimeSlot ID: 1, Day: Saturday, Time: 8:00 AM
+Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -297,8 +297,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 34
 Module ID: 8, Lecturer: Dr. Aljalali, Name: MM104, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 47, Day: Thursday, Time: 2:00 PM
-Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
+TimeSlot ID: 2, Day: Saturday, Time: 9:00 AM
+Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -306,7 +306,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 35
 Module ID: 9, Lecturer: Dr. Ali alaswad, Name: ST102, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 38, Day: Wednesday, Time: 1:00 PM
+TimeSlot ID: 37, Day: Wednesday, Time: 12:00 PM
 Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -315,7 +315,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 36
 Module ID: 9, Lecturer: Dr. Ali alaswad, Name: ST102, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 39, Day: Wednesday, Time: 2:00 PM
+TimeSlot ID: 38, Day: Wednesday, Time: 1:00 PM
 Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -324,8 +324,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 37
 Module ID: 9, Lecturer: Dr. Ali alaswad, Name: ST102, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 4, Day: Saturday, Time: 11:00 AM
-Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
+TimeSlot ID: 14, Day: Sunday, Time: 1:00 PM
+Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -333,8 +333,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 38
 Module ID: 9, Lecturer: Dr. Ali alaswad, Name: ST102, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 5, Day: Saturday, Time: 12:00 PM
-Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
+TimeSlot ID: 15, Day: Sunday, Time: 2:00 PM
+Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -342,8 +342,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 39
 Module ID: 10, Lecturer: Dr. Mariam British, Name: EL101, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 23, Day: Monday, Time: 2:00 PM
-Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
+TimeSlot ID: 4, Day: Saturday, Time: 11:00 AM
+Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -351,8 +351,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 40
 Module ID: 10, Lecturer: Dr. Mariam British, Name: EL101, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 24, Day: Monday, Time: 3:00 PM
-Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
+TimeSlot ID: 5, Day: Saturday, Time: 12:00 PM
+Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -360,8 +360,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 41
 Module ID: 10, Lecturer: Dr. Mariam British, Name: EL101, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 11, Day: Sunday, Time: 10:00 AM
-Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
+TimeSlot ID: 12, Day: Sunday, Time: 11:00 AM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -369,8 +369,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 42
 Module ID: 10, Lecturer: Dr. Mariam British, Name: EL101, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 12, Day: Sunday, Time: 11:00 AM
-Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
+TimeSlot ID: 13, Day: Sunday, Time: 12:00 PM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -378,7 +378,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 43
 Module ID: 11, Lecturer: Dr. Samir Embarek, Name: AR051, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 19, Day: Monday, Time: 10:00 AM
+TimeSlot ID: 17, Day: Monday, Time: 8:00 AM
 Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -387,7 +387,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 44
 Module ID: 11, Lecturer: Dr. Samir Embarek, Name: AR051, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 20, Day: Monday, Time: 11:00 AM
+TimeSlot ID: 18, Day: Monday, Time: 9:00 AM
 Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -396,8 +396,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 45
 Module ID: 11, Lecturer: Dr. Samir Embarek, Name: AR051, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 30, Day: Tuesday, Time: 1:00 PM
-Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
+TimeSlot ID: 27, Day: Tuesday, Time: 10:00 AM
+Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -405,8 +405,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 46
 Module ID: 11, Lecturer: Dr. Samir Embarek, Name: AR051, Level: 2, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 31, Day: Tuesday, Time: 2:00 PM
-Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
+TimeSlot ID: 28, Day: Tuesday, Time: 11:00 AM
+Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -414,8 +414,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 47
 Module ID: 12, Lecturer: Dr. Naema albadri, Name: CS115, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 3
-TimeSlot ID: 28, Day: Tuesday, Time: 11:00 AM
-Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
+TimeSlot ID: 12, Day: Sunday, Time: 11:00 AM
+Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -423,8 +423,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 48
 Module ID: 12, Lecturer: Dr. Naema albadri, Name: CS115, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 3
-TimeSlot ID: 29, Day: Tuesday, Time: 12:00 PM
-Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
+TimeSlot ID: 13, Day: Sunday, Time: 12:00 PM
+Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -432,7 +432,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 49
 Module ID: 12, Lecturer: Dr. Naema albadri, Name: CS115, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 3
-TimeSlot ID: 44, Day: Thursday, Time: 11:00 AM
+TimeSlot ID: 23, Day: Monday, Time: 2:00 PM
 Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -441,8 +441,8 @@ IsFirstSlot: 0
 IsOneSlot: 1
 Gene: 50
 Module ID: 13, Lecturer: Dr. Adnan Alshreef, Name: CS200, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 3
-TimeSlot ID: 15, Day: Sunday, Time: 2:00 PM
-Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
+TimeSlot ID: 1, Day: Saturday, Time: 8:00 AM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -450,8 +450,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 51
 Module ID: 13, Lecturer: Dr. Adnan Alshreef, Name: CS200, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 3
-TimeSlot ID: 16, Day: Sunday, Time: 3:00 PM
-Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
+TimeSlot ID: 2, Day: Saturday, Time: 9:00 AM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -459,8 +459,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 52
 Module ID: 13, Lecturer: Dr. Adnan Alshreef, Name: CS200, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 3
-TimeSlot ID: 1, Day: Saturday, Time: 8:00 AM
-Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
+TimeSlot ID: 14, Day: Sunday, Time: 1:00 PM
+Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -468,8 +468,8 @@ IsFirstSlot: 0
 IsOneSlot: 1
 Gene: 53
 Module ID: 14, Lecturer: Dr. Abd Alsalam almaraghni, Name: CS207, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 3
-TimeSlot ID: 37, Day: Wednesday, Time: 12:00 PM
-Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
+TimeSlot ID: 3, Day: Saturday, Time: 10:00 AM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -477,8 +477,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 54
 Module ID: 14, Lecturer: Dr. Abd Alsalam almaraghni, Name: CS207, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 3
-TimeSlot ID: 38, Day: Wednesday, Time: 1:00 PM
-Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
+TimeSlot ID: 4, Day: Saturday, Time: 11:00 AM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -486,8 +486,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 55
 Module ID: 14, Lecturer: Dr. Abd Alsalam almaraghni, Name: CS207, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 3
-TimeSlot ID: 43, Day: Thursday, Time: 10:00 AM
-Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
+TimeSlot ID: 30, Day: Tuesday, Time: 1:00 PM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -495,8 +495,8 @@ IsFirstSlot: 0
 IsOneSlot: 1
 Gene: 56
 Module ID: 15, Lecturer: Dr. Farhat, Name: MA200, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 9, Day: Sunday, Time: 8:00 AM
-Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
+TimeSlot ID: 39, Day: Wednesday, Time: 2:00 PM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -504,8 +504,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 57
 Module ID: 15, Lecturer: Dr. Farhat, Name: MA200, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 10, Day: Sunday, Time: 9:00 AM
-Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
+TimeSlot ID: 40, Day: Wednesday, Time: 3:00 PM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -513,7 +513,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 58
 Module ID: 15, Lecturer: Dr. Farhat, Name: MA200, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 46, Day: Thursday, Time: 1:00 PM
+TimeSlot ID: 47, Day: Thursday, Time: 2:00 PM
 Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -522,7 +522,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 59
 Module ID: 15, Lecturer: Dr. Farhat, Name: MA200, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 47, Day: Thursday, Time: 2:00 PM
+TimeSlot ID: 48, Day: Thursday, Time: 3:00 PM
 Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -531,8 +531,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 60
 Module ID: 16, Lecturer: Dr. Elbadri, Name: PH200, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 3
-TimeSlot ID: 41, Day: Thursday, Time: 8:00 AM
-Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
+TimeSlot ID: 9, Day: Sunday, Time: 8:00 AM
+Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -540,8 +540,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 61
 Module ID: 16, Lecturer: Dr. Elbadri, Name: PH200, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 3
-TimeSlot ID: 42, Day: Thursday, Time: 9:00 AM
-Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
+TimeSlot ID: 10, Day: Sunday, Time: 9:00 AM
+Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -549,8 +549,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 62
 Module ID: 16, Lecturer: Dr. Elbadri, Name: PH200, Level: 3, Enrolled Students: 100, Is Lab: No, Number of time slots: 3
-TimeSlot ID: 34, Day: Wednesday, Time: 9:00 AM
-Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
+TimeSlot ID: 28, Day: Tuesday, Time: 11:00 AM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -558,8 +558,8 @@ IsFirstSlot: 0
 IsOneSlot: 1
 Gene: 63
 Module ID: 17, Lecturer: Dr. Fatima Hmeed, Name: CS211, Level: 4, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 7, Day: Saturday, Time: 2:00 PM
-Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 25, Day: Tuesday, Time: 8:00 AM
+Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -567,8 +567,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 64
 Module ID: 17, Lecturer: Dr. Fatima Hmeed, Name: CS211, Level: 4, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 8, Day: Saturday, Time: 3:00 PM
-Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 26, Day: Tuesday, Time: 9:00 AM
+Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -576,7 +576,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 65
 Module ID: 17, Lecturer: Dr. Fatima Hmeed, Name: CS211, Level: 4, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 37, Day: Wednesday, Time: 12:00 PM
+TimeSlot ID: 1, Day: Saturday, Time: 8:00 AM
 Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -585,7 +585,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 66
 Module ID: 17, Lecturer: Dr. Fatima Hmeed, Name: CS211, Level: 4, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 38, Day: Wednesday, Time: 1:00 PM
+TimeSlot ID: 2, Day: Saturday, Time: 9:00 AM
 Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -594,8 +594,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 67
 Module ID: 18, Lecturer: Dr. Omaima Alsheli, Name: CS215, Level: 4, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 15, Day: Sunday, Time: 2:00 PM
-Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 39, Day: Wednesday, Time: 2:00 PM
+Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -603,8 +603,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 68
 Module ID: 18, Lecturer: Dr. Omaima Alsheli, Name: CS215, Level: 4, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 16, Day: Sunday, Time: 3:00 PM
-Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 40, Day: Wednesday, Time: 3:00 PM
+Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -612,8 +612,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 69
 Module ID: 18, Lecturer: Dr. Omaima Alsheli, Name: CS215, Level: 4, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 39, Day: Wednesday, Time: 2:00 PM
-Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 29, Day: Tuesday, Time: 12:00 PM
+Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -621,8 +621,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 70
 Module ID: 18, Lecturer: Dr. Omaima Alsheli, Name: CS215, Level: 4, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 40, Day: Wednesday, Time: 3:00 PM
-Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 30, Day: Tuesday, Time: 1:00 PM
+Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -630,8 +630,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 71
 Module ID: 19, Lecturer: Dr. Tasneem, Name: MA206, Level: 4, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 19, Day: Monday, Time: 10:00 AM
-Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
+TimeSlot ID: 46, Day: Thursday, Time: 1:00 PM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -639,8 +639,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 72
 Module ID: 19, Lecturer: Dr. Tasneem, Name: MA206, Level: 4, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 20, Day: Monday, Time: 11:00 AM
-Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
+TimeSlot ID: 47, Day: Thursday, Time: 2:00 PM
+Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -648,8 +648,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 73
 Module ID: 19, Lecturer: Dr. Tasneem, Name: MA206, Level: 4, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 46, Day: Thursday, Time: 1:00 PM
-Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
+TimeSlot ID: 27, Day: Tuesday, Time: 10:00 AM
+Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -657,8 +657,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 74
 Module ID: 19, Lecturer: Dr. Tasneem, Name: MA206, Level: 4, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 47, Day: Thursday, Time: 2:00 PM
-Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
+TimeSlot ID: 28, Day: Tuesday, Time: 11:00 AM
+Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -666,7 +666,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 75
 Module ID: 20, Lecturer: Dr. Elbadri, Name: PH201, Level: 4, Enrolled Students: 100, Is Lab: No, Number of time slots: 3
-TimeSlot ID: 4, Day: Saturday, Time: 11:00 AM
+TimeSlot ID: 17, Day: Monday, Time: 8:00 AM
 Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -675,7 +675,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 76
 Module ID: 20, Lecturer: Dr. Elbadri, Name: PH201, Level: 4, Enrolled Students: 100, Is Lab: No, Number of time slots: 3
-TimeSlot ID: 5, Day: Saturday, Time: 12:00 PM
+TimeSlot ID: 18, Day: Monday, Time: 9:00 AM
 Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -684,8 +684,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 77
 Module ID: 20, Lecturer: Dr. Elbadri, Name: PH201, Level: 4, Enrolled Students: 100, Is Lab: No, Number of time slots: 3
-TimeSlot ID: 14, Day: Sunday, Time: 1:00 PM
-Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
+TimeSlot ID: 48, Day: Thursday, Time: 3:00 PM
+Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -693,8 +693,8 @@ IsFirstSlot: 0
 IsOneSlot: 1
 Gene: 78
 Module ID: 21, Lecturer: Dr. Amira alelagi, Name: AR052, Level: 4, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 30, Day: Tuesday, Time: 1:00 PM
-Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
+TimeSlot ID: 35, Day: Wednesday, Time: 10:00 AM
+Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -702,8 +702,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 79
 Module ID: 21, Lecturer: Dr. Amira alelagi, Name: AR052, Level: 4, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 31, Day: Tuesday, Time: 2:00 PM
-Venue ID: 10, Name: HALL 74, Capacity: 200, Is Lab: No
+TimeSlot ID: 36, Day: Wednesday, Time: 11:00 AM
+Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -711,8 +711,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 80
 Module ID: 21, Lecturer: Dr. Amira alelagi, Name: AR052, Level: 4, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 43, Day: Thursday, Time: 10:00 AM
-Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
+TimeSlot ID: 7, Day: Saturday, Time: 2:00 PM
+Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -720,8 +720,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 81
 Module ID: 21, Lecturer: Dr. Amira alelagi, Name: AR052, Level: 4, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 44, Day: Thursday, Time: 11:00 AM
-Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
+TimeSlot ID: 8, Day: Saturday, Time: 3:00 PM
+Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -729,8 +729,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 82
 Module ID: 22, Lecturer: Dr. Mariam British, Name: EL102, Level: 4, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 9, Day: Sunday, Time: 8:00 AM
-Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
+TimeSlot ID: 10, Day: Sunday, Time: 9:00 AM
+Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -738,8 +738,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 83
 Module ID: 22, Lecturer: Dr. Mariam British, Name: EL102, Level: 4, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 10, Day: Sunday, Time: 9:00 AM
-Venue ID: 8, Name: HALL 72, Capacity: 200, Is Lab: No
+TimeSlot ID: 11, Day: Sunday, Time: 10:00 AM
+Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -747,8 +747,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 84
 Module ID: 22, Lecturer: Dr. Mariam British, Name: EL102, Level: 4, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 2, Day: Saturday, Time: 9:00 AM
-Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
+TimeSlot ID: 19, Day: Monday, Time: 10:00 AM
+Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -756,8 +756,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 85
 Module ID: 22, Lecturer: Dr. Mariam British, Name: EL102, Level: 4, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 3, Day: Saturday, Time: 10:00 AM
-Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
+TimeSlot ID: 20, Day: Monday, Time: 11:00 AM
+Venue ID: 7, Name: HALL 71, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -765,8 +765,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 86
 Module ID: 23, Lecturer: Dr. Wafaa Nasser, Name: CS321, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 43, Day: Thursday, Time: 10:00 AM
-Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 47, Day: Thursday, Time: 2:00 PM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -774,8 +774,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 87
 Module ID: 23, Lecturer: Dr. Wafaa Nasser, Name: CS321, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 44, Day: Thursday, Time: 11:00 AM
-Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 48, Day: Thursday, Time: 3:00 PM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -783,8 +783,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 88
 Module ID: 23, Lecturer: Dr. Wafaa Nasser, Name: CS321, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 28, Day: Tuesday, Time: 11:00 AM
-Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 7, Day: Saturday, Time: 2:00 PM
+Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -792,8 +792,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 89
 Module ID: 23, Lecturer: Dr. Wafaa Nasser, Name: CS321, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 29, Day: Tuesday, Time: 12:00 PM
-Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 8, Day: Saturday, Time: 3:00 PM
+Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -801,7 +801,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 90
 Module ID: 24, Lecturer: Dr. Raneem Nashnoosh, Name: CS331, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 33, Day: Wednesday, Time: 8:00 AM
+TimeSlot ID: 41, Day: Thursday, Time: 8:00 AM
 Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -810,7 +810,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 91
 Module ID: 24, Lecturer: Dr. Raneem Nashnoosh, Name: CS331, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 34, Day: Wednesday, Time: 9:00 AM
+TimeSlot ID: 42, Day: Thursday, Time: 9:00 AM
 Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -819,8 +819,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 92
 Module ID: 24, Lecturer: Dr. Raneem Nashnoosh, Name: CS331, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 1, Day: Saturday, Time: 8:00 AM
-Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 25, Day: Tuesday, Time: 8:00 AM
+Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -828,8 +828,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 93
 Module ID: 24, Lecturer: Dr. Raneem Nashnoosh, Name: CS331, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 2, Day: Saturday, Time: 9:00 AM
-Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 26, Day: Tuesday, Time: 9:00 AM
+Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -837,8 +837,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 94
 Module ID: 25, Lecturer: Dr. Omaima Alsheli, Name: CS315, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 25, Day: Tuesday, Time: 8:00 AM
-Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 17, Day: Monday, Time: 8:00 AM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -846,8 +846,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 95
 Module ID: 25, Lecturer: Dr. Omaima Alsheli, Name: CS315, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 26, Day: Tuesday, Time: 9:00 AM
-Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 18, Day: Monday, Time: 9:00 AM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -855,8 +855,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 96
 Module ID: 25, Lecturer: Dr. Omaima Alsheli, Name: CS315, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 46, Day: Thursday, Time: 1:00 PM
-Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 37, Day: Wednesday, Time: 12:00 PM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -864,8 +864,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 97
 Module ID: 25, Lecturer: Dr. Omaima Alsheli, Name: CS315, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 47, Day: Thursday, Time: 2:00 PM
-Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 38, Day: Wednesday, Time: 1:00 PM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -873,8 +873,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 98
 Module ID: 26, Lecturer: Dr. Naema albadri, Name: CS319, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 5, Day: Saturday, Time: 12:00 PM
-Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 19, Day: Monday, Time: 10:00 AM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -882,8 +882,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 99
 Module ID: 26, Lecturer: Dr. Naema albadri, Name: CS319, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 6, Day: Saturday, Time: 1:00 PM
-Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 20, Day: Monday, Time: 11:00 AM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -891,8 +891,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 100
 Module ID: 26, Lecturer: Dr. Naema albadri, Name: CS319, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 30, Day: Tuesday, Time: 1:00 PM
-Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 2, Day: Saturday, Time: 9:00 AM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -900,8 +900,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 101
 Module ID: 26, Lecturer: Dr. Naema albadri, Name: CS319, Level: 5, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 31, Day: Tuesday, Time: 2:00 PM
-Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 3, Day: Saturday, Time: 10:00 AM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -909,8 +909,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 102
 Module ID: 27, Lecturer: Dr. Alsunni, Name: CS332, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 10, Day: Sunday, Time: 9:00 AM
-Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 27, Day: Tuesday, Time: 10:00 AM
+Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -918,8 +918,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 103
 Module ID: 27, Lecturer: Dr. Alsunni, Name: CS332, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 11, Day: Sunday, Time: 10:00 AM
-Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 28, Day: Tuesday, Time: 11:00 AM
+Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -927,8 +927,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 104
 Module ID: 27, Lecturer: Dr. Alsunni, Name: CS332, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 27, Day: Tuesday, Time: 10:00 AM
-Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 15, Day: Sunday, Time: 2:00 PM
+Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -936,8 +936,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 105
 Module ID: 27, Lecturer: Dr. Alsunni, Name: CS332, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 28, Day: Tuesday, Time: 11:00 AM
-Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 16, Day: Sunday, Time: 3:00 PM
+Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -945,8 +945,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 106
 Module ID: 28, Lecturer: Dr. Wafaa Nasser, Name: CS322, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 13, Day: Sunday, Time: 12:00 PM
-Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 17, Day: Monday, Time: 8:00 AM
+Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -954,8 +954,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 107
 Module ID: 28, Lecturer: Dr. Wafaa Nasser, Name: CS322, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 14, Day: Sunday, Time: 1:00 PM
-Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 18, Day: Monday, Time: 9:00 AM
+Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -963,8 +963,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 108
 Module ID: 28, Lecturer: Dr. Wafaa Nasser, Name: CS322, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 5, Day: Saturday, Time: 12:00 PM
-Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 33, Day: Wednesday, Time: 8:00 AM
+Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -972,8 +972,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 109
 Module ID: 28, Lecturer: Dr. Wafaa Nasser, Name: CS322, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 6, Day: Saturday, Time: 1:00 PM
-Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 34, Day: Wednesday, Time: 9:00 AM
+Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -981,8 +981,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 110
 Module ID: 29, Lecturer: Dr. Raneem Nashnoosh, Name: CS336, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 17, Day: Monday, Time: 8:00 AM
-Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 9, Day: Sunday, Time: 8:00 AM
+Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -990,8 +990,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 111
 Module ID: 29, Lecturer: Dr. Raneem Nashnoosh, Name: CS336, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 18, Day: Monday, Time: 9:00 AM
-Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 10, Day: Sunday, Time: 9:00 AM
+Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -999,8 +999,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 112
 Module ID: 29, Lecturer: Dr. Raneem Nashnoosh, Name: CS336, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 25, Day: Tuesday, Time: 8:00 AM
-Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 1, Day: Saturday, Time: 8:00 AM
+Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1008,8 +1008,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 113
 Module ID: 29, Lecturer: Dr. Raneem Nashnoosh, Name: CS336, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 26, Day: Tuesday, Time: 9:00 AM
-Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 2, Day: Saturday, Time: 9:00 AM
+Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1017,8 +1017,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 114
 Module ID: 30, Lecturer: Dr. Fardous, Name: CS340, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 20, Day: Monday, Time: 11:00 AM
-Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 13, Day: Sunday, Time: 12:00 PM
+Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1026,8 +1026,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 115
 Module ID: 30, Lecturer: Dr. Fardous, Name: CS340, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 23, Day: Monday, Time: 2:00 PM
-Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 14, Day: Sunday, Time: 1:00 PM
+Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1035,7 +1035,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 116
 Module ID: 30, Lecturer: Dr. Fardous, Name: CS340, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 46, Day: Thursday, Time: 1:00 PM
+TimeSlot ID: 47, Day: Thursday, Time: 2:00 PM
 Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1044,7 +1044,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 117
 Module ID: 30, Lecturer: Dr. Fardous, Name: CS340, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 47, Day: Thursday, Time: 2:00 PM
+TimeSlot ID: 48, Day: Thursday, Time: 3:00 PM
 Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1053,8 +1053,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 118
 Module ID: 31, Lecturer: Dr. Adnan Alshreef, Name: CS355, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 2, Day: Saturday, Time: 9:00 AM
-Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 35, Day: Wednesday, Time: 10:00 AM
+Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1062,8 +1062,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 119
 Module ID: 31, Lecturer: Dr. Adnan Alshreef, Name: CS355, Level: 6, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 3, Day: Saturday, Time: 10:00 AM
-Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 36, Day: Wednesday, Time: 11:00 AM
+Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1089,7 +1089,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 122
 Module ID: 32, Lecturer: Dr. Samir Embarek, Name: CS443, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 41, Day: Thursday, Time: 8:00 AM
+TimeSlot ID: 7, Day: Saturday, Time: 2:00 PM
 Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1098,7 +1098,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 123
 Module ID: 32, Lecturer: Dr. Samir Embarek, Name: CS443, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 42, Day: Thursday, Time: 9:00 AM
+TimeSlot ID: 8, Day: Saturday, Time: 3:00 PM
 Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1107,7 +1107,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 124
 Module ID: 32, Lecturer: Dr. Samir Embarek, Name: CS443, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 11, Day: Sunday, Time: 10:00 AM
+TimeSlot ID: 15, Day: Sunday, Time: 2:00 PM
 Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1116,7 +1116,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 125
 Module ID: 32, Lecturer: Dr. Samir Embarek, Name: CS443, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 12, Day: Sunday, Time: 11:00 AM
+TimeSlot ID: 16, Day: Sunday, Time: 3:00 PM
 Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1125,7 +1125,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 126
 Module ID: 33, Lecturer: Dr. Alsunni, Name: CS437, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 1, Day: Saturday, Time: 8:00 AM
+TimeSlot ID: 4, Day: Saturday, Time: 11:00 AM
 Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1134,7 +1134,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 127
 Module ID: 33, Lecturer: Dr. Alsunni, Name: CS437, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 2, Day: Saturday, Time: 9:00 AM
+TimeSlot ID: 5, Day: Saturday, Time: 12:00 PM
 Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1143,8 +1143,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 128
 Module ID: 33, Lecturer: Dr. Alsunni, Name: CS437, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 36, Day: Wednesday, Time: 11:00 AM
-Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 29, Day: Tuesday, Time: 12:00 PM
+Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1152,8 +1152,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 129
 Module ID: 33, Lecturer: Dr. Alsunni, Name: CS437, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 37, Day: Wednesday, Time: 12:00 PM
-Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 30, Day: Tuesday, Time: 1:00 PM
+Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1161,7 +1161,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 130
 Module ID: 34, Lecturer: Dr. Abd Allatif Alshwehdi, Name: CS431, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 47, Day: Thursday, Time: 2:00 PM
+TimeSlot ID: 17, Day: Monday, Time: 8:00 AM
 Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1170,7 +1170,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 131
 Module ID: 34, Lecturer: Dr. Abd Allatif Alshwehdi, Name: CS431, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 48, Day: Thursday, Time: 3:00 PM
+TimeSlot ID: 18, Day: Monday, Time: 9:00 AM
 Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1179,8 +1179,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 132
 Module ID: 34, Lecturer: Dr. Abd Allatif Alshwehdi, Name: CS431, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 38, Day: Wednesday, Time: 1:00 PM
-Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 33, Day: Wednesday, Time: 8:00 AM
+Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1188,8 +1188,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 133
 Module ID: 34, Lecturer: Dr. Abd Allatif Alshwehdi, Name: CS431, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 39, Day: Wednesday, Time: 2:00 PM
-Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 34, Day: Wednesday, Time: 9:00 AM
+Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1197,8 +1197,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 134
 Module ID: 35, Lecturer: Dr. Hassan Abuaisha, Name: CS456, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 19, Day: Monday, Time: 10:00 AM
-Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 13, Day: Sunday, Time: 12:00 PM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1206,8 +1206,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 135
 Module ID: 35, Lecturer: Dr. Hassan Abuaisha, Name: CS456, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 20, Day: Monday, Time: 11:00 AM
-Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 14, Day: Sunday, Time: 1:00 PM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1215,8 +1215,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 136
 Module ID: 35, Lecturer: Dr. Hassan Abuaisha, Name: CS456, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 30, Day: Tuesday, Time: 1:00 PM
-Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 44, Day: Thursday, Time: 11:00 AM
+Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1224,8 +1224,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 137
 Module ID: 35, Lecturer: Dr. Hassan Abuaisha, Name: CS456, Level: 7, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 31, Day: Tuesday, Time: 2:00 PM
-Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 45, Day: Thursday, Time: 12:00 PM
+Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1233,8 +1233,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 138
 Module ID: 36, Lecturer: Dr. Hassan Abuaisha, Name: CS436, Level: 8, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 17, Day: Monday, Time: 8:00 AM
-Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 42, Day: Thursday, Time: 9:00 AM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1242,8 +1242,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 139
 Module ID: 36, Lecturer: Dr. Hassan Abuaisha, Name: CS436, Level: 8, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 18, Day: Monday, Time: 9:00 AM
-Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 43, Day: Thursday, Time: 10:00 AM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1251,8 +1251,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 140
 Module ID: 36, Lecturer: Dr. Hassan Abuaisha, Name: CS436, Level: 8, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 37, Day: Wednesday, Time: 12:00 PM
-Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 27, Day: Tuesday, Time: 10:00 AM
+Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1260,8 +1260,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 141
 Module ID: 36, Lecturer: Dr. Hassan Abuaisha, Name: CS436, Level: 8, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 4
-TimeSlot ID: 38, Day: Wednesday, Time: 1:00 PM
-Venue ID: 1, Name: LAB 1, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 28, Day: Tuesday, Time: 11:00 AM
+Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1269,7 +1269,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 142
 Module ID: 37, Lecturer: Dr. Ali Aborass, Name: CS438, Level: 8, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 7, Day: Saturday, Time: 2:00 PM
+TimeSlot ID: 35, Day: Wednesday, Time: 10:00 AM
 Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1278,7 +1278,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 143
 Module ID: 37, Lecturer: Dr. Ali Aborass, Name: CS438, Level: 8, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 8, Day: Saturday, Time: 3:00 PM
+TimeSlot ID: 36, Day: Wednesday, Time: 11:00 AM
 Venue ID: 9, Name: HALL 73, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1287,7 +1287,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 144
 Module ID: 37, Lecturer: Dr. Ali Aborass, Name: CS438, Level: 8, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 31, Day: Tuesday, Time: 2:00 PM
+TimeSlot ID: 19, Day: Monday, Time: 10:00 AM
 Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1296,7 +1296,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 145
 Module ID: 37, Lecturer: Dr. Ali Aborass, Name: CS438, Level: 8, Enrolled Students: 100, Is Lab: No, Number of time slots: 4
-TimeSlot ID: 32, Day: Tuesday, Time: 3:00 PM
+TimeSlot ID: 20, Day: Monday, Time: 11:00 AM
 Venue ID: 6, Name: HALL 70, Capacity: 200, Is Lab: No
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1305,8 +1305,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 146
 Module ID: 38, Lecturer: Dr. Naema albadri, Name: CS115 (1), Level: 3, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 2
-TimeSlot ID: 11, Day: Sunday, Time: 10:00 AM
-Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 35, Day: Wednesday, Time: 10:00 AM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1314,8 +1314,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 147
 Module ID: 38, Lecturer: Dr. Naema albadri, Name: CS115 (1), Level: 3, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 2
-TimeSlot ID: 12, Day: Sunday, Time: 11:00 AM
-Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 36, Day: Wednesday, Time: 11:00 AM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1323,8 +1323,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 148
 Module ID: 39, Lecturer: Dr. Mo3eed 1, Name: CS115 (2), Level: 3, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 2
-TimeSlot ID: 17, Day: Monday, Time: 8:00 AM
-Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 33, Day: Wednesday, Time: 8:00 AM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1332,8 +1332,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 149
 Module ID: 39, Lecturer: Dr. Mo3eed 1, Name: CS115 (2), Level: 3, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 2
-TimeSlot ID: 18, Day: Monday, Time: 9:00 AM
-Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 34, Day: Wednesday, Time: 9:00 AM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1341,7 +1341,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 150
 Module ID: 40, Lecturer: Dr. Mo3eed 1, Name: CS115 (3), Level: 3, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 2
-TimeSlot ID: 19, Day: Monday, Time: 10:00 AM
+TimeSlot ID: 25, Day: Tuesday, Time: 8:00 AM
 Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1350,7 +1350,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 151
 Module ID: 40, Lecturer: Dr. Mo3eed 1, Name: CS115 (3), Level: 3, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 2
-TimeSlot ID: 20, Day: Monday, Time: 11:00 AM
+TimeSlot ID: 26, Day: Tuesday, Time: 9:00 AM
 Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1359,8 +1359,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 152
 Module ID: 41, Lecturer: Dr. Mo3eed 1, Name: CS200 (1), Level: 3, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 2
-TimeSlot ID: 13, Day: Sunday, Time: 12:00 PM
-Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 7, Day: Saturday, Time: 2:00 PM
+Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1368,8 +1368,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 153
 Module ID: 41, Lecturer: Dr. Mo3eed 1, Name: CS200 (1), Level: 3, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 2
-TimeSlot ID: 14, Day: Sunday, Time: 1:00 PM
-Venue ID: 3, Name: LAB 3, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 8, Day: Saturday, Time: 3:00 PM
+Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1377,8 +1377,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 154
 Module ID: 42, Lecturer: Dr. Mo3eed 1, Name: CS200 (2), Level: 3, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 2
-TimeSlot ID: 3, Day: Saturday, Time: 10:00 AM
-Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 37, Day: Wednesday, Time: 12:00 PM
+Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1386,8 +1386,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 155
 Module ID: 42, Lecturer: Dr. Mo3eed 1, Name: CS200 (2), Level: 3, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 2
-TimeSlot ID: 4, Day: Saturday, Time: 11:00 AM
-Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 38, Day: Wednesday, Time: 1:00 PM
+Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1395,7 +1395,7 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 156
 Module ID: 43, Lecturer: Dr. Mo3eed 2, Name: CS207 (1), Level: 3, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 2
-TimeSlot ID: 35, Day: Wednesday, Time: 10:00 AM
+TimeSlot ID: 31, Day: Tuesday, Time: 2:00 PM
 Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1404,7 +1404,7 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 157
 Module ID: 43, Lecturer: Dr. Mo3eed 2, Name: CS207 (1), Level: 3, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 2
-TimeSlot ID: 36, Day: Wednesday, Time: 11:00 AM
+TimeSlot ID: 32, Day: Tuesday, Time: 3:00 PM
 Venue ID: 2, Name: LAB 2, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
@@ -1413,8 +1413,8 @@ IsFirstSlot: 0
 IsOneSlot: 0
 Gene: 158
 Module ID: 44, Lecturer: Dr. Mo3eed 2, Name: CS207 (2), Level: 3, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 2
-TimeSlot ID: 5, Day: Saturday, Time: 12:00 PM
-Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 45, Day: Thursday, Time: 12:00 PM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
@@ -1422,8 +1422,8 @@ IsFirstSlot: 1
 IsOneSlot: 0
 Gene: 159
 Module ID: 44, Lecturer: Dr. Mo3eed 2, Name: CS207 (2), Level: 3, Enrolled Students: 25, Is Lab: Yes, Number of time slots: 2
-TimeSlot ID: 6, Day: Saturday, Time: 1:00 PM
-Venue ID: 4, Name: LAB 4, Capacity: 30, Is Lab: Yes
+TimeSlot ID: 46, Day: Thursday, Time: 1:00 PM
+Venue ID: 5, Name: LAB 5, Capacity: 30, Is Lab: Yes
 IsLockedVenue: 0
 IsLockedTimeSlot: 0
 IsValid: 1
