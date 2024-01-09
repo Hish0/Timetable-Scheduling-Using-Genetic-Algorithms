@@ -77,7 +77,7 @@ def generate_consolidated_table(consolidated_schedule):
     return html
 
 # Define the path to your text file
-file_path = 'chromosome_data_editing.txt'
+file_path = 'chromosome_data.txt'
 
 # Open the file and read its contents
 # Your gene data goes here. The provided data contains the schedule.

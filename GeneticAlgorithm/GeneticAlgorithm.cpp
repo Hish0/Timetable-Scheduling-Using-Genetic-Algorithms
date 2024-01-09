@@ -119,7 +119,7 @@ Chromosome GeneticAlgorithm::crossover(const Chromosome &parent1, const Chromoso
     // Choose one child for the next generation based on fitness (you could also return both)
     if (child1.evaluateFitness() < child2.evaluateFitness())
     {
-        if (child1.getGenes().size() != 159)
+        if (child1.getGenes().size() != 124)
         {
             cout << "the child 1 ERROR" << endl;
             cout << "##########child size : " << child1.getGenes().size() << endl;
@@ -133,7 +133,7 @@ Chromosome GeneticAlgorithm::crossover(const Chromosome &parent1, const Chromoso
     }
     else
     {
-        if (child2.getGenes().size() != 159)
+        if (child2.getGenes().size() != 124)
         {
             cout << "the child 2 ERROR" << endl;
             cout << "##########child size : " << child2.getGenes().size() << endl;
@@ -393,7 +393,7 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
             // cout << "----------> if false child size chromosome After not cross: " << child.getGenes().size() << endl;
         }
         // cout << "----------> After crossover child size chromosome: " << child.getGenes().size() << endl;
-        if (generationCount <= 50)
+        if (generationCount <= 10)
         {
             if (randomValueForMutation <= mutationRate)
             {
@@ -418,7 +418,7 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
                 // cout << "After mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
                 // cout << "After mutation, Size of parent population: " << parents.getChromosomes().size() << endl;
             }
-            if (randomValueForMutation <= 0.3)
+            if (randomValueForMutation <= 0.5)
             {
                 // cout << "Before mutation, population size: " << population.getChromosomes().size() << endl;
                 // cout << "Before mutation, Size of offspring population: " << offspring.getChromosomes().size() << endl;
@@ -500,7 +500,7 @@ void GeneticAlgorithm::runOneGeneration(int generationCount)
         //     counter++;
         // }
 
-        if (child.getGenes().size() != 159)
+        if (child.getGenes().size() != 124)
         {
             cout << "the child ERROR" << endl;
             cout << "^^^^^^^^^^^^child size : " << child.getGenes().size() << endl;

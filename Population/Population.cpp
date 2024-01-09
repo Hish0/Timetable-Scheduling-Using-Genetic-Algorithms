@@ -101,7 +101,7 @@ Chromosome Population::generateRandomChromosome()
         }
     }
 
-    if (chromosome.getGenes().size() != 159)
+    if (chromosome.getGenes().size() != 124)
     {
         std::cout << "size of the chromosome is  " << chromosome.getGenes().size() << std::endl;
         std::cout << "error in size of chromosome &%#&#&%#&#%&#%&%population error " << std::endl;
@@ -177,7 +177,7 @@ void Population::initializeFirstPopulation(int POPULATION_SIZE)
         // Add this chromosome to the initial population
         addChromosome(chromosome);
 
-        if (chromosome.getGenes().size() != 159)
+        if (chromosome.getGenes().size() != 124)
         {
             std::cout << "size of the chromosome is  " << chromosome.getGenes().size() << std::endl;
             std::cout << "error in size of chromosome &%#&#&%#&#%&#%&%population error " << std::endl;
@@ -253,7 +253,7 @@ void Population::initializePopulationChromosome(int POPULATION_SIZE, Chromosome 
         // Add this chromosome to the initial population
         addChromosome(chromosome);
 
-        if (chromosome.getGenes().size() != 159)
+        if (chromosome.getGenes().size() != 124)
         {
             std::cout << "size of the chromosome is  " << chromosome.getGenes().size() << std::endl;
             std::cout << "error in size of chromosome &%#&#&%#&#%&#%&%population error " << std::endl;

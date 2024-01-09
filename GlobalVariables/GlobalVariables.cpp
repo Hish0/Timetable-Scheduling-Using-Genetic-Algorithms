@@ -12,14 +12,14 @@ void initializeLecturers()
     allLecturers.push_back(Lecturer(6, "Dr. Samir Embarek"));
     allLecturers.push_back(Lecturer(7, "Dr. Fatima Hmeed"));
     allLecturers.push_back(Lecturer(8, "Dr. Wafaa Nasser"));
-    allLecturers.push_back(Lecturer(9, "Dr. Abd Allatif Alshwehdi"));
+    allLecturers.push_back(Lecturer(9, "Dr. Abd Alhafed Alshwehdi"));
     allLecturers.push_back(Lecturer(10, "Dr. Omaima Alsheli"));
     allLecturers.push_back(Lecturer(11, "Dr. Adnan Alshreef"));
     allLecturers.push_back(Lecturer(12, "Dr. Ali Aborass"));
     allLecturers.push_back(Lecturer(13, "Dr. Alsunni"));
     allLecturers.push_back(Lecturer(14, "Dr. Fardous"));
     allLecturers.push_back(Lecturer(15, "Dr. Fathia Abu Amer"));
-    allLecturers.push_back(Lecturer(16, "Dr. Mo3eed 1"));
+    allLecturers.push_back(Lecturer(16, "Dr. Rabea Ahmed"));
     allLecturers.push_back(Lecturer(17, "Dr. Mo3eed 2"));
     allLecturers.push_back(Lecturer(18, "Dr. Khadeja"));
     allLecturers.push_back(Lecturer(19, "Dr. Salsabil"));
@@ -30,7 +30,7 @@ void initializeLecturers()
     allLecturers.push_back(Lecturer(24, "Dr. Aljalali"));
     allLecturers.push_back(Lecturer(25, "Dr. Ali alaswad"));
     allLecturers.push_back(Lecturer(26, "Dr. Mariam British"));
-    allLecturers.push_back(Lecturer(27, "Dr. Amira alelagi"));
+    allLecturers.push_back(Lecturer(27, "Dr. Hassan Gnnod"));
     allLecturers.push_back(Lecturer(28, "Dr. Naema albadri"));
     allLecturers.push_back(Lecturer(29, "Dr. Tasneem"));
     allLecturers.push_back(Lecturer(30, "Dr. Farhat"));
@@ -74,58 +74,103 @@ void initializeTimeSlots()
 // Initialize modules
 void initializeModules()
 {
-    // Initialize modules with ID, Lecturer, Name, Level, Number of Students, Is Lab, number of slots
-    allModules.push_back(Module(1, allLecturers[15], "CS100", 1, 100, false, 5));
-    allModules.push_back(Module(2, allLecturers[17], "MM101", 1, 100, false, 4));
-    allModules.push_back(Module(3, allLecturers[18], "MM102", 1, 100, false, 4));
-    allModules.push_back(Module(4, allLecturers[19], "ST101", 1, 100, false, 4));
-    allModules.push_back(Module(5, allLecturers[20], "PH112", 1, 100, false, 4));
-
-    allModules.push_back(Module(6, allLecturers[16], "CS111", 2, 100, false, 5));
-    allModules.push_back(Module(7, allLecturers[22], "MM103", 2, 100, false, 4));
-    allModules.push_back(Module(8, allLecturers[23], "MM104", 2, 100, false, 4));
-    allModules.push_back(Module(9, allLecturers[24], "ST102", 2, 100, false, 4));
-    allModules.push_back(Module(10, allLecturers[25], "EL101", 2, 100, false, 4));
-    allModules.push_back(Module(11, allLecturers[5], "AR051", 2, 100, false, 4)); // 26
-
-    allModules.push_back(Module(12, allLecturers[27], "CS115", 3, 100, false, 3));
-    allModules.push_back(Module(13, allLecturers[10], "CS200", 3, 100, false, 3));
-    allModules.push_back(Module(14, allLecturers[0], "CS207", 3, 100, false, 3));
-    allModules.push_back(Module(15, allLecturers[29], "MA200", 3, 100, false, 4));
-    allModules.push_back(Module(16, allLecturers[21], "PH200", 3, 100, false, 3));
-
-    allModules.push_back(Module(17, allLecturers[6], "CS211", 4, 25, true, 4));
-    allModules.push_back(Module(18, allLecturers[9], "CS215", 4, 25, true, 4));
-    allModules.push_back(Module(19, allLecturers[28], "MA206", 4, 100, false, 4));
-    allModules.push_back(Module(20, allLecturers[21], "PH201", 4, 100, false, 3));
-    allModules.push_back(Module(21, allLecturers[26], "AR052", 4, 100, false, 4));
-    allModules.push_back(Module(22, allLecturers[25], "EL102", 4, 100, false, 4));
-
-    allModules.push_back(Module(23, allLecturers[7], "CS321", 5, 25, true, 4));
-    allModules.push_back(Module(24, allLecturers[2], "CS331", 5, 25, true, 4));
-    allModules.push_back(Module(25, allLecturers[9], "CS315", 5, 25, true, 4));
-    allModules.push_back(Module(26, allLecturers[27], "CS319", 5, 25, true, 4));
-
+    allModules.push_back(Module(1, allLecturers[10], "CS355", 6, 100, false, 2));
+    allModules.push_back(Module(2, allLecturers[10], "CS355 (A)", 6, 25, true, 3));
+    allModules.push_back(Module(3, allLecturers[10], "CS355 (B)", 6, 25, true, 3));
+    allModules.push_back(Module(4, allLecturers[11], "CS461", 7, 25, true, 4));
+    allModules.push_back(Module(5, allLecturers[11], "CS438", 7, 100, false, 4));
+    allModules.push_back(Module(6, allLecturers[11], "CS315", 5, 25, true, 3));
+    allModules.push_back(Module(7, allLecturers[11], "CS315 (A)", 5, 25, true, 2));
+    allModules.push_back(Module(8, allLecturers[15], "CS115/CS214 (1)", 3, 100, false, 2));
+    allModules.push_back(Module(9, allLecturers[15], "CS115/CS214 (2)", 3, 100, false, 2));
+    allModules.push_back(Module(10, allLecturers[0], "CS115/CS214 (3)", 3, 100, false, 2));
+    allModules.push_back(Module(11, allLecturers[15], "CS115/CS214 (A)", 3, 25, true, 3));
+    allModules.push_back(Module(12, allLecturers[15], "CS115/CS214 (B)", 3, 25, true, 3));
+    allModules.push_back(Module(13, allLecturers[0], "CS115/CS214 (C)", 3, 25, true, 3));
+    allModules.push_back(Module(14, allLecturers[0], "CS115/CS214 (D)", 3, 25, true, 3));
+    allModules.push_back(Module(15, allLecturers[15], "CS115/CS214 (E)", 3, 25, true, 3));
+    allModules.push_back(Module(16, allLecturers[15], "CS115/CS214 (F)", 3, 25, true, 3));
+    allModules.push_back(Module(17, allLecturers[10], "CS200 (1)", 3, 100, false, 4));
+    allModules.push_back(Module(18, allLecturers[10], "CS200 (2)", 3, 100, false, 4));
+    allModules.push_back(Module(19, allLecturers[4], "CS101", 1, 25, true, 2));
+    allModules.push_back(Module(20, allLecturers[27], "CS319", 5, 100, false, 5));
+    allModules.push_back(Module(21, allLecturers[7], "CS322", 6, 100, false, 4));
+    allModules.push_back(Module(22, allLecturers[8], "CS431", 7, 25, true, 4));
+    allModules.push_back(Module(23, allLecturers[26], "CS100/CS102", 1, 100, false, 2));
+    allModules.push_back(Module(24, allLecturers[26], "CS100/CS102 (A)", 1, 25, true, 3));
+    allModules.push_back(Module(25, allLecturers[26], "CS100/CS102 (B)", 1, 25, true, 3));
+    allModules.push_back(Module(26, allLecturers[0], "CS207", 3, 100, false, 4));
     allModules.push_back(Module(27, allLecturers[12], "CS332", 6, 25, true, 4));
-    allModules.push_back(Module(28, allLecturers[7], "CS322", 6, 25, true, 4));
-    allModules.push_back(Module(29, allLecturers[2], "CS336", 6, 25, true, 4));
-    allModules.push_back(Module(30, allLecturers[13], "CS340", 6, 25, true, 4));
-    allModules.push_back(Module(31, allLecturers[10], "CS355", 6, 25, true, 4));
+    allModules.push_back(Module(28, allLecturers[12], "CS437", 7, 25, true, 4));
+    allModules.push_back(Module(29, allLecturers[4], "CS111/CS110", 2, 100, false, 2));
+    allModules.push_back(Module(30, allLecturers[4], "CS111/CS110 (A)", 2, 25, true, 3));
+    allModules.push_back(Module(31, allLecturers[8], "CS111/CS110 (B)", 2, 25, true, 3));
+    allModules.push_back(Module(32, allLecturers[9], "CS215", 4, 100, false, 2));
+    allModules.push_back(Module(33, allLecturers[9], "CS215 (A)", 4, 25, true, 3));
+    allModules.push_back(Module(34, allLecturers[9], "CS215 (B)", 4, 25, true, 3));
+    allModules.push_back(Module(35, allLecturers[2], "CS336", 6, 25, true, 4));
+    allModules.push_back(Module(36, allLecturers[3], "CS456", 7, 25, true, 4));
+    allModules.push_back(Module(37, allLecturers[3], "CS436", 8, 25, true, 4));
+    allModules.push_back(Module(38, allLecturers[2], "CS331", 5, 100, false, 4));
+    allModules.push_back(Module(39, allLecturers[7], "CS321", 5, 100, false, 4));
 
-    allModules.push_back(Module(32, allLecturers[5], "CS443", 7, 25, true, 4));
-    allModules.push_back(Module(33, allLecturers[12], "CS437", 7, 25, true, 4));
-    allModules.push_back(Module(34, allLecturers[8], "CS431", 7, 25, true, 4));
-    allModules.push_back(Module(35, allLecturers[3], "CS456", 7, 25, true, 4));
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Initialize modules with ID, Lecturer, Name, Level, Number of Students, Is Lab, number of slots
+    // allModules.push_back(Module(1, allLecturers[15], "CS100", 1, 100, false, 5));
+    // allModules.push_back(Module(2, allLecturers[17], "MM101", 1, 100, false, 4));
+    // allModules.push_back(Module(3, allLecturers[18], "MM102", 1, 100, false, 4));
+    // allModules.push_back(Module(4, allLecturers[19], "ST101", 1, 100, false, 4));
+    // allModules.push_back(Module(5, allLecturers[20], "PH112", 1, 100, false, 4));
 
-    allModules.push_back(Module(36, allLecturers[3], "CS436", 8, 25, true, 4));
-    allModules.push_back(Module(37, allLecturers[11], "CS438", 8, 100, false, 4));
-    allModules.push_back(Module(38, allLecturers[27], "CS115 (1)", 3, 25, true, 2));
-    allModules.push_back(Module(39, allLecturers[15], "CS115 (2)", 3, 25, true, 2));
-    allModules.push_back(Module(40, allLecturers[15], "CS115 (3)", 3, 25, true, 2));
-    allModules.push_back(Module(41, allLecturers[15], "CS200 (1)", 3, 25, true, 2));
-    allModules.push_back(Module(42, allLecturers[15], "CS200 (2)", 3, 25, true, 2));
-    allModules.push_back(Module(43, allLecturers[16], "CS207 (1)", 3, 25, true, 2));
-    allModules.push_back(Module(44, allLecturers[16], "CS207 (2)", 3, 25, true, 2));
+    // allModules.push_back(Module(6, allLecturers[16], "CS111", 2, 100, false, 5));
+    // allModules.push_back(Module(7, allLecturers[22], "MM103", 2, 100, false, 4));
+    // allModules.push_back(Module(8, allLecturers[23], "MM104", 2, 100, false, 4));
+    // allModules.push_back(Module(9, allLecturers[24], "ST102", 2, 100, false, 4));
+    // allModules.push_back(Module(10, allLecturers[25], "EL101", 2, 100, false, 4));
+    // allModules.push_back(Module(11, allLecturers[5], "AR051", 2, 100, false, 4)); // 26
+
+    // allModules.push_back(Module(12, allLecturers[27], "CS115", 3, 100, false, 3));
+    // allModules.push_back(Module(13, allLecturers[10], "CS200", 3, 100, false, 3));
+    // allModules.push_back(Module(14, allLecturers[0], "CS207", 3, 100, false, 3));
+    // allModules.push_back(Module(15, allLecturers[29], "MA200", 3, 100, false, 4));
+    // allModules.push_back(Module(16, allLecturers[21], "PH200", 3, 100, false, 3));
+
+    // allModules.push_back(Module(17, allLecturers[6], "CS211", 4, 25, true, 4));
+    // allModules.push_back(Module(18, allLecturers[9], "CS215", 4, 25, true, 4));
+    // allModules.push_back(Module(19, allLecturers[28], "MA206", 4, 100, false, 4));
+    // allModules.push_back(Module(20, allLecturers[21], "PH201", 4, 100, false, 3));
+    // allModules.push_back(Module(21, allLecturers[26], "AR052", 4, 100, false, 4));
+    // allModules.push_back(Module(22, allLecturers[25], "EL102", 4, 100, false, 4));
+
+    // allModules.push_back(Module(23, allLecturers[7], "CS321", 5, 25, true, 4));
+    // allModules.push_back(Module(24, allLecturers[2], "CS331", 5, 25, true, 4));
+    // allModules.push_back(Module(25, allLecturers[9], "CS315", 5, 25, true, 4));
+    // allModules.push_back(Module(26, allLecturers[27], "CS319", 5, 25, true, 4));
+
+    // allModules.push_back(Module(27, allLecturers[12], "CS332", 6, 25, true, 4));
+    // allModules.push_back(Module(28, allLecturers[7], "CS322", 6, 25, true, 4));
+    // allModules.push_back(Module(29, allLecturers[2], "CS336", 6, 25, true, 4));
+    // allModules.push_back(Module(30, allLecturers[13], "CS340", 6, 25, true, 4));
+    // allModules.push_back(Module(1, allLecturers[10], "CS355", 6, 25, false, 2));
+
+    // allModules.push_back(Module(32, allLecturers[5], "CS443", 7, 25, true, 4));
+    // allModules.push_back(Module(33, allLecturers[12], "CS437", 7, 25, true, 4));
+    // allModules.push_back(Module(34, allLecturers[8], "CS431", 7, 25, true, 4));
+    // allModules.push_back(Module(35, allLecturers[3], "CS456", 7, 25, true, 4));
+
+    // allModules.push_back(Module(36, allLecturers[3], "CS436", 8, 25, true, 4));
+    // allModules.push_back(Module(37, allLecturers[11], "CS438", 8, 100, false, 4));
+
+    // allModules.push_back(Module(38, allLecturers[27], "CS115 (1)", 3, 25, true, 2));
+    // allModules.push_back(Module(39, allLecturers[15], "CS115 (2)", 3, 25, true, 2));
+    // allModules.push_back(Module(40, allLecturers[15], "CS115 (3)", 3, 25, true, 2));
+    // allModules.push_back(Module(41, allLecturers[15], "CS200 (1)", 3, 25, true, 2));
+    // allModules.push_back(Module(42, allLecturers[15], "CS200 (2)", 3, 25, true, 2));
+    // allModules.push_back(Module(43, allLecturers[16], "CS207 (1)", 3, 25, true, 2));
+    // allModules.push_back(Module(44, allLecturers[16], "CS207 (2)", 3, 25, true, 2));
+
+    // allModules.push_back(Module(2, allLecturers[10], "CS355 (A)", 6, 25, true, 3));
+    // allModules.push_back(Module(3, allLecturers[10], "CS355 (B)", 6, 25, true, 3));
 }
 
 // Initialize venues

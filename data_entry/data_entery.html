@@ -11,6 +11,8 @@
         <label for="geneId">Gene ID:</label>
         <input type="number" id="geneId" name="Gene" required>
 
+        <br></br>
+
         <!-- Module Details -->
         <label for="moduleId">Module ID:</label>
         <input type="number" id="moduleId" name="Module ID" required>
@@ -19,7 +21,7 @@
         <input type="text" id="lecturer" name="Lecturer" required>
 
         <label for="moduleName">Module Name:</label>
-        <input type="text" id="moduleName" name="Name" required>
+        <input type="text" id="moduleName" name="Module Name" required>
 
         <label for="moduleLevel">Level:</label>
         <input type="number" id="moduleLevel" name="Level" required>
@@ -36,6 +38,8 @@
         <label for="numTimeSlots">Number of Time Slots:</label>
         <input type="number" id="numTimeSlots" name="Number of time slots" required>
 
+        <br></br>
+
         <!-- TimeSlot Details -->
         <label for="timeSlotId">TimeSlot ID:</label>
         <input type="number" id="timeSlotId" name="TimeSlot ID" required>
@@ -45,6 +49,8 @@
 
         <label for="time">Time:</label>
         <input type="text" id="time" name="Time" required>
+
+        <br></br>
 
         <!-- Venue Details -->
         <label for="venueId">Venue ID:</label>
@@ -61,6 +67,8 @@
             <option value="No">No</option>
             <option value="Yes">Yes</option>
         </select>
+
+        <br></br>
 
         <!-- Additional Boolean Fields -->
         <label for="isLockedVenue">Is Locked Venue:</label>
@@ -84,6 +92,13 @@
     <div id="outputContainer">
         <h2>Formatted Data:</h2>
         <textarea id="output" rows="20" cols="80" readonly></textarea>
+    </div>
+
+    <!-- Place this new text area above the form or wherever you see fit -->
+    <div id="inputContainer">
+        <h2>Paste Formatted Data Here:</h2>
+        <textarea id="inputData" rows="20" cols="80"></textarea>
+        <button type="button" onclick="populateFields()">Load Data</button>
     </div>
 
     <script src="script.js"></script>
