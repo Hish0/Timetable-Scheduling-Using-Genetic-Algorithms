@@ -1,0 +1,5 @@
+/Users/hishamalhabrosh/hisham-project/build/CMakeFiles/result_plot.dir
+/Users/hishamalhabrosh/hisham-project/build/CMakeFiles/package.dir
+/Users/hishamalhabrosh/hisham-project/build/CMakeFiles/package_source.dir
+/Users/hishamalhabrosh/hisham-project/build/CMakeFiles/edit_cache.dir
+/Users/hishamalhabrosh/hisham-project/build/CMakeFiles/rebuild_cache.dir

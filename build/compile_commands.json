@@ -1,0 +1,74 @@
+[
+{
+  "directory": "/Users/hishamalhabrosh/hisham-project/build",
+  "command": "/usr/bin/clang++ -I/Users/hishamalhabrosh/hisham-project/include -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem /opt/homebrew/lib/python3.12/site-packages/numpy/core/include -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/result_plot.dir/src/main.cpp.o -c /Users/hishamalhabrosh/hisham-project/src/main.cpp",
+  "file": "/Users/hishamalhabrosh/hisham-project/src/main.cpp",
+  "output": "CMakeFiles/result_plot.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/hishamalhabrosh/hisham-project/build",
+  "command": "/usr/bin/clang++ -I/Users/hishamalhabrosh/hisham-project/include -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem /opt/homebrew/lib/python3.12/site-packages/numpy/core/include -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/result_plot.dir/src/Chromosome.cpp.o -c /Users/hishamalhabrosh/hisham-project/src/Chromosome.cpp",
+  "file": "/Users/hishamalhabrosh/hisham-project/src/Chromosome.cpp",
+  "output": "CMakeFiles/result_plot.dir/src/Chromosome.cpp.o"
+},
+{
+  "directory": "/Users/hishamalhabrosh/hisham-project/build",
+  "command": "/usr/bin/clang++ -I/Users/hishamalhabrosh/hisham-project/include -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem /opt/homebrew/lib/python3.12/site-packages/numpy/core/include -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/result_plot.dir/src/GeneticAlgorithm.cpp.o -c /Users/hishamalhabrosh/hisham-project/src/GeneticAlgorithm.cpp",
+  "file": "/Users/hishamalhabrosh/hisham-project/src/GeneticAlgorithm.cpp",
+  "output": "CMakeFiles/result_plot.dir/src/GeneticAlgorithm.cpp.o"
+},
+{
+  "directory": "/Users/hishamalhabrosh/hisham-project/build",
+  "command": "/usr/bin/clang++ -I/Users/hishamalhabrosh/hisham-project/include -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem /opt/homebrew/lib/python3.12/site-packages/numpy/core/include -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/result_plot.dir/src/GlobalVariables.cpp.o -c /Users/hishamalhabrosh/hisham-project/src/GlobalVariables.cpp",
+  "file": "/Users/hishamalhabrosh/hisham-project/src/GlobalVariables.cpp",
+  "output": "CMakeFiles/result_plot.dir/src/GlobalVariables.cpp.o"
+},
+{
+  "directory": "/Users/hishamalhabrosh/hisham-project/build",
+  "command": "/usr/bin/clang++ -I/Users/hishamalhabrosh/hisham-project/include -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem /opt/homebrew/lib/python3.12/site-packages/numpy/core/include -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/result_plot.dir/src/Lecturer.cpp.o -c /Users/hishamalhabrosh/hisham-project/src/Lecturer.cpp",
+  "file": "/Users/hishamalhabrosh/hisham-project/src/Lecturer.cpp",
+  "output": "CMakeFiles/result_plot.dir/src/Lecturer.cpp.o"
+},
+{
+  "directory": "/Users/hishamalhabrosh/hisham-project/build",
+  "command": "/usr/bin/clang++ -I/Users/hishamalhabrosh/hisham-project/include -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem /opt/homebrew/lib/python3.12/site-packages/numpy/core/include -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/result_plot.dir/src/LecturerTimeSlotPreference.cpp.o -c /Users/hishamalhabrosh/hisham-project/src/LecturerTimeSlotPreference.cpp",
+  "file": "/Users/hishamalhabrosh/hisham-project/src/LecturerTimeSlotPreference.cpp",
+  "output": "CMakeFiles/result_plot.dir/src/LecturerTimeSlotPreference.cpp.o"
+},
+{
+  "directory": "/Users/hishamalhabrosh/hisham-project/build",
+  "command": "/usr/bin/clang++ -I/Users/hishamalhabrosh/hisham-project/include -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem /opt/homebrew/lib/python3.12/site-packages/numpy/core/include -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/result_plot.dir/src/Module.cpp.o -c /Users/hishamalhabrosh/hisham-project/src/Module.cpp",
+  "file": "/Users/hishamalhabrosh/hisham-project/src/Module.cpp",
+  "output": "CMakeFiles/result_plot.dir/src/Module.cpp.o"
+},
+{
+  "directory": "/Users/hishamalhabrosh/hisham-project/build",
+  "command": "/usr/bin/clang++ -I/Users/hishamalhabrosh/hisham-project/include -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem /opt/homebrew/lib/python3.12/site-packages/numpy/core/include -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/result_plot.dir/src/Population.cpp.o -c /Users/hishamalhabrosh/hisham-project/src/Population.cpp",
+  "file": "/Users/hishamalhabrosh/hisham-project/src/Population.cpp",
+  "output": "CMakeFiles/result_plot.dir/src/Population.cpp.o"
+},
+{
+  "directory": "/Users/hishamalhabrosh/hisham-project/build",
+  "command": "/usr/bin/clang++ -I/Users/hishamalhabrosh/hisham-project/include -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem /opt/homebrew/lib/python3.12/site-packages/numpy/core/include -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/result_plot.dir/src/ScheduledModule.cpp.o -c /Users/hishamalhabrosh/hisham-project/src/ScheduledModule.cpp",
+  "file": "/Users/hishamalhabrosh/hisham-project/src/ScheduledModule.cpp",
+  "output": "CMakeFiles/result_plot.dir/src/ScheduledModule.cpp.o"
+},
+{
+  "directory": "/Users/hishamalhabrosh/hisham-project/build",
+  "command": "/usr/bin/clang++ -I/Users/hishamalhabrosh/hisham-project/include -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem /opt/homebrew/lib/python3.12/site-packages/numpy/core/include -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/result_plot.dir/src/TimeSlot.cpp.o -c /Users/hishamalhabrosh/hisham-project/src/TimeSlot.cpp",
+  "file": "/Users/hishamalhabrosh/hisham-project/src/TimeSlot.cpp",
+  "output": "CMakeFiles/result_plot.dir/src/TimeSlot.cpp.o"
+},
+{
+  "directory": "/Users/hishamalhabrosh/hisham-project/build",
+  "command": "/usr/bin/clang++ -I/Users/hishamalhabrosh/hisham-project/include -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem /opt/homebrew/lib/python3.12/site-packages/numpy/core/include -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/result_plot.dir/src/UtilityFunctions.cpp.o -c /Users/hishamalhabrosh/hisham-project/src/UtilityFunctions.cpp",
+  "file": "/Users/hishamalhabrosh/hisham-project/src/UtilityFunctions.cpp",
+  "output": "CMakeFiles/result_plot.dir/src/UtilityFunctions.cpp.o"
+},
+{
+  "directory": "/Users/hishamalhabrosh/hisham-project/build",
+  "command": "/usr/bin/clang++ -I/Users/hishamalhabrosh/hisham-project/include -isystem /opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12 -isystem /opt/homebrew/lib/python3.12/site-packages/numpy/core/include -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -o CMakeFiles/result_plot.dir/src/Venue.cpp.o -c /Users/hishamalhabrosh/hisham-project/src/Venue.cpp",
+  "file": "/Users/hishamalhabrosh/hisham-project/src/Venue.cpp",
+  "output": "CMakeFiles/result_plot.dir/src/Venue.cpp.o"
+}
+]
